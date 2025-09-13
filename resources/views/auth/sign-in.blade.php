@@ -11,8 +11,7 @@
                 </a>
 
                 <h3 class="fw-semibold mb-2">Login your account</h3>
-                <p class="text-muted mb-4">Enter your email address and password to access your panel.</p>
-
+                <p class="text-muted mb-2">Enter your email address and password to access your panel.</p>
                 <form action="#" class="text-start mb-3">
                     <div class="mb-3">
                         <label class="form-label" for="example-email">Email</label>
