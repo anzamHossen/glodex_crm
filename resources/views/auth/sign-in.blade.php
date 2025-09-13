@@ -6,8 +6,8 @@
         <div class="col-xl-4 col-lg-5 col-md-6">
             <div class="card overflow-hidden text-center h-100 p-xxl-4 p-3 mb-0">
                 <a href="index.html" class="auth-brand mb-3">
-                    <img src="{{ asset('back-end/assets/images/logo-dark.png') }}" alt="dark logo" height="24" class="logo-dark">
-                    <img src="{{ asset('assets/images/logo.png" alt="logo light') }}" height="24" class="logo-light">
+                    <img src="{{ asset('back-end/assets/images/Logo-glodex-1.png') }}" alt="dark logo" height="50" class="logo-dark">
+                    <img src="{{ asset('back-end/assets/images/Logo-glodex-1.png') }}" alt="logo light" height="50" class="logo-light">
                 </a>
 
                 <h3 class="fw-semibold mb-2">Login your account</h3>

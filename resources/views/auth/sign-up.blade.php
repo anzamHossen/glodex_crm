@@ -6,8 +6,8 @@
         <div class="col-xl-4 col-lg-5 col-md-6">
             <div class="card overflow-hidden text-center h-100 p-xxl-4 p-3 mb-0">
                 <a href="index.html" class="auth-brand mb-3">
-                    <img src="{{ asset('back-end/assets/images/logo-dark.png')}}" alt="dark logo" height="24" class="logo-dark">
-                    <img src="{{ asset('back-end/assets/images/logo.png')}}" alt="logo light" height="24" class="logo-light">
+                    <img src="{{ asset('back-end/assets/images/Logo-glodex-1.png')}}" alt="dark logo" height="50" class="logo-dark">
+                    <img src="{{ asset('back-end/assets/images/Logo-glodex-1')}}" alt="logo light" height="50" class="logo-light">
                 </a>
                 <h3 class="fw-semibold mb-2">Welcome to Glodex</h3>
 
@@ -39,10 +39,10 @@
                     </div>
                 </form>
 
-                <p class="text-danger fs-14 mb-4">Already have an account? <a href="auth-login.html" class="fw-semibold text-dark ms-1">Login !</a></p>
+                <p class="text-danger fs-14 mb-4">Already have an account? <a href="{{ route('sign_in') }}" class="fw-semibold text-dark ms-1">Login !</a></p>
 
                 <p class="mt-auto mb-0">
-                    <script>document.write(new Date().getFullYear())</script> © Osen - By <span class="fw-bold text-decoration-underline text-uppercase text-reset fs-12">Coderthemes</span>
+                    <script>document.write(new Date().getFullYear())</script> © Glodex - By <span class="fw-bold text-decoration-underline text-uppercase text-reset fs-12">Mindcraft Coders</span>
                 </p>
             </div>
         </div>
