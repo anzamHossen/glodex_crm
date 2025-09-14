@@ -24,6 +24,8 @@
 
     <!-- Icons css -->
     <link href="{{asset('back-end/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    
+    @stack('page-css')
 </head>
 
 <body>
@@ -55,6 +57,7 @@
 
     <!-- Projects Analytics Dashboard App js -->
     <script src="{{asset('back-end/assets/js/pages/dashboard-sales.js')}}"></script>
+    @stack('page-js')
 
 </body>
 </html>

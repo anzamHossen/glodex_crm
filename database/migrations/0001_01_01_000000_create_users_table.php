@@ -15,11 +15,22 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('user_type')->nullable()->comment('1=Admin, 2=Agent, 3=Student');
+            $table->string('profile_photo', 2048)->nullable();
+            $table->date('dob')->nullable();
+            $table->integer('gender')->nullable();
+            $table->integer('marital_status')->nullable();
+            $table->text('address')->nullable();
+            $table->string('organization_name')->nullable();
+            $table->integer('user_status')->nullable();
+            $table->integer('created_by')->nullable()->comment("User's id who created this user type");
             $table->rememberToken();
             $table->timestamps();
         });
+
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();

@@ -12,15 +12,31 @@
 
                 <h3 class="fw-semibold mb-2">Login your account</h3>
                 <p class="text-muted mb-2">Enter your email address and password to access your panel.</p>
-                <form action="#" class="text-start mb-3">
+                @if (session('error'))
+                    <p id="error-alert" class="alert text-danger" style="text-align: center">
+                        {{ session('error') }}
+                    </p>
+                @endif
+                <form  action="{{ route('auth_login') }}" method="POST" class="text-start mb-3">
+                    @csrf
                     <div class="mb-3">
                         <label class="form-label" for="example-email">Email</label>
-                        <input type="email" id="example-email" name="example-email" class="form-control" placeholder="Enter your email">
+                        <input type="email" id="example-email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter your email" value="{{ old('email') }}" required>
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <span class="fw-medium">{{ $message }}</span>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label" for="example-password">Password</label>
-                        <input type="password" id="example-password" class="form-control" placeholder="Enter your password">
+                        <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your password"  required>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <span class="fw-medium">{{ $message }}</span>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="d-flex justify-content-between mb-3">

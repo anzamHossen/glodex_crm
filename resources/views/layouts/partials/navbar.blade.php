@@ -235,37 +235,22 @@
                         <span class="align-middle">My Account</span>
                     </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <i class="ti ti-wallet me-1 fs-17 align-middle"></i>
-                        <span class="align-middle">Wallet : <span class="fw-semibold">$985.25</span></span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <i class="ti ti-settings me-1 fs-17 align-middle"></i>
-                        <span class="align-middle">Settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <i class="ti ti-lifebuoy me-1 fs-17 align-middle"></i>
-                        <span class="align-middle">Support</span>
-                    </a>
-
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <i class="ti ti-lock-square-rounded me-1 fs-17 align-middle"></i>
-                        <span class="align-middle">Lock Screen</span>
-                    </a>
+                    {{-- <a href="javascript:void(0);" class="dropdown-item active fw-semibold text-danger">
+                        <i class="ti ti-logout me-1 fs-17 align-middle"></i>
+                        <span class="align-middle">Sign Out</span>
+                    </a> --}}
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item active fw-semibold text-danger">
+                    <a href="#" class="dropdown-item fw-semibold text-danger"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="ti ti-logout me-1 fs-17 align-middle"></i>
                         <span class="align-middle">Sign Out</span>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>

@@ -15,5 +15,6 @@
 
     <script src="{{ asset('back-end/assets/js/vendor.min.js') }}"></script>
     <script src="{{ asset('back-end/assets/js/app.js') }}"></script>
+    @stack('page-js')
 </body>
 </html>
