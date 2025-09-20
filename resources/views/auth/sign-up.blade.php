@@ -81,12 +81,12 @@
                         @enderror
                     </div>
 
-                    <div class="d-flex justify-content-between mb-3">
+                    {{-- <div class="d-flex justify-content-between mb-3">
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="checkbox-signin">
                             <label class="form-check-label" for="checkbox-signin">I agree to all <a href="#!" class="link-dark text-decoration-underline">Terms & Condition</a> </label>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="d-grid">
                         <button class="btn btn-primary" type="submit">Sign Up</button>

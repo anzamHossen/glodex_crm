@@ -39,14 +39,14 @@
                         @enderror
                     </div>
 
-                    <div class="d-flex justify-content-between mb-3">
+                    {{-- <div class="d-flex justify-content-between mb-3">
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="checkbox-signin">
                             <label class="form-check-label" for="checkbox-signin">Remember me</label>
                         </div>
 
                         <a href="auth-recoverpw.html" class="text-muted border-bottom border-dashed">Forget Password</a>
-                    </div>
+                    </div> --}}
 
                     <div class="d-grid">
                         <button class="btn btn-primary" type="submit">Login</button>
