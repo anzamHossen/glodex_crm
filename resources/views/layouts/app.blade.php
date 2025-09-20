@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from coderthemes.com/osen/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 04:49:07 GMT -->
 <head>
     <meta charset="utf-8" />
     <title>Glodex</title>
