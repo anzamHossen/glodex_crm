@@ -30,7 +30,16 @@
     <div class="wrapper">
         <!-- Topbar Start -->
         <header class="app-topbar">
-            @include('layouts.partials.navbar')
+            {{-- @include('layouts.partials.navbar') --}}
+             @if(Auth::check())
+                @if(Auth::user()->user_type == 1)
+                    @include('layouts.partials.navbar-admin')
+                @elseif(Auth::user()->user_type == 2)
+                    @include('layouts.partials.navbar-agent')
+                @elseif(Auth::user()->user_type == 3)
+                    @include('layouts.partials.navbar-student')
+                @endif
+            @endif
         </header>
         <!-- Topbar End -->
 

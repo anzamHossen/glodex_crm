@@ -11,6 +11,7 @@
 <body>
     <div class="auth-wrapper">
         @yield('auth-content')
+        @include('sweetalert::alert')
     </div>
 
     <script src="{{ asset('back-end/assets/js/vendor.min.js') }}"></script>

@@ -53,9 +53,10 @@ class AuthController extends Controller
                     $user = Auth::user();
 
                     // Redirect admin
-                    if ($user->user_type == 1) {
-                        $request->session()->regenerate();
-                        return $this->redirectToDashboard($user->user_type);
+                    if (in_array($user->user_type, [2, 3]) && $user->user_status == 1) {
+                        Auth::logout();
+                        Alert::error('Error', 'Your registration is currently pending approval from the admin.');
+                        return redirect()->back();
                     }
 
                     // Redirect agent/student (no user_status check anymore)
