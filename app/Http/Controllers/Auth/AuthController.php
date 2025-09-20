@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -23,13 +24,13 @@ class AuthController extends Controller
     {
         switch ($userType) {
             case 1: // Admin
-                // Alert::success('Success', 'Admin login successful');
+                Alert::success('Success', 'Admin login successful');
                 return redirect()->route('admin_dashboard'); // Redirect to the Admin dashboard
             case 2: // Agent
-                // Alert::success('Success', 'Partners login successful');
+                Alert::success('Success', 'Agent login successful');
                 return redirect()->route('agent_dashboard'); // Adjust to your agent dashboard route
             case 3: // Student
-                // Alert::success('Success', 'Student login successful');
+                Alert::success('Success', 'Student login successful');
                 return redirect()->route('student_dashboard'); // Adjust to your student dashboard route
             default:
                 return redirect()->route('sign_in')->with('error', 'User type not recognized');

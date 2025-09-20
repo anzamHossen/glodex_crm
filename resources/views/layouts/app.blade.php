@@ -38,11 +38,20 @@
 
         <!-- Sidenav Menu Start -->
         <div class="sidenav-menu">
-            @include('layouts.partials.sidebar')
+            @if(Auth::check())
+                @if(Auth::user()->user_type == 1)
+                    @include('layouts.partials.sidebar-admin')
+                @elseif(Auth::user()->user_type == 2)
+                    @include('layouts.partials.sidebar-agent')
+                @elseif(Auth::user()->user_type == 3)
+                    @include('layouts.partials.sidebar-student')
+                @endif
+            @endif
         </div>
         <!-- Sidenav Menu End -->
         <div class="page-content">
             @yield('content')
+            @include('sweetalert::alert')
         </div>
         @include('layouts.partials.footer')
     </div>
