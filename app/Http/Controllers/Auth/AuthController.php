@@ -66,7 +66,7 @@ class AuthController extends Controller
 
                     // Default: logout if not matched
                     Auth::logout();
-                    // Alert::error('Error', 'Your account is not approved for login.');
+                    Alert::error('Error', 'Your account is not approved for login.');
 
                 } else {
                     return redirect()->back()->with('error', 'Invalid email or password.');
@@ -126,14 +126,14 @@ class AuthController extends Controller
             $user->save();
               
             DB::commit();
-            // Alert::success('Success', 'Thanks for registration. Please wait for admin approval wait few minutes.');
+            Alert::success('Success', 'Thanks for registration. Please wait for admin approval.');
             return redirect()->route('sign_in');
 
         } catch (\Exception $e) {
 
             DB::rollBack();
             // dd($e);
-            // Alert::error('Error', 'Registration failed. Please try again.');
+            Alert::error('Error', 'Registration failed. Please try again.');
             return redirect()->back();
         }
     }

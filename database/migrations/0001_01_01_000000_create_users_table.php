@@ -20,12 +20,13 @@ return new class extends Migration
             $table->string('password');
             $table->integer('user_type')->nullable()->comment('1=Admin, 2=Agent, 3=Student');
             $table->string('profile_photo', 2048)->nullable();
+            $table->string('company_logo', 2048)->nullable();
             $table->date('dob')->nullable();
             $table->integer('gender')->nullable();
             $table->integer('marital_status')->nullable();
             $table->text('address')->nullable();
             $table->string('organization_name')->nullable();
-            $table->integer('user_status')->nullable();
+            $table->integer('user_status')->default(1)->comment('1=Inactive, 2=Active');
             $table->integer('created_by')->nullable()->comment("User's id who created this user type");
             $table->rememberToken();
             $table->timestamps();
