@@ -89,7 +89,7 @@
                         </div>
                     </div> --}}
 
-                    <div class="d-grid">
+                    <div class="d-grid pt-2">
                         <button class="btn glodex-login-btn text-white" type="submit">Sign Up</button>
                     </div>
                 </form>
