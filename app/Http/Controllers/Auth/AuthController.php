@@ -19,25 +19,29 @@ class AuthController extends Controller
         return view('auth.sign-in');
     }
 
-     // Funtion to use case for login different user
+    // Funtion to use case for login different user
     protected function redirectToDashboard($userType)
     {
         switch ($userType) {
             case 1: // Admin
                 Alert::success('Success', 'Admin login successful');
-                return redirect()->route('admin_dashboard'); // Redirect to the Admin dashboard
+                return redirect()->route('admin_dashboard');
+
             case 2: // Agent
                 Alert::success('Success', 'Agent login successful');
-                return redirect()->route('agent_dashboard'); // Adjust to your agent dashboard route
+                return redirect()->route('agent_dashboard');
+
             case 3: // Student
                 Alert::success('Success', 'Student login successful');
-                return redirect()->route('student_dashboard'); // Adjust to your student dashboard route
+                return redirect()->route('student_dashboard');
+
             default:
-                return redirect()->route('sign_in')->with('error', 'User type not recognized');
+                return redirect()->route('sign_in')
+                    ->with('error', 'User type not recognized');
         }
     }
 
-    // Function to handle login
+    // Function to handle login request
     public function login(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -49,36 +53,30 @@ class AuthController extends Controller
             $credentials = $request->only('email', 'password');
 
             try {
-                if (Auth::attempt($credentials)) {
-                    $user = Auth::user();
-
-                    // Redirect admin
-                    if (in_array($user->user_type, [2, 3]) && $user->user_status == 1) {
-                        Auth::logout();
-                        Alert::error('Error', 'Your registration is currently pending approval from the admin.');
-                        return redirect()->back();
-                    }
-
-                    // Redirect agent/student (no user_status check anymore)
-                    if (in_array($user->user_type, [2, 3])) {
-                        $request->session()->regenerate();
-                        return $this->redirectToDashboard($user->user_type);
-                    }
-
-                    // Default: logout if not matched
-                    Auth::logout();
-                    Alert::error('Error', 'Your account is not approved for login.');
-
-                } else {
+                if (!Auth::attempt($credentials)) {
                     return redirect()->back()->with('error', 'Invalid email or password.');
                 }
+
+                $user = Auth::user();
+
+                // Check user status for agent/student
+                if (in_array($user->user_type, [2, 3]) && $user->user_status == 1) {
+                    Auth::logout();
+                    Alert::error('Error', 'Your registration is currently pending approval from the admin.');
+                    return redirect()->back();
+                }
+
+                // Valid user, regenerate session and redirect
+                $request->session()->regenerate();
+                return $this->redirectToDashboard($user->user_type);
+
             } catch (Exception $e) {
                 Log::error('Login error: ' . $e->getMessage());
                 return redirect()->back()->with('error', 'An error occurred. Please try again.');
             }
-        } else {
-            return view('auth.sign-in');
         }
+
+        return view('auth.sign-in');
     }
 
     // function to show sign-up form 
