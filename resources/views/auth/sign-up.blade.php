@@ -7,8 +7,8 @@
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 w-100">
             <div class="card overflow-hidden text-center h-100 p-xxl-4 p-3 mb-0">
                 <a href="index.html" class="auth-brand mb-3">
-                    <img src="{{ asset('back-end/assets/images/Logo-glodex-1.png')}}" alt="dark logo" height="50" class="logo-dark">
-                    <img src="{{ asset('back-end/assets/images/Logo-glodex-1')}}" alt="logo light" height="50" class="logo-light">
+                    <img src="{{ asset('back-end/assets/images/logo-main.png')}}" alt="dark logo" height="50" class="logo-dark">
+                    <img src="{{ asset('back-end/assets/images/logo-main.png')}}" alt="logo light" height="50" class="logo-light">
                 </a>
                 <h3 class="fw-semibold text-white mb-3">Welcome to Glodex</h3>
 
