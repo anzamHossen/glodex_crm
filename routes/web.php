@@ -21,6 +21,7 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
     Route::controller(UserActiveController::class)->group(function () {
         Route::get('/pending-agent-user',  'pendingAgentUser')->name('pending_agent_user');
         Route::get('/update-user-status/{id}', 'updateUserStatus')->name('update_user_status');
+        Route::get('/active-agent-user',  'activeAgentUser')->name('active_agent_user');
     });
 
 });

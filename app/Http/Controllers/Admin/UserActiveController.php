@@ -12,14 +12,27 @@ class UserActiveController extends Controller
     // Function to show pending agent users
     public function pendingAgentUser()
     {
-        $pendingUsers = User::whereIn('user_type', [2])
+       $pendingAgentUsers = User::where('user_type', 2)
+            ->where('user_status', 1)              
             ->orderBy('id', 'desc')
             ->get()
             ->map(function ($user) {
                 $user->user_type = $user->user_type == 2 ? 'Agent' : 'Student';
                 return $user;
             });
-        return view('admin.user-active.pending-agent-user', compact('pendingUsers'));
+        return view('admin.user-active.pending-agent-user', compact('pendingAgentUsers'));
+    }
+    public function activeAgentUser()
+    {
+       $activeAgentUsers = User::where('user_type', 2)
+            ->where('user_status', 2)              
+            ->orderBy('id', 'desc')
+            ->get()
+            ->map(function ($user) {
+                $user->user_type = $user->user_type == 2 ? 'Agent' : 'Student';
+                return $user;
+            });
+        return view('admin.user-active.active-agent-user', compact('activeAgentUsers'));
     }
     
     // Function to update user status

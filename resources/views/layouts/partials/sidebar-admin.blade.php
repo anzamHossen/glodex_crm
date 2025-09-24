@@ -32,17 +32,16 @@
             </a>
         </li>
         <li class="side-nav-item">
-            <a href="{{ route('pending_agent_user') }}" class="side-nav-link">
+            <a href="{{ route('active_agent_user') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-users-group"></i></span>
                 <span class="menu-text">Pending Agent</span>
                 {{-- <span class="badge bg-success rounded-pill">0</span> --}}
             </a>
         </li>
         <li class="side-nav-item">
-            <a href="index.html" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
-                <span class="menu-text">Country</span>
-                <span class="badge bg-success rounded-pill">5</span>
+            <a href="{{ route('active_agent_user') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-user-check"></i></span>
+                <span class="menu-text">Active Agent</span>
             </a>
         </li>
         <li class="side-nav-item">
