@@ -6,11 +6,18 @@
             <div class="row mt-2">
                 <div class="col-xl-12">
                     <div class="card">
-                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
+                       <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">Active Agent User</h4>
-                            <a href="{{ route('admin_dashboard') }}" class="btn btn-sm btn-secondary">
-                                <i class="ti ti-arrow-back-up" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>Go Back 
-                            </a>
+                            <div class="d-flex">
+                                <a href="{{ route('admin_dashboard') }}" class="btn btn-sm btn-secondary me-2">
+                                    <i class="ti ti-arrow-back-up" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
+                                    Go Back 
+                                </a>
+                                <a href="{{ route('admin_dashboard') }}" class="btn btn-sm btn-primary">
+                                    <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
+                                    Add New
+                                </a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive-sm">
