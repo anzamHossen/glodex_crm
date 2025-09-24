@@ -22,6 +22,9 @@
 
     <!-- Icons css -->
     <link href="{{asset('back-end/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     
     @stack('page-css')
 </head>
@@ -73,6 +76,11 @@
 
     <!-- Projects Analytics Dashboard App js -->
     <script src="{{asset('back-end/assets/js/pages/dashboard-sales.js')}}"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     @stack('page-js')
 
 </body>

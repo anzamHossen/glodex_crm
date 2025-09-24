@@ -1,6 +1,6 @@
 {{-- left sidebat to admin --}}
 <!-- Brand Logo -->
-<a href="#" class="logo">
+<a href="{{ route('admin_dashboard') }}" class="logo">
     <span class="logo-light">
         <span class="logo-lg"><img src="{{asset('back-end/assets/images/logo-main.png')}}" style="height: 2rem" alt="logo"></span>
         <span class="logo-sm"><img src="{{asset('back-end/assets/images/icon-sm.png')}}" style="height: 2rem" alt="small logo"></span>
@@ -22,23 +22,20 @@
     <i class="ti ti-x align-middle"></i>
 </button>
 
-    <div data-simplebar>
+<div data-simplebar>
     <!--- Sidenav Menu -->
     <ul class="side-nav">
-        <li class="side-nav-title">Dash</li>
-
         <li class="side-nav-item">
-            <a href="index.html" class="side-nav-link">
+            <a href="{{ route('admin_dashboard') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
-                <span class="menu-text"> Pending Agent </span>
-                <span class="badge bg-success rounded-pill">5</span>
+                <span class="menu-text">Dashboard</span>
             </a>
         </li>
         <li class="side-nav-item">
-            <a href="index.html" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
-                <span class="menu-text">Pending Student</span>
-                <span class="badge bg-success rounded-pill">5</span>
+            <a href="{{ route('pending_agent_user') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-users-group"></i></span>
+                <span class="menu-text">Pending Agent</span>
+                {{-- <span class="badge bg-success rounded-pill">0</span> --}}
             </a>
         </li>
         <li class="side-nav-item">
