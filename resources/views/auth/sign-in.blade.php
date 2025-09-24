@@ -6,7 +6,7 @@
     <div class="row ">
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 w-100">
             <div class="card overflow-hidden text-center h-100  p-3 mb-0">
-                <a href="index.html" class="auth-brand mb-3">
+                <a href="#" class="auth-brand mb-3">
                     <img src="{{ asset('back-end/assets/images/logo-main.png') }}" alt="dark logo" height="50" class="logo-dark">
                     <img src="{{ asset('back-end/assets/images/logo-main.png') }}" alt="logo light" height="50" class="logo-light">
                 </a>

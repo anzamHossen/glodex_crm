@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\UserActiveController;
 use App\Http\Controllers\Agent\AgentDashboardController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Student\StudentDashboardController;
@@ -15,6 +16,14 @@ Route::post('/save-sign-up', [AuthController::class, 'saveSignup'])->name('save_
 
 Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('admin_dashboard');
+
+    // Route for active agent user
+    Route::controller(UserActiveController::class)->group(function () {
+        Route::get('/pending-agent-user',  'pendingAgentUser')->name('pending_agent_user');
+        Route::get('/update-user-status/{id}', 'updateUserStatus')->name('update_user_status');
+        Route::get('/active-agent-user',  'activeAgentUser')->name('active_agent_user');
+    });
+
 });
 
 Route::prefix('agent')->middleware(['agent'])->group(function () {
