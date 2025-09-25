@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('organization_name')->nullable();
             $table->integer('user_status')->default(1)->comment('1=Inactive, 2=Active');
             $table->integer('created_by')->nullable()->comment("User's id who created this user type");
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

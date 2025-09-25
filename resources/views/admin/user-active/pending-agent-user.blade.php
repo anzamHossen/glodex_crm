@@ -55,7 +55,9 @@
                                                 <td>{{ $user->phone ?? 'Not Added' }}</td>
                                                 <td>{{ $user->email ?? 'Not Added' }}</td>
                                                 <td>{{ $user->organization_name ?? 'Not Added' }}</td>
-                                                <td>July 24, 1950</td>
+                                                <td>
+                                                   {{ $user->created_by ?? 'Not Added' }}
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

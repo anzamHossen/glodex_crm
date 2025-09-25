@@ -13,6 +13,7 @@ Route::post('login', [AuthController::class, 'login'])->middleware('authenticate
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign_up');
 Route::post('/save-sign-up', [AuthController::class, 'saveSignup'])->name('save_sign_up');
+Route::delete('/delete-user/{id}', [AuthController::class, 'deleteUser'])->name('delete_user');
 
 Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('admin_dashboard');
@@ -22,6 +23,7 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::get('/pending-agent-user',  'pendingAgentUser')->name('pending_agent_user');
         Route::get('/update-user-status/{id}', 'updateUserStatus')->name('update_user_status');
         Route::get('/active-agent-user',  'activeAgentUser')->name('active_agent_user');
+        Route::post('/save-agent', 'saveAgent')->name('save_agent');
     });
 
 });
