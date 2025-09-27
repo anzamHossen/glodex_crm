@@ -28,6 +28,23 @@ class UserActiveController extends Controller
         });
         return view('admin.user-active.pending-agent-user', compact('pendingAgentUsers'));
     }
+
+    // Function to show pending student users
+    public function pendingStudentUser()
+    {
+       $pendingStudentUsers = User::where('user_type', 3)
+            ->where('user_status', 1)              
+            ->orderBy('id', 'desc')
+            ->get()
+            ->map(function ($user) {
+            $user->user_type = $user->user_type == 3 ? 'Student' : 'Agent';
+             $user->created_by = ($user->creator && in_array($user->creator->user_type, [1, 2]))
+                                    ? $user->creator->name
+                                    : 'Self Registered';
+            return $user;
+        });
+        return view('admin.user-active.pending-student-user', compact('pendingStudentUsers'));
+    }
     
     // Function to show active agent users
     public function activeAgentUser()
@@ -96,7 +113,7 @@ class UserActiveController extends Controller
             Alert::success('Success', 'Agent created successfully');
             return redirect()->route('pending_agent_user');
         } catch (\Exception $e) {
-            dd($e);
+            // dd($e);
             DB::rollBack();
             Alert::error('Error', 'Failed to add agent. Please try again.');
             return redirect()->back()->withInput();

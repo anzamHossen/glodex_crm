@@ -33,7 +33,7 @@
         </li>
         <li class="side-nav-item">
             <a href="{{ route('pending_agent_user') }}" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-users-group"></i></span>
+                <span class="menu-icon"><i class="ti ti-user-pause"></i></span>
                 <span class="menu-text">Pending Agent</span>
                 <span class="badge bg-success rounded-pill">{{ $pendingAgentUser ?? 0}}</span>
             </a>
@@ -43,6 +43,13 @@
                 <span class="menu-icon"><i class="ti ti-user-check"></i></span>
                 <span class="menu-text">Active Agent</span>
                 <span class="badge bg-success rounded-pill">{{ $activeAgentUser ?? 0}}</span>
+            </a>
+        </li>
+        <li class="side-nav-item">
+            <a href="{{ route('pending_student_user') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-user-pause"></i></span>
+                <span class="menu-text">Pending Student</span>
+                <span class="badge bg-success rounded-pill">{{ $pendingStudenttUser ?? 0}}</span>
             </a>
         </li>
         <li class="side-nav-item">
