@@ -33,7 +33,7 @@
         </li>
         <li class="side-nav-item">
             <a href="{{ route('pending_agent_user') }}" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-users-group"></i></span>
+                <span class="menu-icon"><i class="ti ti-user-pause"></i></span>
                 <span class="menu-text">Pending Agent</span>
                 <span class="badge bg-success rounded-pill">{{ $pendingAgentUser ?? 0}}</span>
             </a>
@@ -46,6 +46,13 @@
             </a>
         </li>
         <li class="side-nav-item">
+            <a href="{{ route('pending_student_user') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-user-pause"></i></span>
+                <span class="menu-text">Pending Student</span>
+                <span class="badge bg-success rounded-pill">{{ $pendingStudenttUser ?? 0}}</span>
+            </a>
+        </li>
+        <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarHospital" aria-expanded="false" aria-controls="sidebarHospital" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-medical-cross"></i></span>
                 <span class="menu-text"> Country</span>
@@ -54,8 +61,13 @@
             <div class="collapse" id="sidebarHospital">
                 <ul class="sub-menu">
                     <li class="side-nav-item">
-                        <a href="apps-hospital-staffs.html" class="side-nav-link">
+                        <a href="{{ route('add_new_country') }}" class="side-nav-link">
                             <span class="menu-text">Add Country</span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="{{ route('country_list') }}" class="side-nav-link">
+                            <span class="menu-text">Country List</span>
                         </a>
                     </li>
                 </ul>

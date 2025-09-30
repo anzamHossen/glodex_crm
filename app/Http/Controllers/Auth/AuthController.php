@@ -137,11 +137,26 @@ class AuthController extends Controller
         }
     }
 
+    // Function to logout user
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('sign_in');
+    }
+
+    // Function to delete user
+    public function deleteUser($id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $user->delete();
+            Alert::success('Success', 'User deleted successfully');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            Alert::error('Error', 'Failed to delete user');
+            return redirect()->back();
+        }
     }
 }

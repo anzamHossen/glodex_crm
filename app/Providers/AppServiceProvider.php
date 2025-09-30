@@ -30,10 +30,15 @@ class AppServiceProvider extends ServiceProvider
             $activeAgentUser = User::where('user_type', 2)
                                 ->where('user_status', 2)
                                 ->count();
+            // pending student users 
+            $pendingStudenttUser = User::where('user_type', 3)
+                                ->where('user_status', 1)
+                                ->count();
 
             $view->with([
                 'pendingAgentUser' => $pendingAgentUser,
                 'activeAgentUser' => $activeAgentUser,
+                'pendingStudenttUser' => $pendingStudenttUser,
             ]);
         });
     }
