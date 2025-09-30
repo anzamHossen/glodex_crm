@@ -25,6 +25,11 @@
 
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+    <!-- Quill css -->
+    <link href="{{ asset('back-end/assets/vendor/quill/quill.core.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('back-end/assets/vendor/quill/quill.snow.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('back-end/assets/vendor/quill/quill.bubble.css')}}" rel="stylesheet" type="text/css" />
     
     @stack('page-css')
 </head>
@@ -82,6 +87,12 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Quill Editor js -->
+    <script src="{{ asset('back-end/assets/vendor/quill/quill.js')}}"></script>
+
+    <!-- Quill Demo js -->
+    <script src="{{ asset('back-end/assets/js/pages/form-quilljs.js')}}"></script>
 
     @stack('page-js')
 

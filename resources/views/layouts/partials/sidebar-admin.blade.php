@@ -61,8 +61,13 @@
             <div class="collapse" id="sidebarHospital">
                 <ul class="sub-menu">
                     <li class="side-nav-item">
-                        <a href="apps-hospital-staffs.html" class="side-nav-link">
+                        <a href="{{ route('add_new_country') }}" class="side-nav-link">
                             <span class="menu-text">Add Country</span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="{{ route('country_list') }}" class="side-nav-link">
+                            <span class="menu-text">Country List</span>
                         </a>
                     </li>
                 </ul>

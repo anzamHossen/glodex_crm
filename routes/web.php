@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\UserActiveController;
 use App\Http\Controllers\Agent\AgentDashboardController;
 use App\Http\Controllers\Auth\AuthController;
@@ -25,6 +26,16 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::get('/update-user-status/{id}', 'updateUserStatus')->name('update_user_status');
         Route::get('/active-agent-user',  'activeAgentUser')->name('active_agent_user');
         Route::post('/save-agent', 'saveAgent')->name('save_agent');
+    });
+
+    // Route for country
+     Route::controller(CountryController::class)->group(function () {
+        Route::get('/country-list', 'countryList')->name('country_list');
+        Route::get('/add-new-country', 'addCountry')->name('add_new_country');
+        Route::post('/save-new-country', 'saveCountry')->name('save_new_country');
+        Route::get('/edit-country/{id}', 'editCountry')->name('edit_country');
+        Route::post('/update-country/{id}', 'updateCountry')->name('update_country');
+        Route::delete('/delete-country/{id}',  'deleteCountry')->name('delete_country');
     });
 
 });
