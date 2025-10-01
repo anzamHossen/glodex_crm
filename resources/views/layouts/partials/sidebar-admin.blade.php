@@ -74,11 +74,25 @@
             </div>
         </li>
         <li class="side-nav-item">
-            <a href="index.html" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
-                <span class="menu-text">University</span>
-                <span class="badge bg-success rounded-pill">5</span>
+            <a data-bs-toggle="collapse" href="#sidebarUniversity" aria-expanded="false" aria-controls="sidebarUniversity" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-map-heart"></i></span>
+                <span class="menu-text"> University</span>
+                <span class="menu-arrow"></span>
             </a>
+            <div class="collapse" id="sidebarUniversity">
+                <ul class="sub-menu">
+                    <li class="side-nav-item">
+                        <a href="{{ route('add_new_university') }}" class="side-nav-link">
+                            <span class="menu-text">Add University</span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="#" class="side-nav-link">
+                            <span class="menu-text">University List</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="side-nav-item">
             <a href="index.html" class="side-nav-link">
