@@ -87,7 +87,7 @@
                         </a>
                     </li>
                     <li class="side-nav-item">
-                        <a href="#" class="side-nav-link">
+                        <a href="{{ route('university_list') }}" class="side-nav-link">
                             <span class="menu-text">University List</span>
                         </a>
                     </li>

@@ -8,7 +8,7 @@
                     <div class="card">
                         <div
                             class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
-                            <h4 class="header-title mb-0">Add University</h4>
+                            <h4 class="header-title mb-0">Edit University</h4>
                             <div class="d-flex">
                                 <a href="{{ route('university_list') }}" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up"
@@ -18,25 +18,26 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form id="universityForm" action="{{ route('save_new_university') }}" method="post" enctype="multipart/form-data">
+                            <form id="universityForm" action="{{ route('update_university', $university->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="university_name" class="form-label">University Name <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="university_name" name="university_name" value="{{ old('university_name') }}" placeholder="Enter university name" required>
+                                        <input type="text" class="form-control" id="university_name" name="university_name" value="{{ old('university_name', $university->university_name ?? '') }}" placeholder="Enter university name" required>
                                         @error('university_name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="conuntry_id" class="form-label">Country<span class="text-danger">*</span></label>
-                                        <select class="form-control"  id="country_id" name="country_id" data-choices id="choices-single-default" required>
-                                                    <option value="">--Select Country--</option>
-                                                @foreach ($countries as $country)
-                                                    <option value="{{ $country->id }}" {{ old('country_id') == $country->id ? 'selected' : '' }}>
-                                                       {{ $country->country_name }}
-                                                    </option>
-                                                @endforeach
+                                        <label for="country_id" class="form-label">Country <span class="text-danger">*</span></label>
+                                        <select class="form-control select2" id="country_id" name="country_id" required>
+                                            <option value="">--Select Country--</option>
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}" 
+                                                    {{ old('country_id', $university->country_id ?? '') == $country->id ? 'selected' : '' }}>
+                                                    {{ $country->country_name }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                         @error('country_id')
                                             <div class="text-danger">{{ $message }}</div>
@@ -44,42 +45,42 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="university_city" class="form-label">City<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="university_city" name="university_city" value="{{ old('university_city') }}" placeholder="Enter university city" required>
+                                        <input type="text" class="form-control" id="university_city" name="university_city" value="{{ old('university_city', $university->university_city ?? '') }}" placeholder="Enter university city" required>
                                         @error('university_city')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="admission_email" class="form-label">Email<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="admission_email" name="admission_email" value="{{ old('admission_email') }}" placeholder="Enter admission email " required>
+                                        <input type="text" class="form-control" id="admission_email" name="admission_email" value="{{ old('admission_email', $university->admission_email ?? '') }}" placeholder="Enter admission email " required>
                                         @error('admission_email')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="admission_phone" class="form-label">Phone<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="admission_phone" name="admission_phone" value="{{ old('admission_phone') }}" placeholder="Enter admission phone " required>
+                                        <input type="text" class="form-control" id="admission_phone" name="admission_phone" value="{{ old('admission_phone', $university->admission_phone ?? '') }}" placeholder="Enter admission phone " required>
                                         @error('admission_phone')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="website_link" class="form-label">Website link<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="website_link" name="website_link" value="{{ old('website_link') }}" placeholder="Enter website link " required>
+                                        <input type="text" class="form-control" id="website_link" name="website_link" value="{{ old('website_link', $university->website_link ?? '') }}" placeholder="Enter website link " required>
                                         @error('website_link')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="address" class="form-label">Location<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" placeholder="Enter university address" required>
+                                        <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $university->address ?? '') }}" placeholder="Enter university address" required>
                                         @error('address')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="commission" class="form-label">Commision<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="commission" name="commission" value="{{ old('commission') }}" placeholder="Enter commision" required>
+                                        <input type="text" class="form-control" id="commission" name="commission" value="{{ old('commission', $university->commission ?? '') }}" placeholder="Enter commision" required>
                                         @error('commission')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -91,9 +92,9 @@
                                             <div class="photo-preview overflow-hidden shadow"
                                                 style="width: 160px; height: 160px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
                                                 <img id="preview"
-                                                    src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
+                                                    src="{{ $university->logo && file_exists(public_path($university->logo)) ? asset($university->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                     class="w-100 img-fluid"
-                                                    style="object-fit: cover; width: 100%; height: 100%; border-radius: 10px;"
+                                                    style="object-fit: cover; width: 100%; height: 100%; border-radius: 10px; {{ $university->logo ? '' : 'display: none;' }}"
                                                     alt="Image Preview">
                                             </div>
                                         </div>
@@ -119,9 +120,9 @@
                                             <div class="photo-preview overflow-hidden shadow"
                                                 style="width: 160px; height: 160px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
                                                 <img id="popular_preview"
-                                                    src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
+                                                    src="{{ $university->cover_image && file_exists(public_path($university->cover_image)) ? asset($university->cover_image) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                     class="w-100 img-fluid"
-                                                    style="object-fit: cover; width: 100%; height: 100%; border-radius: 10px;"
+                                                    style="object-fit: cover; width: 100%; height: 100%; border-radius: 10px; {{ $university->cover_image ? '' : 'display: none;' }}"
                                                     alt="Image Preview">
                                             </div>
                                         </div>
@@ -142,7 +143,7 @@
                                     <div class="col-md-12 mt-3">
                                         <label for="description" class="form-label">Description<span class="text-danger">*</span></label>
                                         <div id="snow-editor" style="height: 400px;">
-                                            {!! old('description', '<h3><span class="ql-size-large">Add Your Content Here....</span></h3>') !!}
+                                            {!! old('description', $university->description) !!}
                                         </div>
                                         <input type="hidden" name="description" id="description">
                                         @error('description')
@@ -151,7 +152,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
                                 </div>
                             </form>
                         </div>
@@ -163,55 +164,52 @@
     <!-- END wrapper -->
 @endsection
 @push('page-js')
-    <script>
-        function previewImage(event) {
-            const preview = document.getElementById('preview');
-            const imagePreview = document.getElementById('image_preview');
-            const file = event.target.files[0];
+   <script>
+    function previewImage(event) {
+        const preview = document.getElementById('preview');
+        const imagePreview = document.getElementById('image_preview');
+        const file = event.target.files[0];
 
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'none';
-                }
-                reader.readAsDataURL(file);
-            } else {
-                preview.src = '';
-                preview.style.display = 'none';
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'none';
             }
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '{{ $university->logo ? asset($university->logo) : '' }}';
+            preview.style.display = '{{ $university->logo ? 'block' : 'none' }}';
         }
-    </script>
-    <script>
-        function popularPreviewImage(event) {
-            const preview = document.getElementById('popular_preview');
-            const imagePreview = document.getElementById('popular_image_preview');
-            const file = event.target.files[0];
+    }
+</script>
+<script>
+    function popularPreviewImage(event) {
+        const preview = document.getElementById('popular_preview');
+        const file = event.target.files[0];
 
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'none';
-                }
-                reader.readAsDataURL(file);
-            } else {
-                preview.src = '';
-                preview.style.display = 'none';
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
             }
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '{{ $country->cover_image ? asset($country->cover_image) : '' }}';
+            preview.style.display = '{{ $country->cover_image ? 'block' : 'none' }}';
         }
-    </script>
-    <script>
-        document.querySelector("#universityForm").addEventListener("submit", function() {
-            document.querySelector("#description").value = quill.root.innerHTML;
-        });
+    }
+</script>
+<script>
+    document.querySelector("#universityForm").addEventListener("submit", function() {
+        document.querySelector("#description").value = quill.root.innerHTML;
+    });
 
-        @if(old('description'))
-            quill.root.innerHTML = {!! json_encode(old('description')) !!};
-        @endif 
-    </script>
+    @if(old('description'))
+        quill.root.innerHTML = {!! json_encode(old('description')) !!};
+    @endif 
+</script>
 @endpush
