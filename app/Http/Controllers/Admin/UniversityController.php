@@ -39,13 +39,14 @@ class UniversityController extends Controller
     {
        
         $request->validate([
-            'university_name' => 'required',
-            'university_city' => 'required',
-            'admission_email' => 'required',
-            'admission_phone' => 'required',
-            'website_link' => 'required',
-            'address' => 'required',
-            'commission' => 'required',
+            'university_name'      => 'required',
+            'university_city'      => 'required',
+            'admission_email'      => 'required',
+            'admission_phone'      => 'required',
+            'website_link'         => 'required',
+            'address'              => 'required',
+            'commission_for_us'    => 'required',
+            'commission_for_agent' => 'required',
             'description' => 'required',
             'country_id' => 'required|exists:countries,id',
             'logo'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -58,15 +59,16 @@ class UniversityController extends Controller
         DB::beginTransaction();
         try {
         $university = new University();
-        $university->university_name  = $request->university_name;
-        $university->country_id       = $request->country_id;
-        $university->university_city  = $request->university_city;
-        $university->admission_email  = $request->admission_email;
-        $university->admission_phone  = $request->admission_phone;
-        $university->website_link     = $request->website_link;
-        $university->commission       = $request->commission;
-        $university->address          = $request->address;
-        $university->description      = $request->description;
+        $university->university_name      = $request->university_name;
+        $university->country_id           = $request->country_id;
+        $university->university_city      = $request->university_city;
+        $university->admission_email      = $request->admission_email;
+        $university->admission_phone      = $request->admission_phone;
+        $university->website_link         = $request->website_link;
+        $university->commission_for_us    = $request->commission_for_us;
+        $university->commission_for_agent = $request->commission_for_agent;
+        $university->address              = $request->address;
+        $university->description          = $request->description;
 
         if ($request->hasFile('logo')) {
         $file = $request->file('logo');
@@ -104,34 +106,36 @@ class UniversityController extends Controller
     {
        
         $request->validate([
-            'university_name' => 'required',
-            'university_city' => 'required',
-            'admission_email' => 'required',
-            'admission_phone' => 'required',
-            'website_link' => 'required',
-            'address' => 'required',
-            'commission' => 'required',
-            'description' => 'required',
-            'country_id' => 'required|exists:countries,id',
-            'logo'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'cover_image'  => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description'  => 'required',
+            'university_name'      => 'required',
+            'university_city'      => 'required',
+            'admission_email'      => 'required',
+            'admission_phone'      => 'required',
+            'website_link'         => 'required',
+            'address'              => 'required',
+            'commission_for_us'    => 'required',
+            'commission_for_agent' => 'required',
+            'description'          => 'required',
+            'country_id'           => 'required|exists:countries,id',
+            'logo'                 => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_image'          => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description'          => 'required',
             ], [
                'country_id.required' => 'The country field is required.',
         ]);
 
         DB::beginTransaction();
         try {
-        $updateUniversity                   = University::findOrFail($id);
-        $updateUniversity->university_name  = $request->university_name;
-        $updateUniversity->country_id       = $request->country_id;
-        $updateUniversity->university_city  = $request->university_city;
-        $updateUniversity->admission_email  = $request->admission_email;
-        $updateUniversity->admission_phone  = $request->admission_phone;
-        $updateUniversity->website_link     = $request->website_link;
-        $updateUniversity->commission       = $request->commission;
-        $updateUniversity->address          = $request->address;
-        $updateUniversity->description      = $request->description;
+        $updateUniversity                       = University::findOrFail($id);
+        $updateUniversity->university_name      = $request->university_name;
+        $updateUniversity->country_id           = $request->country_id;
+        $updateUniversity->university_city      = $request->university_city;
+        $updateUniversity->admission_email      = $request->admission_email;
+        $updateUniversity->admission_phone      = $request->admission_phone;
+        $updateUniversity->website_link         = $request->website_link;
+        $updateUniversity->commission_for_us    = $request->commission_for_us;
+        $updateUniversity->commission_for_agent = $request->commission_for_agent;
+        $updateUniversity->address              = $request->address;
+        $updateUniversity->description          = $request->description;
 
         if ($request->hasFile('logo')) {
         $file = $request->file('logo');

@@ -43,24 +43,38 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <label for="university_city" class="form-label">City<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="university_city" name="university_city" value="{{ old('university_city', $university->university_city ?? '') }}" placeholder="Enter university city" required>
                                         @error('university_city')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <label for="admission_email" class="form-label">Email<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="admission_email" name="admission_email" value="{{ old('admission_email', $university->admission_email ?? '') }}" placeholder="Enter admission email " required>
                                         @error('admission_email')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <label for="admission_phone" class="form-label">Phone<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="admission_phone" name="admission_phone" value="{{ old('admission_phone', $university->admission_phone ?? '') }}" placeholder="Enter admission phone " required>
                                         @error('admission_phone')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="commission" class="form-label">Commision For Us<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="commission" name="commission_for_us" value="{{ old('commission_for_us', $university->commission_for_us ?? '') }}" placeholder="Enter commision" required>
+                                        @error('commission_for_us')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="commission" class="form-label">Commision For Agent<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="commission" name="commission_for_agent" value="{{ old('commission_for_agent', $university->commission_for_agent ?? '') }}" placeholder="Enter commision" required>
+                                        @error('commission_for_agent')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -75,13 +89,6 @@
                                         <label for="address" class="form-label">Location<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $university->address ?? '') }}" placeholder="Enter university address" required>
                                         @error('address')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="commission" class="form-label">Commision<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="commission" name="commission" value="{{ old('commission', $university->commission ?? '') }}" placeholder="Enter commision" required>
-                                        @error('commission')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
