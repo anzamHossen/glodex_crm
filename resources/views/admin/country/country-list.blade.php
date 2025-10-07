@@ -13,7 +13,7 @@
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">Country List</h4>
                             <div class="d-flex">
-                                <a href="{{ route('add_new_country') }}" class="btn btn-sm btn-primary">
+                                <a href="{{ route('add_new_country') }}" class="btn btn-sm btn-gradient">
                                     <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Add New
                                 </a>
@@ -78,7 +78,7 @@
                         <section class="glodex-country-list-section p-3">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
-                                    <div class="glodex-country-list-item position-relative h-100 bg-white border rounded-4 p-3 shadow-sm">
+                                    <div class="glodex-country-list-item position-relative h-100 border rounded-4 p-3 shadow-sm">
                                         <div class="glodex-country-list-img position-relative overflow-hidden">
                                             <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
                                         <div class="glodex-country-list-img-overlay"></div>
@@ -87,7 +87,11 @@
                                         </div>
                                         </div>
                                         <div class="glodex-country-list-content text-center mt-3">
-                                            <h3 class="mb-1 fw-bold text-dark">United States</h3>
+                                            <div class="d-flex align-items-center gap-2 justify-content-center">
+                                                <i class="fa-solid fa-flag"></i>
+                                                <h3 class="mb-1 fw-bold ">United States</h3>
+                                            </div>
+
                                             <span class="  d-block mb-2">North America</span>
                                         <div class="glodex-country-info d-flex align-items-center justify-content-between text-center px-3">
                                             <div>
@@ -104,7 +108,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
-                                    <div class="glodex-country-list-item position-relative h-100 bg-white border rounded-4 p-3 shadow-sm">
+                                    <div class="glodex-country-list-item position-relative h-100 border rounded-4 p-3 shadow-sm">
                                         <div class="glodex-country-list-img position-relative overflow-hidden">
                                             <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
                                         <div class="glodex-country-list-img-overlay"></div>
@@ -113,7 +117,10 @@
                                         </div>
                                         </div>
                                         <div class="glodex-country-list-content text-center mt-3">
-                                            <h3 class="mb-1 fw-bold text-dark">United States</h3>
+                                            <div class="d-flex align-items-center gap-2 justify-content-center">
+                                                <i class="fa-solid fa-flag"></i>
+                                                <h3 class="mb-1 fw-bold ">United States</h3>
+                                            </div>
                                             <span class="  d-block mb-2">North America</span>
                                         <div class="glodex-country-info d-flex align-items-center justify-content-between text-center px-3">
                                             <div>
@@ -130,7 +137,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
-                                    <div class="glodex-country-list-item position-relative h-100 bg-white border rounded-4 p-3 shadow-sm">
+                                    <div class="glodex-country-list-item position-relative h-100 border rounded-4 p-3 shadow-sm">
                                         <div class="glodex-country-list-img position-relative overflow-hidden">
                                             <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
                                         <div class="glodex-country-list-img-overlay"></div>
@@ -139,7 +146,10 @@
                                         </div>
                                         </div>
                                         <div class="glodex-country-list-content text-center mt-3">
-                                            <h3 class="mb-1 fw-bold text-dark">United States</h3>
+                                            <div class="d-flex align-items-center gap-2 justify-content-center">
+                                                <i class="fa-solid fa-flag"></i>
+                                                <h3 class="mb-1 fw-bold ">United States</h3>
+                                            </div>
                                             <span class="  d-block mb-2">North America</span>
                                         <div class="glodex-country-info d-flex align-items-center justify-content-between text-center px-3">
                                             <div>
@@ -156,7 +166,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
-                                    <div class="glodex-country-list-item position-relative h-100 bg-white border rounded-4 p-3 shadow-sm">
+                                    <div class="glodex-country-list-item position-relative h-100 border rounded-4 p-3 shadow-sm">
                                         <div class="glodex-country-list-img position-relative overflow-hidden">
                                             <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
                                         <div class="glodex-country-list-img-overlay"></div>
@@ -165,7 +175,10 @@
                                         </div>
                                         </div>
                                         <div class="glodex-country-list-content text-center mt-3">
-                                            <h3 class="mb-1 fw-bold text-dark">United States</h3>
+                                            <div class="d-flex align-items-center gap-2 justify-content-center">
+                                                <i class="fa-solid fa-flag"></i>
+                                                <h3 class="mb-1 fw-bold ">United States</h3>
+                                            </div>
                                             <span class="  d-block mb-2">North America</span>
                                         <div class="glodex-country-info d-flex align-items-center justify-content-between text-center px-3">
                                             <div>
