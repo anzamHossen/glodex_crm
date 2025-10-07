@@ -14,7 +14,7 @@ class CountryController extends Controller
 {
     protected $imageHandler;
 
-    // Functio to call image handler and Menu data
+    // Functio to call image handler
     public function __construct(ImageHandlerController $imageHandler)
     {
         $this->imageHandler = $imageHandler;
@@ -40,10 +40,11 @@ class CountryController extends Controller
        
         $request->validate([
             'country_name' => 'required|string|max:50',
-            'continent_id' => 'required|integer',
-            'flag' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'cover_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'nullable|string',
+            'country_name' => 'required|string|max:50',
+            'description'  => 'required',
+            'flag'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_photo'  => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description'  => 'nullable',
             ], [
                'country_continent_id.required' => 'The country continent field is required.',
         ]);
@@ -69,7 +70,7 @@ class CountryController extends Controller
 
       $country->save();
       DB::commit();
-      Alert::success('Succes', 'Country added successfuly');
+      Alert::success('Success', 'Country added successfuly');
       return redirect()->route('country_list');
     }catch (\Exception $e) {
             DB::rollback();

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserActiveController;
 use App\Http\Controllers\Agent\AgentDashboardController;
 use App\Http\Controllers\Auth\AuthController;
@@ -38,6 +40,26 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::delete('/delete-country/{id}',  'deleteCountry')->name('delete_country');
     });
 
+    // Route for university
+    Route::controller(UniversityController::class)->group(function () {
+        Route::get('/university-list', 'universityList')->name('university_list');
+        Route::get('/add-new-university', 'addUniversity')->name('add_new_university');
+        Route::post('/save-new-university', 'saveUniversity')->name('save_new_university');
+        Route::get('/edit-university/{id}', 'editUniversity')->name('edit_university');
+        Route::post('/update-university/{id}', 'updateUniversity')->name('update_university');
+        Route::delete('/delete-university/{id}',  'deleteUniversity')->name('delete_university');
+       
+    });
+
+    // Route for course
+    Route::controller(CourseController::class)->group(function () {
+        Route::get('/course-list', 'courseList')->name('course_list');
+        Route::get('/add-new-course', 'addCourse')->name('add_new_course');
+        Route::post('/save-new-course', 'saveCourse')->name('save_new_course');
+        Route::get('/edit-course/{id}', 'editCourse')->name('edit_course');
+        Route::post('/update-course/{id}', 'updateCourse')->name('update_course');
+        Route::delete('/delete-course/{id}',  'deleteCourse')->name('delete_course');
+    });
 });
 
 Route::prefix('agent')->middleware(['agent'])->group(function () {
