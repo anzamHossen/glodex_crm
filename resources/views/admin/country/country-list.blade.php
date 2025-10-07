@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@push('page-css')
+    <link rel="stylesheet" href="{{ asset('css/country/country-list.css') }}">
+@endpush
+
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">
@@ -43,9 +47,9 @@
                                                             <a href="{{ route('edit_country', $country->id) }}" class="dropdown-item d-flex align-items-center gap-1" title="Login As">
                                                                 <i class="ti ti-edit ti-md"></i> <span>Edit</span>
                                                             </a>
-                                                            <a href="javascript:void(0);" 
-                                                            onclick="confirmDelete({{ $country->id }})" 
-                                                            class="dropdown-item d-flex align-items-center gap-1" 
+                                                            <a href="javascript:void(0);"
+                                                            onclick="confirmDelete({{ $country->id }})"
+                                                            class="dropdown-item d-flex align-items-center gap-1"
                                                             title="Delete">
                                                                 <i class="ti ti-trash ti-md"></i> <span>Delete</span>
                                                             </a>
@@ -71,10 +75,118 @@
                                 </table>
                             </div> <!-- end table-responsive-->
                         </div>
+                        <section class="glodex-country-list-section p-3">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                                    <div class="glodex-country-list-item position-relative h-100 bg-white border rounded-4 p-3 shadow-sm">
+                                        <div class="glodex-country-list-img position-relative overflow-hidden">
+                                            <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
+                                        <div class="glodex-country-list-img-overlay"></div>
+                                        <div class="glodex-country-list-img-sm">
+                                            <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        </div>
+                                        <div class="glodex-country-list-content text-center mt-3">
+                                            <h3 class="mb-1 fw-bold text-dark">United States</h3>
+                                            <span class="  d-block mb-2">North America</span>
+                                        <div class="glodex-country-info d-flex align-items-center justify-content-between text-center px-3">
+                                            <div>
+                                                <p class="mb-0">Total University</p>
+                                                <p class="mb-0 fw-semibold">150</p>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0">Total Courses</p>
+                                                <p class="mb-0 fw-semibold">150</p>
+                                            </div>
+                                        </div>
+                                            <button class="btn btn-sm btn-gradient mt-3 px-3 py-1">Active</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                                    <div class="glodex-country-list-item position-relative h-100 bg-white border rounded-4 p-3 shadow-sm">
+                                        <div class="glodex-country-list-img position-relative overflow-hidden">
+                                            <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
+                                        <div class="glodex-country-list-img-overlay"></div>
+                                        <div class="glodex-country-list-img-sm">
+                                            <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        </div>
+                                        <div class="glodex-country-list-content text-center mt-3">
+                                            <h3 class="mb-1 fw-bold text-dark">United States</h3>
+                                            <span class="  d-block mb-2">North America</span>
+                                        <div class="glodex-country-info d-flex align-items-center justify-content-between text-center px-3">
+                                            <div>
+                                                <p class="mb-0">Total University</p>
+                                                <p class="mb-0 fw-semibold">150</p>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0">Total Courses</p>
+                                                <p class="mb-0 fw-semibold">150</p>
+                                            </div>
+                                        </div>
+                                            <button class="btn btn-sm btn-gradient mt-3 px-3 py-1">Active</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                                    <div class="glodex-country-list-item position-relative h-100 bg-white border rounded-4 p-3 shadow-sm">
+                                        <div class="glodex-country-list-img position-relative overflow-hidden">
+                                            <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
+                                        <div class="glodex-country-list-img-overlay"></div>
+                                        <div class="glodex-country-list-img-sm">
+                                            <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        </div>
+                                        <div class="glodex-country-list-content text-center mt-3">
+                                            <h3 class="mb-1 fw-bold text-dark">United States</h3>
+                                            <span class="  d-block mb-2">North America</span>
+                                        <div class="glodex-country-info d-flex align-items-center justify-content-between text-center px-3">
+                                            <div>
+                                                <p class="mb-0">Total University</p>
+                                                <p class="mb-0 fw-semibold">150</p>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0">Total Courses</p>
+                                                <p class="mb-0 fw-semibold">150</p>
+                                            </div>
+                                        </div>
+                                            <button class="btn btn-sm btn-gradient mt-3 px-3 py-1">Active</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                                    <div class="glodex-country-list-item position-relative h-100 bg-white border rounded-4 p-3 shadow-sm">
+                                        <div class="glodex-country-list-img position-relative overflow-hidden">
+                                            <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
+                                        <div class="glodex-country-list-img-overlay"></div>
+                                        <div class="glodex-country-list-img-sm">
+                                            <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-circle" alt="">
+                                        </div>
+                                        </div>
+                                        <div class="glodex-country-list-content text-center mt-3">
+                                            <h3 class="mb-1 fw-bold text-dark">United States</h3>
+                                            <span class="  d-block mb-2">North America</span>
+                                        <div class="glodex-country-info d-flex align-items-center justify-content-between text-center px-3">
+                                            <div>
+                                                <p class="mb-0">Total University</p>
+                                                <p class="mb-0 fw-semibold">150</p>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0">Total Courses</p>
+                                                <p class="mb-0 fw-semibold">150</p>
+                                            </div>
+                                        </div>
+                                            <button class="btn btn-sm btn-gradient mt-3 px-3 py-1">Active</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
     <!-- END wrapper -->
 @endsection

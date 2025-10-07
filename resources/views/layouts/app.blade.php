@@ -30,7 +30,8 @@
     <link href="{{ asset('back-end/assets/vendor/quill/quill.core.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('back-end/assets/vendor/quill/quill.snow.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('back-end/assets/vendor/quill/quill.bubble.css')}}" rel="stylesheet" type="text/css" />
-    
+    <link href="{{ asset('css/style.css')}}" rel="stylesheet" type="text/css" />
+
     @stack('page-css')
 </head>
 
