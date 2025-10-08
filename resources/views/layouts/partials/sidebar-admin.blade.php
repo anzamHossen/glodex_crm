@@ -116,6 +116,27 @@
             </div>
         </li>
         <li class="side-nav-item">
+           <a data-bs-toggle="collapse" href="#sidebarStudent" aria-expanded="false" aria-controls="sidebarStudent" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-school"></i></span>
+                <span class="menu-text">Student</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarStudent">
+                <ul class="sub-menu">
+                    <li class="side-nav-item">
+                        <a href="{{ route('add_new_student') }}" class="side-nav-link">
+                            <span class="menu-text">Add Student</span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="#" class="side-nav-link">
+                            <span class="menu-text">My Student</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="side-nav-item">
             <a href="index.html" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
                 <span class="menu-text">Appplication</span>
