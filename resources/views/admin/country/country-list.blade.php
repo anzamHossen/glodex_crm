@@ -103,7 +103,7 @@
                                                 placeholder="Search"
 
                                             >
-                                            <button type="submit" class="btn btn-sm">Search</button>
+                                            <button type="submit" class="btn btn-sm"><i class="ti ti-search" style="font-size: 1.3rem;"></i></button>
                                         </div>
 
                                     </form>
