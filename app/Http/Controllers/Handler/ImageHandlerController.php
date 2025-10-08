@@ -26,8 +26,41 @@ class ImageHandlerController extends Controller
         return 'storage/' . $path . '/' . $fileName;
     }
 
-      // Function to upload country popular image
+    // Function to upload country popular image
     public function countryCoverPhoto($file, $path = 'country-cover-photo', $previousImagePath = null)
+    {
+        if ($previousImagePath) {
+        $this->deleteImage($previousImagePath);
+        }
+    
+        // Use a shorter random string
+        $fileName = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+
+        // Save to storage/app/public/file-opening-image
+        $file->storeAs($path, $fileName, 'public');
+
+        return 'storage/' . $path . '/' . $fileName;
+    }
+
+    // Function to upload university logo
+    public function universityLogo($file, $path = 'university-logo', $previousImagePath = null)
+    {
+        if ($previousImagePath) {
+        $this->deleteImage($previousImagePath);
+        }
+    
+        // Use a shorter random string
+        $fileName = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+
+        // Save to storage/app/public/file-opening-image
+        $file->storeAs($path, $fileName, 'public');
+
+        return 'storage/' . $path . '/' . $fileName;
+    }
+
+
+    // Function to upload university logo
+    public function universityCoverImage($file, $path = 'university-cover-image', $previousImagePath = null)
     {
         if ($previousImagePath) {
         $this->deleteImage($previousImagePath);
