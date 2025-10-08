@@ -77,6 +77,42 @@
                         </div>
                         <section class="glodex-country-list-section p-3">
                             <div class="row">
+                                <div class="col-12 mb-3">
+                                    <div class="glodex-show-entries d-flex align-items-center justify-content-between flex-wrap gap-3">
+
+                                    <!-- Show entries dropdown -->
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label for="glodex-show-entries" class="form-label mb-0">Show</label>
+                                        <select name="glodex-show-entries" id="glodex-show-entries" class="form-select form-select-sm w-auto">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                        </select>
+                                        <span>entries</span>
+                                    </div>
+
+                                    <!-- Search form -->
+                                    <form action="" class="d-flex align-items-center align-items-end">
+                                        <div class="glodex-search-field d-flex align-items-center">
+                                            <input
+                                                type="search"
+                                                name="glodex-country-search"
+                                                id="glodex-country-search"
+                                                class="form-control form-control-sm mb-0"
+                                                placeholder="Search"
+
+                                            >
+                                            <button type="submit" class="btn btn-sm">Search</button>
+                                        </div>
+
+                                    </form>
+
+                                    </div>
+                                </div>
+                                </div>
+
+                            <div class="row">
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                                     <div class="glodex-country-list-item position-relative h-100 border rounded-4 p-3 shadow-sm">
                                         <div class="glodex-country-list-img position-relative overflow-hidden">
