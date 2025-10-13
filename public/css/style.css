@@ -47,3 +47,47 @@ body {
     cursor: pointer;
     border-radius: none;
 }
+.glodex-custom-3dot-dropdown {
+    position: absolute;
+    top:10px;
+    right: 15px;
+    border: none;
+    color: var(--dark-color);
+    cursor: pointer;
+    border-radius: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--light-color);
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.6);
+    color: var(--white-color);
+}
+.glodex-custom-3dot-dropdown button {
+    border: none;
+    outline: none;
+    padding: 0;
+}
+.glodex-custom-3dot-dropdown button i {
+    font-size: 20px;
+    color: var(--white-color);
+    font-weight: 700;
+}
+.glodex-custom-3dot-dropdown .dropdown-menu {
+    background:var(--blue-color);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.6);
+}
+.glodex-custom-3dot-dropdown .dropdown-menu a {
+    color: var(--white-color);
+}
+.glodex-custom-3dot-dropdown .dropdown-item:focus,
+.glodex-custom-3dot-dropdown .dropdown-item:hover {
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+.glodex-custom-3dot-dropdown ul.dropdown-menu.show {
+    transform: translate(-80%, 37px) !important;
+}
+
+
