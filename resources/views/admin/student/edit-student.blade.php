@@ -233,7 +233,7 @@
                                             </div>
                                             <div id="passportDownloadLink" class="mt-2">
                                                 <a href="{{ asset('storage/' . $single->filepath) }}"
-                                                    class="btn btn-sm btn-primary w-100"
+                                                    class="btn btn-sm w-100 text-white" style="background: #232E51"
                                                     id="downloadPassportFile"
                                                     target="_blank">
                                                     Download Existing File
@@ -275,7 +275,7 @@
                                     @enderror
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
                                 </div>
                             </form>
                         </div>
