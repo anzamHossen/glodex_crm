@@ -68,6 +68,7 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::get('/add-new-student', 'addNewStudent')->name('add_new_student');
         Route::post('/save-new-student', 'saveNewStudent')->name('save_new_student');
         Route::get('/edit-student/{id}', 'editStudent')->name('edit_student');
+        Route::post('/update-student/{id}', 'updateStudent')->name('update_student');
     });
 
 });

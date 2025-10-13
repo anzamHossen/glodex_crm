@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form  action="#" method="post" enctype="multipart/form-data">
+                            <form  action="{{ route('update_student', $student->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <h6 class="badge bg-primary">General Information</h6>
                                 <div class="row">
@@ -269,7 +269,7 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="notes" class="form-label">Notes</label>
-                                    <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Enter notes..." required>{{ old('notes') }}</textarea>
+                                    <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Enter notes..." required>{{ old('notes', $student->notes) }}</textarea>
                                     @error('notes')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
