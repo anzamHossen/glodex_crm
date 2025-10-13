@@ -64,8 +64,10 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
 
     // Route for course
     Route::controller(StudentInfoController::class)->group(function () {
+        Route::get('/my-student-list', 'myStudentList')->name('my_student_list');
         Route::get('/add-new-student', 'addNewStudent')->name('add_new_student');
         Route::post('/save-new-student', 'saveNewStudent')->name('save_new_student');
+        Route::get('/edit-student/{id}', 'editStudent')->name('edit_student');
     });
 
 });

@@ -10,4 +10,9 @@ class StudentInfo extends Model
     use SoftDeletes;
     protected $guarded = [];
     public $timestamps = true;
+
+    public function studentfiles()
+    {
+      return $this->hasMany(StudentFile::class, 'student_id');
+    }
 }

@@ -15,6 +15,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class StudentInfoController extends Controller
 {
+    // function to show my student list
+    public function myStudentList()
+    {
+        $students = StudentInfo::where('created_by', Auth::id())->get();
+        return view('admin.student.my-student-list', compact('students'));
+    }
+    
     // function to show add new student page
     public function addNewStudent()
     {
@@ -119,9 +126,19 @@ class StudentInfoController extends Controller
     return redirect()->back();
     }catch (\Exception $e) {
             DB::rollBack();
-              dd($e);
+            //   dd($e);
             Alert::error('Error', 'Student Already Exists');
             return redirect()->back();
         }
+    }
+
+    // Function to show edit student page
+    public function editStudent($id)
+    {
+        $student = StudentInfo::findOrFail($id);
+        $englishTests = json_decode($student->english_proficiency, true) ?? [];
+        $academicQualifications = json_decode($student->academic_qualifications, true) ?? []; // ← Add this line
+
+        return view('admin.student.edit-student', compact('student', 'englishTests', 'academicQualifications'));
     }
 }
