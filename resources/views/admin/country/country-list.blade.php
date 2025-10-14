@@ -115,9 +115,21 @@
                             <div class="row">
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                                     <div class="glodex-country-list-item position-relative h-100 border rounded-4 shadow-sm p-2">
+                                        <div class="btn-group glodex-custom-3dot-dropdown">
+                                            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="ti ti-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
                                         <div class="glodex-country-list-img position-relative overflow-hidden">
                                             <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
-                                            <div class="glodex-country-list-img-overlay"></div>
+
                                             <div class="glodex-country-list-img-sm">
                                                 <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-circle" alt="">
                                             </div>
@@ -145,9 +157,21 @@
                                 </div>
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                                     <div class="glodex-country-list-item position-relative h-100 border rounded-4 shadow-sm p-2">
+                                        <div class="btn-group glodex-custom-3dot-dropdown">
+                                            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="ti ti-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
                                         <div class="glodex-country-list-img position-relative overflow-hidden">
                                             <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
-                                            <div class="glodex-country-list-img-overlay"></div>
+
                                             <div class="glodex-country-list-img-sm">
                                                 <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-circle" alt="">
                                             </div>
@@ -174,9 +198,21 @@
                                 </div>
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                                     <div class="glodex-country-list-item position-relative h-100 border rounded-4 shadow-sm p-2">
+                                        <div class="btn-group glodex-custom-3dot-dropdown">
+                                            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="ti ti-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
                                         <div class="glodex-country-list-img position-relative overflow-hidden">
                                             <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
-                                            <div class="glodex-country-list-img-overlay"></div>
+
                                             <div class="glodex-country-list-img-sm">
                                                 <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-circle" alt="">
                                             </div>
@@ -203,9 +239,21 @@
                                 </div>
                                 <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                                     <div class="glodex-country-list-item position-relative h-100 border rounded-4 shadow-sm p-2">
+                                        <div class="btn-group glodex-custom-3dot-dropdown">
+                                            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="ti ti-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                            </ul>
+                                        </div>
                                         <div class="glodex-country-list-img position-relative overflow-hidden">
                                             <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-4" alt="image">
-                                            <div class="glodex-country-list-img-overlay"></div>
+
                                             <div class="glodex-country-list-img-sm">
                                                 <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" class="img-fluid rounded-circle" alt="">
                                             </div>
