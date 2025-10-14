@@ -154,6 +154,13 @@ class CountryController extends Controller
         }
     }
 
+    // function to country details
+    public function countryDetails($id)
+    {
+        $country = Country::findOrFail($id);
+        return view('admin.country.country-details', compact('country'));
+    }
+
     // function to delete country
     public function deleteCountry($id)
     {

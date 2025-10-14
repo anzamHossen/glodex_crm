@@ -61,7 +61,7 @@
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item" href="#">Universities</a></li>
                                                     <li><a class="dropdown-item" href="#">Courses</a></li>
-                                                    <li><a class="dropdown-item" href="#">Country Details</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('country_details', $country->id) }}">Country Details</a></li>
                                                     <li><a class="dropdown-item" href="{{ route('edit_country', $country->id) }}">Edit</a></li>
                                                     <li>
                                                         <a class="dropdown-item" href="#"  onclick="confirmDelete({{ $country->id }})">Delete</a>

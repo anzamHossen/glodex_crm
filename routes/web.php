@@ -38,6 +38,7 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::post('/save-new-country', 'saveCountry')->name('save_new_country');
         Route::get('/edit-country/{id}', 'editCountry')->name('edit_country');
         Route::post('/update-country/{id}', 'updateCountry')->name('update_country');
+        Route::get('/country-details/{id}', 'countryDetails')->name('country_details');
         Route::delete('/delete-country/{id}',  'deleteCountry')->name('delete_country');
         Route::get('/search-countries', 'searchCountries')->name('search_countries_name');
     });
