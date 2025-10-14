@@ -95,6 +95,12 @@
     <!-- Quill Demo js -->
     <script src="{{ asset('back-end/assets/js/pages/form-quilljs.js')}}"></script>
 
+    <!-- Bootstrap Wizard Form js -->
+    <script src="{{ asset('back-end/assets/vendor/vanilla-wizard/js/wizard.min.js') }}"></script>
+
+    <!-- Wizard Form Demo js -->
+    <script src="{{ asset('back-end/assets/js/pages/form-wizard.js') }}"></script>
+
     @stack('page-js')
 
 </body>

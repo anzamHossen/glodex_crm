@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserActiveController;
 use App\Http\Controllers\Agent\AgentDashboardController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Student\StudentDashboardController;
+use App\Http\Controllers\StudentInfoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -60,6 +61,16 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::post('/update-course/{id}', 'updateCourse')->name('update_course');
         Route::delete('/delete-course/{id}',  'deleteCourse')->name('delete_course');
     });
+
+    // Route for course
+    Route::controller(StudentInfoController::class)->group(function () {
+        Route::get('/my-student-list', 'myStudentList')->name('my_student_list');
+        Route::get('/add-new-student', 'addNewStudent')->name('add_new_student');
+        Route::post('/save-new-student', 'saveNewStudent')->name('save_new_student');
+        Route::get('/edit-student/{id}', 'editStudent')->name('edit_student');
+        Route::post('/update-student/{id}', 'updateStudent')->name('update_student');
+    });
+
 });
 
 Route::prefix('agent')->middleware(['agent'])->group(function () {
