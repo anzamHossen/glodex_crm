@@ -27,11 +27,11 @@
                                         <div class="d-flex align-items-center gap-2">
                                             <form method="GET" action="{{ route('search_countries_name') }}">
                                                 <label for="glodex-show-entries" class="form-label mb-0">Show</label>
-                                                <select name="glodex-show-entries" id="glodex-show-entries" class="form-select form-select-sm w-auto">
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
+                                                <select name="per_page" id="glodex-show-entries" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
+                                                    <option value="8" {{ request('per_page') == 8 ? 'selected' : '' }}>8</option>
+                                                    <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
+                                                    <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                                                    <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
                                                 </select>
                                                 <span>entries</span>
                                                 @if (request()->has('search_country'))
@@ -62,8 +62,14 @@
                                                     <li><a class="dropdown-item" href="#">Universities</a></li>
                                                     <li><a class="dropdown-item" href="#">Courses</a></li>
                                                     <li><a class="dropdown-item" href="#">Country Details</a></li>
-                                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('edit_country', $country->id) }}">Edit</a></li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#"  onclick="confirmDelete({{ $country->id }})">Delete</a>
+                                                        <form id="delete-country-form-{{ $country->id }}" method="POST" style="display: none;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="glodex-country-list-img position-relative overflow-hidden">     

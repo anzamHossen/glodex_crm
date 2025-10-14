@@ -31,7 +31,7 @@ class CountryController extends Controller
         return view('admin.country.country-list', compact('countries'));
     }
 
-     public function searchCountries(Request $request)
+    public function searchCountries(Request $request)
     {
         $query = Country::with('countryContinent')
             ->withCount(['universities', 'courses'])
