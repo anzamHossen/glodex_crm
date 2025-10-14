@@ -30,6 +30,21 @@ body {
   color: var(--white-color);
 }
 
+.glodex-blue-btn {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  transition: all 0.4s ease;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--light-color) !important;
+}
+.glodex-blue-btn:hover {
+  background: var(--primary-color);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.5);
+  color: var(--white-color);
+}
+
 .glodex-search-field {
     position: relative;
 }
@@ -43,18 +58,12 @@ body {
     right: 0;
     transform: translateY(-50%);
     border: none;
-    color: var(--dark-color);
     cursor: pointer;
-    border-radius: none;
-    background: var(--light-color);
+    border-radius: none !important;
     height: 100%;
+    border-radius: 4px !important;
 }
-.glodex-search-field button:hover {
-    background: var(--light-color);
-}
-.glodex-search-field button i {
-    color: var(--white-color);
-}
+
 
 /*Start 3 dot dropdown */
 .glodex-custom-3dot-dropdown {
