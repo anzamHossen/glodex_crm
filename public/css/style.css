@@ -35,7 +35,7 @@ body {
 }
 .glodex-search-field input {
     width: 300px;
-    padding: 8px 60px 8px 15px;
+    padding: 8px 50px 8px 15px;
 }
 .glodex-search-field button {
     position: absolute;
@@ -46,21 +46,30 @@ body {
     color: var(--dark-color);
     cursor: pointer;
     border-radius: none;
+    background: var(--light-color);
+    height: 100%;
 }
+.glodex-search-field button:hover {
+    background: var(--light-color);
+}
+.glodex-search-field button i {
+    color: var(--white-color);
+}
+
+/*Start 3 dot dropdown */
 .glodex-custom-3dot-dropdown {
     position: absolute;
-    top:10px;
-    right: 15px;
+    top:12px;
+    right: 12px;
     border: none;
-    color: var(--dark-color);
     cursor: pointer;
-    border-radius: none;
     width: 35px;
     height: 35px;
     border-radius: 50%;
     background: var(--light-color);
     box-shadow: 0 4px 6px rgba(255, 255, 255, 0.6);
     color: var(--white-color);
+    z-index: 1;
 }
 .glodex-custom-3dot-dropdown button {
     border: none;
@@ -74,9 +83,8 @@ body {
 }
 .glodex-custom-3dot-dropdown .dropdown-menu {
     background:var(--blue-color);
-    border: none;
+    border: 1px solid var(--light-color);
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.6);
 }
 .glodex-custom-3dot-dropdown .dropdown-menu a {
     color: var(--white-color);
@@ -89,5 +97,6 @@ body {
 .glodex-custom-3dot-dropdown ul.dropdown-menu.show {
     transform: translate(-80%, 37px) !important;
 }
+/*End 3 dot dropdown */
 
 
