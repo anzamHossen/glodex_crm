@@ -73,6 +73,8 @@ class StudentInfoController extends Controller
         $studentInfo->email                       = $request->email;
         $studentInfo->permanent_address           = $request->permanent_address;
         $studentInfo->gender                      = $request->gender;
+        $studentInfo->fathers_name                = $request->fathers_name;
+        $studentInfo->mothers_name                = $request->mothers_name;
         $studentInfo->dob                         = $request->dob;
         $studentInfo->passport_no                 = $request->passport_no;
         $studentInfo->moi                         = $request->moi;
@@ -164,6 +166,8 @@ class StudentInfoController extends Controller
         $studentInfo->email                       = $request->email;
         $studentInfo->permanent_address           = $request->permanent_address;
         $studentInfo->gender                      = $request->gender;
+        $studentInfo->fathers_name                = $request->fathers_name;
+        $studentInfo->mothers_name                = $request->mothers_name;
         $studentInfo->dob                         = $request->dob;
         $studentInfo->passport_no                 = $request->passport_no;
         $studentInfo->moi                         = $request->moi;

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->date('dob')->nullable();
             $table->string('passport_no')->unique();
             $table->string('permanent_address');
+            $table->string('fathers_name');
+            $table->string('mothers_name');
             $table->integer('gender');
             $table->integer('moi')->nullable();
             $table->longText('notes')->nullable();

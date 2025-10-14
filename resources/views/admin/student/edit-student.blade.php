@@ -22,28 +22,28 @@
                                 @csrf
                                 <h6 class="badge bg-primary">General Information</h6>
                                 <div class="row">
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $student->name) }}" placeholder="Enter student name" required>
                                         @error('name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $student->phone) }}" placeholder="Enter phone number" required>
                                         @error('phone')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $student->email) }}" placeholder="Enter email address" required>
                                         @error('email')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
                                         <select class="form-control" id="gender" name="gender" required>
                                             <option value="">--Select Gender--</option>
@@ -62,6 +62,20 @@
                                         <label for="passport_no" class="form-label">Passport Number<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="passport_no" name="passport_no" value="{{ old('passport_no', $student->passport_no) }}" placeholder="Enter passport number" required>
                                         @error('passport_no')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="fathers_name" class="form-label">Father's Name<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="fathers_name" name="fathers_name" value="{{ old('fathers_name', $student->fathers_name) }}" placeholder="Enter father's name." required>
+                                        @error('fathers_name')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="mothers_name" class="form-label">Mother's Name<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="mothers_name" name="mothers_name" value="{{ old('mothers_name', $student->mothers_name) }}" placeholder="Enter mother's name." required>
+                                        @error('mothers_name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
