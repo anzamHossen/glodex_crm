@@ -13,7 +13,7 @@
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">Country List</h4>
                             <div class="d-flex">
-                                <a href="{{ route('add_new_country') }}" class="btn btn-sm btn-gradient">
+                                <a href="{{ route('add_new_country') }}" class="btn btn-sm glodex-blue-btn">
                                     <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Add New
                                 </a>
@@ -103,7 +103,7 @@
                                                 placeholder="Search"
 
                                             >
-                                            <button type="submit" class="btn btn-sm"><i class="ti ti-search" style="font-size: 1.3rem;"></i></button>
+                                            <button type="submit" class="btn btn-sm glodex-blue-btn"><i class="ti ti-search" style="font-size: 1.3rem;"></i></button>
                                         </div>
 
                                     </form>
