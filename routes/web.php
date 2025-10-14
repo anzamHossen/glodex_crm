@@ -39,6 +39,7 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::get('/edit-country/{id}', 'editCountry')->name('edit_country');
         Route::post('/update-country/{id}', 'updateCountry')->name('update_country');
         Route::delete('/delete-country/{id}',  'deleteCountry')->name('delete_country');
+        Route::get('/search-countries', 'searchCountries')->name('search_countries_name');
     });
 
     // Route for university

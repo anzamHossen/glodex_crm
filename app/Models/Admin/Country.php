@@ -15,4 +15,14 @@ class Country extends Model
     {
         return $this->belongsTo(CountryContinent::class, 'continent_id');
     }
+
+    public function universities()
+    {
+        return $this->hasMany(University::class, 'country_id');
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'country_id');
+    }
 }

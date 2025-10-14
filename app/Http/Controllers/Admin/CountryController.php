@@ -23,7 +23,29 @@ class CountryController extends Controller
     // function to show country list
     public function countryList()
     {
-        $countries= Country::all();
+        $countries = Country::with('countryContinent')
+        ->where('status', 1)
+        ->withCount(['universities', 'courses'])
+        ->orderBy('country_name', 'asc')
+        ->paginate(8);
+        return view('admin.country.country-list', compact('countries'));
+    }
+
+     public function searchCountries(Request $request)
+    {
+        $query = Country::with('countryContinent')
+            ->withCount(['universities', 'courses'])
+            ->where('status', 1);
+
+        // Search logic
+        if ($request->filled('search_country')) {
+            $query->where('country_name', 'LIKE', '%' . $request->search_country . '%');
+        }
+
+        // Pagination: default to 10 entries
+        $perPage = $request->get('per_page', 10);
+        $countries = $query->orderBy('id', 'desc')->paginate($perPage)->appends($request->all());
+
         return view('admin.country.country-list', compact('countries'));
     }
 
