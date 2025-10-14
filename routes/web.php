@@ -50,7 +50,6 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::get('/edit-university/{id}', 'editUniversity')->name('edit_university');
         Route::post('/update-university/{id}', 'updateUniversity')->name('update_university');
         Route::delete('/delete-university/{id}',  'deleteUniversity')->name('delete_university');
-       
     });
 
     // Route for course
@@ -71,7 +70,6 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::get('/edit-student/{id}', 'editStudent')->name('edit_student');
         Route::post('/update-student/{id}', 'updateStudent')->name('update_student');
     });
-
 });
 
 Route::prefix('agent')->middleware(['agent'])->group(function () {
