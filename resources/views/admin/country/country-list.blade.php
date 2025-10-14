@@ -26,14 +26,17 @@
                                         <!-- Show entries dropdown -->
                                         <div class="d-flex align-items-center gap-2">
                                             <form method="GET" action="{{ route('search_countries_name') }}">
-                                                <label for="glodex-show-entries" class="form-label mb-0">Show</label>
-                                                <select name="per_page" id="glodex-show-entries" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
-                                                    <option value="8" {{ request('per_page') == 8 ? 'selected' : '' }}>8</option>
-                                                    <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
-                                                    <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
-                                                    <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
-                                                </select>
-                                                <span>entries</span>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <label for="glodex-show-entries" class="form-label mb-0">Show</label>
+                                                    <select name="per_page" id="glodex-show-entries" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
+                                                        <option value="8" {{ request('per_page') == 8 ? 'selected' : '' }}>8</option>
+                                                        <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
+                                                        <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                                                        <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
+                                                    </select>
+                                                    <span>entries</span>
+                                                </div>
+
                                                 @if (request()->has('search_country'))
                                                     <input type="hidden" name="search_country" value="{{ request('search_country') }}">
                                                 @endif
@@ -50,7 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row row-gap-3 no-gutters">
                                 @foreach($countries as  $country)
                                     <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                                         <div class="glodex-country-list-item position-relative h-100 border rounded-4 shadow-sm p-2">
@@ -59,12 +62,12 @@
                                                     <i class="ti ti-dots-vertical"></i>
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Universities</a></li>
-                                                    <li><a class="dropdown-item" href="#">Courses</a></li>
-                                                    <li><a class="dropdown-item" href="{{ route('country_details', $country->id) }}">Country Details</a></li>
-                                                    <li><a class="dropdown-item" href="{{ route('edit_country', $country->id) }}">Edit</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="ti ti-school me-2"></i> Universities</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="ti ti-book-2 me-2"></i> Courses</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('country_details', $country->id) }}"><i class="ti ti-map-pin me-2"></i> Country Details</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('edit_country', $country->id) }}"><i class="ti ti-edit me-2"></i> Edit</a></li>
                                                     <li>
-                                                        <a class="dropdown-item" href="#"  onclick="confirmDelete({{ $country->id }})">Delete</a>
+                                                        <a class="dropdown-item" href="#"  onclick="confirmDelete({{ $country->id }})"><i class="ti ti-trash me-2"></i> Delete</a>
                                                         <form id="delete-country-form-{{ $country->id }}" method="POST" style="display: none;">
                                                             @csrf
                                                             @method('DELETE')
@@ -72,7 +75,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="glodex-country-list-img position-relative overflow-hidden">     
+                                            <div class="glodex-country-list-img position-relative overflow-hidden">
                                                 <img src="{{ $country->cover_photo && file_exists(public_path($country->cover_photo)) ? asset($country->cover_photo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" class="img-fluid rounded-4" alt="image">
 
                                                 <div class="glodex-country-list-img-sm">

@@ -84,41 +84,40 @@
                 {{-- show entries --}}
                 <div class="row">
                     <div class="col-12 mb-3">
-                        <div class="glodex-show-entries d-flex align-items-center justify-content-between flex-wrap gap-3">
+                        <div class="glodex-show-entries ">
 
-                        <!-- Show entries dropdown -->
-                        <div class="d-flex align-items-center gap-2">
-                            <label for="glodex-show-entries" class="form-label mb-0">Show</label>
-                            <select name="glodex-show-entries" id="glodex-show-entries" class="form-select form-select-sm w-auto">
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                            </select>
-                            <span>entries</span>
-                        </div>
+                            <!-- Show entries dropdown -->
+                            <form class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <label for="glodex-show-entries" class="form-label mb-0">Show</label>
+                                    <select name="glodex-show-entries" id="glodex-show-entries" class="form-select form-select-sm w-auto">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    </select>
+                                    <span>entries</span>
+                                </div>
+                                <!-- Search form -->
+                                <div class="d-flex align-items-center align-items-end">
+                                    <div class="glodex-search-field d-flex align-items-center">
+                                        <input
+                                            type="search"
+                                            name="glodex-country-search"
+                                            id="glodex-country-search"
+                                            class="form-control form-control-sm mb-0"
+                                            placeholder="Search"
 
-                        <!-- Search form -->
-                        <form action="" class="d-flex align-items-center align-items-end">
-                            <div class="glodex-search-field d-flex align-items-center">
-                                <input
-                                    type="search"
-                                    name="glodex-country-search"
-                                    id="glodex-country-search"
-                                    class="form-control form-control-sm mb-0"
-                                    placeholder="Search"
-
-                                >
-                                <button type="submit" class="btn btn-sm glodex-blue-btn"><i class="ti ti-search" style="font-size: 1.3rem;"></i></button>
-                            </div>
-
-                        </form>
-
+                                        >
+                                        <button type="submit" class="btn btn-sm glodex-blue-btn"><i class="ti ti-search" style="font-size: 1.3rem;"></i></button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 {{-- university card --}}
-                <div class="row">
+                <div class="row row-gap-3">
                     <div class="col-12 col-sm-2 col-md-2 col-lg-4 col-xl-3">
                         <div class="university-card border rounded-4 shadow-md h-full py-3 px-2 position-relative">
                             <!-- Example single danger button -->
