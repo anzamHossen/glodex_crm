@@ -22,42 +22,36 @@
                         </div>
                         <div class="card-body">
                             <div class="country-details-container">
-                                <section class="py-4">
+                                <section class="py-5">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="country-details-cover-photo border-0 shadow-sm">
+                                                <div class="country-details-cover-photo border-0 shadow-sm position-relative">
                                                     <img
-                                                        class="img-fluid rounded-4"
+                                                        class="img-fluid"
                                                         src="{{ $country->cover_photo && file_exists(public_path($country->cover_photo)) ? asset($country->cover_photo) : asset('back-end/assets/images/sellers/s-1.svg') }}"
                                                         alt="cover photo">
+                                                        <div class="country-details-top-info">
+                                                            <div class="text-white country-details-top-info-inner">
+                                                                <p class="text-uppercase mb-2" style="letter-spacing: 2px; font-size: 0.875rem;">
+                                                                    {{ $country->countryContinent->continent_name ?? 'Not Added' }}
+                                                                </p>
+                                                                <h1 class="display-5 fw-bold mb-2">{{ $country->country_name ?? 'Not Added' }}</h1>
+                                                                <p class="lead">
+                                                                    Discover world-class education opportunities in one of the most prestigious academic destinations.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="country-details-cover-bottom-flag">
+                                                            <img
+                                                                src="{{ $country->flag && file_exists(public_path($country->flag)) ? asset($country->flag) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" alt="United Kingdom flag"
+                                                                class="img-fluid rounded-circle">
+                                                        </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </section>
-
-                                <!-- Hero Section -->
-                                <section class="py-4 country-details-flag">
-                                    <div class="container">
-                                        <div class="row align-items-center g-4">
-                                            <div class="col-lg-5 col-md-6 col-sm-12 col-12">
-                                                <img src="{{ $country->flag && file_exists(public_path($country->flag)) ? asset($country->flag) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" alt="United Kingdom flag"
-                                                    class="img-fluid shadow-lg rounded-4 country-details-flag-img">
-                                            </div>
-                                            <div class="col-lg-7 col-md-6 col-sm-12 col-12 text-white">
-                                                <p class="text-uppercase mb-2 opacity-75" style="letter-spacing: 2px; font-size: 0.875rem;">
-                                                    {{ $country->countryContinent->continent_name ?? 'Not Added' }}
-                                                </p>
-                                                <h1 class="display-5 fw-bold mb-2">{{ $country->country_name ?? 'Not Added' }}</h1>
-                                                <p class="lead opacity-90">
-                                                    Discover world-class education opportunities in one of the most prestigious academic destinations.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-
                                 <!-- Stats Section -->
                                 <section class="py-4">
                                     <div class="container">
@@ -163,12 +157,6 @@
                                                                 src="{{ $university->logo && file_exists(public_path($university->logo)) ? asset($university->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                                 alt="{{ $university->university_name }}"
                                                                 class=" img-fluid rounded-top-4">
-                                                            <div class="card-img-flag">
-                                                                <img
-                                                                    src="{{asset('back-end/assets/images/dr-profile/image-upload.jpg')}}"
-                                                                    alt="country flag"
-                                                                    class="img-fluid rounded-circle">
-                                                            </div>
                                                         </div>
                                                         <div class="card-body p-2">
                                                             <h5 class="text-white h-4 fw-bold mb-3">{{ $university->university_name }}</h5>

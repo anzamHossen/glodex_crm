@@ -1,14 +1,7 @@
 .country-details-container {
     background: var(--secondary-color);
-    padding-top: 40px;
 }
 
-.country-details-flag-img {
-    height: 400px;
-    width: 100%;
-    object-fit: cover;
-    box-shadow: 0 6px 10px rgba(94, 171, 214, 0.5)!important;
-}
 .country-details-stats-section .card {
     background-color: var(--blue-color);
     border-radius: 1rem;
@@ -47,31 +40,68 @@
     transition: transform 0.3s ease;
 }
 .country-details-universities-list .card-img-top img {
-    height:200px;
-    width: 100%;
-    object-fit:cover;
-}
-.country-details-universities-list .card-img-flag {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    width: 50px;
-    height: 50px;
+    height:150px;
+    width: 150px;
     border-radius: 50%;
-    overflow: hidden;
+    object-fit:cover;
+    margin: 0 auto;
     box-shadow: 0 4px 8px rgba(94, 171, 214, 0.5)!important;
 }
-.country-details-universities-list .card-img-flag img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+
 .country-details-universities-list .university-card:hover {
     transform: translateY(-8px);
 }
-.country-details-cover-photo img {
-    width: 100%;
+.country-details-cover-photo {
     height: 400px;
-    object-fit: cover;
     box-shadow: 0 6px 10px rgba(94, 171, 214, 0.5)!important;
+    border-radius: 1rem;
 }
+.country-details-cover-photo  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+.country-details-top-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--white-color);
+    background: #0e317575;
+    z-index: 2;
+    padding: 15px;
+    border-radius: 1rem;
+    max-width: 700px;
+    box-shadow: 0 6px 10px rgba(94, 171, 214, 0.5)!important
+}
+.country-details-top-info h1 {
+    color: var(--white-color) !important;
+}
+.country-details-cover-bottom-flag {
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+.country-details-cover-bottom-flag img {
+    border-radius: 50% !important ;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6);
+    filter: drop-shadow(0 4px 6px rgba(255, 255, 255, 1));
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    object-fit: cover;
+}
+
+@media (max-width: 767px) {
+.country-details-top-info {
+    max-width: 100%;
+    width: 100%;
+}
+}
+
