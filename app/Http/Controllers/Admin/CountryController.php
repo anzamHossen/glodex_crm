@@ -61,12 +61,14 @@ class CountryController extends Controller
     {
        
         $request->validate([
-            'country_name' => 'required|string|max:50',
-            'country_name' => 'required|string|max:50',
-            'description'  => 'required',
-            'flag'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'cover_photo'  => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description'  => 'nullable',
+            'country_name'       => 'required|string|max:50',
+            'country_capital'    => 'required|string|max:50',
+            'country_population' => 'required|string|max:50',
+            'country_gdp'        => 'required|string|max:50',
+            'description'        => 'required',
+            'flag'               => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cover_photo'        => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description'        => 'nullable',
             ], [
                'country_continent_id.required' => 'The country continent field is required.',
         ]);
@@ -74,9 +76,12 @@ class CountryController extends Controller
         DB::beginTransaction();
         try {
         $country = new Country();
-        $country->country_name = $request->country_name;
-        $country->continent_id = $request->continent_id;
-        $country->description  = $request->description;
+        $country->country_name       = $request->country_name;
+        $country->country_capital    = $request->country_capital;
+        $country->country_population = $request->country_population;
+        $country->country_gdp        = $request->country_gdp;
+        $country->continent_id       = $request->continent_id;
+        $country->description        = $request->description;
 
         if ($request->hasFile('flag')) {
         $file = $request->file('flag');
@@ -126,10 +131,13 @@ class CountryController extends Controller
 
         DB::beginTransaction();
         try {
-        $updateCountry               = Country::findOrFail($id);
-        $updateCountry->country_name = $request->country_name;
-        $updateCountry->continent_id = $request->continent_id;
-        $updateCountry->description  = $request->description;
+        $updateCountry                     = Country::findOrFail($id);
+        $updateCountry->country_name       = $request->country_name;
+        $updateCountry->country_capital    = $request->country_capital;
+        $updateCountry->country_population = $request->country_population;
+        $updateCountry->country_gdp        = $request->country_gdp;
+        $updateCountry->continent_id       = $request->continent_id;
+        $updateCountry->description        = $request->description;
 
         if ($request->hasFile('flag')) {
         $file = $request->file('flag');
@@ -157,8 +165,11 @@ class CountryController extends Controller
     // function to country details
     public function countryDetails($id)
     {
-        $country = Country::findOrFail($id);
-        return view('admin.country.country-details', compact('country'));
+        $country           = Country::findOrFail($id);
+        $totalUniversities = $country->universities()->count();
+        $totalCourses      = $country->courses()->count();
+        $randomUniversities = $country->universities()->inRandomOrder()->take(4)->get();
+        return view('admin.country.country-details', compact('country','totalUniversities','totalCourses','randomUniversities'));
     }
 
     // function to delete country

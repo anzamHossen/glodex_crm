@@ -23,7 +23,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="country_name" class="form-label">Country Name <spanclass="text-danger">*</span></label>
+                                        <label for="country_name" class="form-label">Country Name <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="country_name" name="country_name" value="{{ old('country_name') }}" placeholder="Enter country name" required>
                                         @error('country_name')
                                             <div class="text-danger">{{ $message }}</div>
@@ -40,6 +40,27 @@
                                             @endforeach
                                         </select>
                                         @error('continent_id')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="country_capital" class="form-label">Country Capital <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="country_capital" name="country_capital" value="{{ old('country_capital') }}" placeholder="Enter country capital" required>
+                                        @error('country_capital')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="country_capital" class="form-label">Country Population<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="country_population" name="country_population" value="{{ old('country_population') }}" placeholder="Enter country population" required>
+                                        @error('country_population')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="country_gdp" class="form-label">Country GDP <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="country_gdp" name="country_gdp" value="{{ old('country_gdp') }}" placeholder="Enter country gdp" required>
+                                        @error('country_gdp')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

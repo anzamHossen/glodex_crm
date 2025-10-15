@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('country_name', 50);
+            $table->string('country_capital', 50);
+            $table->string('country_population', 50);
+            $table->string('country_gdp', 50);
             $table->integer('continent_id');
             $table->longText('flag',300)->nullable();
             $table->longText('cover_photo',300)->nullable();

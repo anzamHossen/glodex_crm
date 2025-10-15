@@ -45,6 +45,28 @@
                                         @enderror
                                     </div>
 
+                                    <div class="col-md-4 mb-3">
+                                        <label for="country_capital" class="form-label">Country Capital <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="country_capital" name="country_capital" value="{{ old('country_capital', $country->country_capital) }}" placeholder="Enter country capital" required>
+                                        @error('country_capital')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="country_capital" class="form-label">Country Population<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="country_population" name="country_population" value="{{ old('country_population', $country->country_population) }}" placeholder="Enter country population" required>
+                                        @error('country_population')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="country_gdp" class="form-label">Country GDP <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="country_gdp" name="country_gdp" value="{{ old('country_gdp', $country->country_gdp) }}" placeholder="Enter country gdp" required>
+                                        @error('country_gdp')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
                                     <div class="col-md-6 mt-2">
                                         <label for="countryFlag" class="form-label">Flag<span class="text-danger">*</span>:</label>
                                         <!-- Preview Box -->
@@ -90,7 +112,7 @@
                                         <div class="fallback mt-3">
                                             <input type="file" name="cover_photo" class="form-control"
                                                 accept="image/png, image/gif, image/jpeg, image/jpg"
-                                                id="popular_image_input" onchange="popularPreviewImage(event)" required />
+                                                id="popular_image_input" onchange="popularPreviewImage(event)" />
                                         </div>
                                         @error('cover_photo')
                                             <div class="text-danger">{{ $message }}</div>
