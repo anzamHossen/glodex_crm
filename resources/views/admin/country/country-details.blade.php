@@ -21,20 +21,20 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="" style="background-color: #0a1929; font-family: 'Poppins', sans-serif;">
+                            <div class="country-details-container">
                                 <!-- Hero Section -->
-                                <section class="py-5">
+                                <section class="py-4 country-details-flag">
                                     <div class="container">
                                         <div class="row align-items-center g-4">
-                                            <div class="col-lg-5">
+                                            <div class="col-lg-5 col-md-6 col-sm-12 col-12">
                                                 <img src="{{ $country->flag && file_exists(public_path($country->flag)) ? asset($country->flag) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" alt="United Kingdom flag"
-                                                    class="img-fluid shadow-lg rounded-4">
+                                                    class="img-fluid shadow-lg rounded-4 country-details-flag-img">
                                             </div>
-                                            <div class="col-lg-7 text-white">
+                                            <div class="col-lg-7 col-md-6 col-sm-12 col-12 text-white">
                                                 <p class="text-uppercase mb-2 opacity-75" style="letter-spacing: 2px; font-size: 0.875rem;">
                                                     {{ $country->countryContinent->continent_name ?? 'Not Added' }}
                                                 </p>
-                                                <h1 class="display-3 fw-bold mb-3">{{ $country->country_name ?? 'Not Added' }}</h1>
+                                                <h1 class="display-5 fw-bold mb-2">{{ $country->country_name ?? 'Not Added' }}</h1>
                                                 <p class="lead opacity-90">
                                                     Discover world-class education opportunities in one of the most prestigious academic destinations.
                                                 </p>
@@ -44,15 +44,15 @@
                                 </section>
 
                                 <!-- Stats Section -->
-                                <section class="py-5">
+                                <section class="py-4">
                                     <div class="container">
-                                        <div class="row g-4 text-center">
-                                            <div class="col-md-6 col-lg-4 col-xl">
-                                                <div class="card h-100 border-0 shadow-sm" style="background-color: #132f4c; border-radius: 1rem;">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3"
-                                                            style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#00BFFF,#1E90FF);">
-                                                            <i class="ti ti-graduation-cap text-white fs-3"></i>
+                                        <div class="row g-2 text-center country-details-stats-section">
+                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
+                                                <div class="card h-100 border-0 shadow-sm">
+                                                    <div class="card-body p-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                                            >
+                                                            <i class="ti ti-school text-white fs-3"></i>
                                                         </div>
                                                         <h3 class="h2 fw-bold text-white mb-2">{{ $totalUniversities ?? 0 }}+</h3>
                                                         <p class="text-white opacity-75 mb-0">Total Universities</p>
@@ -60,11 +60,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-lg-4 col-xl">
-                                                <div class="card h-100 border-0 shadow-sm" style="background-color: #132f4c; border-radius: 1rem;">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3"
-                                                            style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#00BFFF,#1E90FF);">
+                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
+                                                <div class="card h-100 border-0 shadow-sm">
+                                                    <div class="card-body p-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                                            >
                                                             <i class="ti ti-book-2 text-white fs-3"></i>
                                                         </div>
                                                         <h3 class="h2 fw-bold text-white mb-2">{{ $totalCourses ?? 0 }}+</h3>
@@ -73,40 +73,40 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-lg-4 col-xl">
-                                                <div class="card h-100 border-0 shadow-sm" style="background-color: #132f4c; border-radius: 1rem;">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3"
-                                                            style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#00BFFF,#1E90FF);">
+                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
+                                                <div class="card h-100 border-0 shadow-sm">
+                                                    <div class="card-body p-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                                            >
                                                             <i class="ti ti-users text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_population }}</h3>
+                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_population ?? 0 }}</h3>
                                                         <p class="text-white opacity-75 mb-0">Population</p>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-lg-4 col-xl">
-                                                <div class="card h-100 border-0 shadow-sm" style="background-color: #132f4c; border-radius: 1rem;">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3"
-                                                            style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#00BFFF,#1E90FF);">
+                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
+                                                <div class="card h-100 border-0 shadow-sm">
+                                                    <div class="card-body p-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                                            >
                                                             <i class="ti ti-map-pin text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_capital }}</h3>
+                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_capital ?? 0 }}</h3>
                                                         <p class="text-white opacity-75 mb-0">Capital</p>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-lg-4 col-xl">
-                                                <div class="card h-100 border-0 shadow-sm" style="background-color: #132f4c; border-radius: 1rem;">
-                                                    <div class="card-body p-4">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3"
-                                                            style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#00BFFF,#1E90FF);">
+                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
+                                                <div class="card h-100 border-0 shadow-sm">
+                                                    <div class="card-body p-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                                            >
                                                             <i class="ti ti-trending-up text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_gdp }}</h3>
+                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_gdp ?? 0 }}</h3>
                                                         <p class="text-white opacity-75 mb-0">GDP</p>
                                                     </div>
                                                 </div>
@@ -116,13 +116,13 @@
                                 </section>
 
                                 <!-- Description -->
-                                <section class="py-5">
+                                <section class="py-4">
                                     <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-10">
-                                                <div class="card border-0 shadow-sm p-5" style="background-color: #132f4c; border-radius: 1rem;">
-                                                    <h2 class="h3 fw-bold text-white mb-4">About {{ $country->country_name }}</h2>
-                                                    <p class="text-white opacity-90 lh-lg" style="font-size: 1.05rem;">
+                                        <div class="row justify-content-center country-details-description">
+                                            <div class="col-lg-10 col-sm-12 col-12">
+                                                <div class="card border-0 shadow-sm p-4 mb-0">
+                                                    <h3 class="h4">About {{ $country->country_name }}</h3>
+                                                    <p class="text-white">
                                                         {!! $country->description !!}
                                                     </p>
                                                 </div>
@@ -132,7 +132,7 @@
                                 </section>
 
                                 <!-- Universities -->
-                                <section class="py-5">
+                                <section class="py-4 country-details-universities-list">
                                     <div class="container">
                                         <div class="text-center mb-5">
                                             <h2 class="h2 fw-bold text-white mb-3">Top Universities</h2>
@@ -141,19 +141,24 @@
 
                                         <div class="row g-4">
                                             @forelse ($randomUniversities as $university)
-                                                <div class="col-md-6 col-lg-3">
-                                                    <div class="card border-0 shadow-sm h-100 university-card" 
-                                                        style="background-color: #132f4c; border-radius: 1rem; transition: transform 0.3s ease;">
-                                                        <img src="{{ $university->logo && file_exists(public_path($university->logo)) ? asset($university->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" 
-                                                            alt="{{ $university->university_name }}" 
-                                                            class="card-img-top rounded-top-4" 
-                                                            style="height:200px;object-fit:cover;">
-                                                        <div class="card-body p-4">
-                                                            <h5 class="text-white fw-bold mb-3">{{ $university->university_name }}</h5>
-                                                            <a href="#" 
-                                                            class="btn w-100 text-white border-0" 
-                                                            style="background:linear-gradient(135deg,#00BFFF,#1E90FF);
-                                                                    border-radius:0.5rem;padding:0.75rem;font-weight:500;">
+                                                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
+                                                    <div class="card border-0 shadow-sm h-100 university-card">
+                                                        <div class="card-img-top position-relative">
+                                                            <img
+                                                                src="{{ $university->logo && file_exists(public_path($university->logo)) ? asset($university->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
+                                                                alt="{{ $university->university_name }}"
+                                                                class=" img-fluid rounded-top-4">
+                                                            <div class="card-img-flag">
+                                                                <img
+                                                                    src="{{asset('back-end/assets/images/dr-profile/image-upload.jpg')}}"
+                                                                    alt="country flag"
+                                                                    class="img-fluid rounded-circle">
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body p-2">
+                                                            <h5 class="text-white h-4 fw-bold mb-3">{{ $university->university_name }}</h5>
+                                                            <a href="#"
+                                                            class="btn btn-sm btn-gradient w-100">
                                                                 View Details
                                                             </a>
                                                         </div>
@@ -167,10 +172,10 @@
                                 </section>
 
                                 <!-- Back Button -->
-                                <section class="py-5 text-center">
+                                <section class="py-4 text-center">
                                     <div class="container">
-                                        <a href="#" class="btn btn-lg text-white border-0 d-inline-flex align-items-center gap-2"
-                                            style="background: linear-gradient(135deg, #00BFFF, #1E90FF); border-radius: 0.75rem; padding: 1rem 2.5rem; font-weight: 500; text-decoration: none;">
+                                        <a href="#" class="btn btn-gradient btn-lg text-white border-0 d-inline-flex align-items-center gap-2"
+                                            >
                                             <i class="ti ti-arrow-left"></i>
                                             Back to All Countries
                                         </a>
