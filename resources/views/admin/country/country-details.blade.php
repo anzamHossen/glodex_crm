@@ -22,6 +22,21 @@
                         </div>
                         <div class="card-body">
                             <div class="country-details-container">
+                                <section class="py-4">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="country-details-cover-photo border-0 shadow-sm">
+                                                    <img
+                                                        class="img-fluid rounded-4"
+                                                        src="{{ $country->cover_photo && file_exists(public_path($country->cover_photo)) ? asset($country->cover_photo) : asset('back-end/assets/images/sellers/s-1.svg') }}"
+                                                        alt="cover photo">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
                                 <!-- Hero Section -->
                                 <section class="py-4 country-details-flag">
                                     <div class="container">
@@ -165,7 +180,7 @@
                                                     </div>
                                                 </div>
                                             @empty
-                                                <p class="text-white">No universities available for this country.</p>
+                                                <h1 class="text-white h-3 text-center">No universities available for this country.</h1>
                                             @endforelse
                                         </div>
                                     </div>
