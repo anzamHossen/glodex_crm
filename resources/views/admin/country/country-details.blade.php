@@ -151,15 +151,15 @@
                                         <div class="row g-4">
                                             @forelse ($randomUniversities as $university)
                                                 <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                                                    <div class="card border-0 shadow-sm h-100 university-card">
+                                                    <div class="card border-0 shadow-sm h-100 university-card p-2">
                                                         <div class="card-img-top position-relative">
                                                             <img
                                                                 src="{{ $university->logo && file_exists(public_path($university->logo)) ? asset($university->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                                 alt="{{ $university->university_name }}"
                                                                 class=" img-fluid rounded-top-4">
                                                         </div>
-                                                        <div class="card-body p-2">
-                                                            <h5 class="text-white h-4 fw-bold mb-3">{{ $university->university_name }}</h5>
+                                                        <div class="card-body p-2 mt-2 text-center">
+                                                            <h4 class="text-white h-4 fw-bold mb-3">{{ $university->university_name }}</h4>
                                                             <a href="#"
                                                             class="btn btn-sm btn-gradient w-100">
                                                                 View Details

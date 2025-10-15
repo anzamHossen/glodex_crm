@@ -39,10 +39,15 @@
     box-shadow: 0 4px 8px rgba(94, 171, 214, 0.5)!important;
     transition: transform 0.3s ease;
 }
+
+.card-img-top{
+    display: flex;
+    justify-content: center;
+}
 .country-details-universities-list .card-img-top img {
     height:150px;
     width: 150px;
-    border-radius: 50%;
+    border-radius: 50% !important;
     object-fit:cover;
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(94, 171, 214, 0.5)!important;
@@ -105,3 +110,9 @@
 }
 }
 
+
+.position-relative {
+    position: relative!important;
+    display: flex;
+    justify-content: center;
+}
