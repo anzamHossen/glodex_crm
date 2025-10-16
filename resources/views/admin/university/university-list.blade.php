@@ -26,44 +26,55 @@
                 {{-- show entries --}}
                 <div class="row">
                     <div class="col-12 mb-3">
-                        <div class="glodex-show-entries ">
-
-                            <!-- Show entries dropdown -->
-                            <form class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                                <div class="d-flex align-items-center gap-2">
-                                    <label for="glodex-show-entries" class="form-label mb-0">Show</label>
-                                    <select name="glodex-show-entries" id="glodex-show-entries" class="form-select form-select-sm w-auto">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
+                        <div class="glodex-show-entries">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                <!-- Show entries form -->
+                                <form method="GET" action="{{ route('search_university_name') }}" class="d-flex align-items-center gap-2">
+                                    <label for="show-entries" class="form-label mb-0">Show</label>
+                                    <select name="per_page" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
+                                        <option value="8"  {{ request('per_page') == 8  ? 'selected' : '' }}>8</option>
+                                        <option value="24" {{ request('per_page') == 24 ? 'selected' : '' }}>24</option>
+                                        <option value="60" {{ request('per_page') == 60 ? 'selected' : '' }}>60</option>
+                                        <option value="120"{{ request('per_page') == 120 ? 'selected' : '' }}>120</option>
                                     </select>
                                     <span>entries</span>
-                                </div>
-                                <!-- Search form -->
-                                <div class="d-flex align-items-center align-items-end">
+
+                                    {{-- Keep search filters persistent when changing per_page --}}
+                                    @if (request()->has('search'))
+                                        <input type="hidden" name="search" value="{{ request('search') }}">
+                                    @endif
+                                    @if (request()->has('university_id'))
+                                        <input type="hidden" name="university_id" value="{{ request('university_id') }}">
+                                    @endif
+                                </form>
+
+                                <!-- Search + Filter form -->
+                                <form action="{{ route('search_university_name') }}" method="GET" class="d-flex align-items-center gap-2">
                                     <div class="glodex-show-entries-select">
-                                        <select class="form-control"  id="university_id" name="university_id" data-choices id="choices-single-default">
-                                            <option value="">Select University</option>
-                                            <option value="Oxford" > Oxford</option>
-                                            <option value="Harvard" >Harvard</option>
-                                            <option value="City"> City</option>
-                                            <option value="Oxford">Oxford</option>
+                                        <select class="form-control form-select-sm" id="university_id" name="university_id" data-choices>
+                                            <option value="">Select Country</option>
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}" {{ request('university_id') == $country->id ? 'selected' : '' }}>
+                                                    {{ $country->country_name }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="glodex-search-field d-flex align-items-center">
                                         <input
                                             type="search"
-                                            name="glodex-country-search"
+                                            name="search"
                                             id="glodex-country-search"
                                             class="form-control form-control-sm mb-0"
-                                            placeholder="Search"
-
+                                            placeholder="Search university..."
+                                            value="{{ request('search') }}"
                                         >
-                                        <button type="submit" class="btn btn-sm glodex-blue-btn"><i class="ti ti-search" style="font-size: 1.3rem;"></i></button>
+                                        <button type="submit" class="btn btn-sm glodex-blue-btn ms-2">
+                                            <i class="ti ti-search" style="font-size: 1.3rem;"></i>
+                                        </button>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -138,6 +149,21 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="pagination-container">
+                            {{ $universities->appends(request()->query())->links() }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p>
+                            Showing {{ $universities->count() }} records on page {{ $universities->currentPage() }} of {{ $universities->lastPage() }}
+                            (Total: {{ $universities->total() }} records)
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
