@@ -63,6 +63,9 @@ body {
     height: 100%;
     border-radius: 4px !important;
 }
+.glodex-show-entries-select {
+    width: 200px;
+}
 
 
 /*Start 3 dot dropdown */

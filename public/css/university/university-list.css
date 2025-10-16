@@ -11,8 +11,8 @@
     box-shadow: 0 8px 16px rgba(31, 38, 135, 0.6) !important;
 }
 .university-logo img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--light-color);
@@ -31,7 +31,7 @@
 
 .university-title {
     color: var(--white-color);
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     margin-bottom: 10px !important;
     text-align: center;
@@ -41,11 +41,6 @@
     color: var(--white-color);
     text-align: center;
 }
-
-
-
-
-
 
 .contact-item {
     display: flex;
@@ -100,4 +95,8 @@
 }
 
 
-
+@media (max-width: 767px) {
+.glodex-search-field input {
+    width: 200px;
+}
+}

@@ -100,6 +100,15 @@
                                 </div>
                                 <!-- Search form -->
                                 <div class="d-flex align-items-center align-items-end">
+                                    <div class="glodex-show-entries-select">
+                                        <select class="form-control"  id="university_id" name="university_id" data-choices id="choices-single-default">
+                                            <option value="">Select University</option>
+                                            <option value="Oxford" > Oxford</option>
+                                            <option value="Harvard" >Harvard</option>
+                                            <option value="City"> City</option>
+                                            <option value="Oxford">Oxford</option>
+                                        </select>
+                                    </div>
                                     <div class="glodex-search-field d-flex align-items-center">
                                         <input
                                             type="search"
@@ -116,72 +125,63 @@
                         </div>
                     </div>
                 </div>
-                {{-- university card --}}
-                <div class="row row-gap-3">
-                    <div class="col-12 col-sm-2 col-md-2 col-lg-4 col-xl-3">
-                        <div class="university-card border rounded-4 shadow-md h-full py-3 px-2 position-relative">
-                            <!-- Example single danger button -->
-                                <div class="btn-group glodex-custom-3dot-dropdown">
-                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ti ti-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                    </ul>
-                                </div>
-                            <div class="university-card-header pb-3 d-flex align-items-center gap-3">
-                                <div class="university-logo">
+
+                <div class="row g-2">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
+                            <!-- 3-dot Dropdown -->
+                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
+                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
+                                <div class="university-logo flex-shrink-0">
                                     <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
                                 </div>
-                                <div class="text-end">
-                                    <h1 class="university-title mb-0" >University Name</h1>
-                                    <p class="university-subtitle mb-0">United States • New York</p>
+                                <div class="text-end flex-grow-1">
+                                    <h5 class="university-title mb-0">University Name</h5>
+                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
                                 </div>
-
                             </div>
-
                             <div class="card-body-custom">
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-mail-filled"></i>
                                     </div>
                                     <p class="contact-text mb-0">info@university.edu</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-phone-filled"></i>
                                     </div>
                                     <p class="contact-text mb-0">+1234567890</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-world-www"></i>
                                     </div>
                                     <p class="contact-text mb-0">www.university.edu</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-map-pin-filled"></i>
                                     </div>
                                     <p class="contact-text mb-0">123 University St., City</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-currency-dollar"></i>
                                     </div>
-                                    <div>
                                     <span class="badge-commission">Commission</span>
-                                    </div>
                                 </div>
-
                                 <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
                                     <i class="ti ti-graduation-cap-filled me-2"></i>
                                     View Courses
@@ -189,70 +189,61 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-2 col-md-2 col-lg-4 col-xl-3">
-                        <div class="university-card border rounded-4 shadow-md h-full py-3 px-2 position-relative">
-                            <!-- Example single danger button -->
-                                <div class="btn-group glodex-custom-3dot-dropdown">
-                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ti ti-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                    </ul>
-                                </div>
-                            <div class="university-card-header pb-3 d-flex align-items-center gap-3">
-                                <div class="university-logo">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
+                            <!-- 3-dot Dropdown -->
+                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
+                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
+                                <div class="university-logo flex-shrink-0">
                                     <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
                                 </div>
-                                <div class="text-end">
-                                    <h1 class="university-title mb-0" >University Name</h1>
-                                    <p class="university-subtitle mb-0">United States • New York</p>
+                                <div class="text-end flex-grow-1">
+                                    <h5 class="university-title mb-0">University Name</h5>
+                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
                                 </div>
-
                             </div>
-
                             <div class="card-body-custom">
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-mail-filled"></i>
                                     </div>
                                     <p class="contact-text mb-0">info@university.edu</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-phone-filled"></i>
                                     </div>
                                     <p class="contact-text mb-0">+1234567890</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-world-www"></i>
                                     </div>
                                     <p class="contact-text mb-0">www.university.edu</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-map-pin-filled"></i>
                                     </div>
                                     <p class="contact-text mb-0">123 University St., City</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-currency-dollar"></i>
                                     </div>
-                                    <div>
                                     <span class="badge-commission">Commission</span>
-                                    </div>
                                 </div>
-
                                 <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
                                     <i class="ti ti-graduation-cap-filled me-2"></i>
                                     View Courses
@@ -260,70 +251,61 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-2 col-md-2 col-lg-4 col-xl-3">
-                        <div class="university-card border rounded-4 shadow-md h-full py-3 px-2 position-relative">
-                            <!-- Example single danger button -->
-                                <div class="btn-group glodex-custom-3dot-dropdown">
-                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="ti ti-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                    </ul>
-                                </div>
-                            <div class="university-card-header pb-3 d-flex align-items-center gap-3">
-                                <div class="university-logo">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
+                            <!-- 3-dot Dropdown -->
+                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
+                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
+                                <div class="university-logo flex-shrink-0">
                                     <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
                                 </div>
-                                <div class="text-end">
-                                    <h1 class="university-title mb-0" >University Name</h1>
-                                    <p class="university-subtitle mb-0">United States • New York</p>
+                                <div class="text-end flex-grow-1">
+                                    <h5 class="university-title mb-0">University Name</h5>
+                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
                                 </div>
-
                             </div>
-
                             <div class="card-body-custom">
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-mail-filled"></i>
                                     </div>
                                     <p class="contact-text mb-0">info@university.edu</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-phone-filled"></i>
                                     </div>
                                     <p class="contact-text mb-0">+1234567890</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-world-www"></i>
                                     </div>
                                     <p class="contact-text mb-0">www.university.edu</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-map-pin-filled"></i>
                                     </div>
                                     <p class="contact-text mb-0">123 University St., City</p>
                                 </div>
-
                                 <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon">
+                                    <div class="contact-icon me-2">
                                         <i class="ti ti-currency-dollar"></i>
                                     </div>
-                                    <div>
                                     <span class="badge-commission">Commission</span>
-                                    </div>
                                 </div>
-
                                 <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
                                     <i class="ti ti-graduation-cap-filled me-2"></i>
                                     View Courses
@@ -331,7 +313,133 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
+                            <!-- 3-dot Dropdown -->
+                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
+                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
+                                <div class="university-logo flex-shrink-0">
+                                    <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
+                                </div>
+                                <div class="text-end flex-grow-1">
+                                    <h5 class="university-title mb-0">University Name</h5>
+                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
+                                </div>
+                            </div>
+                            <div class="card-body-custom">
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-mail-filled"></i>
+                                    </div>
+                                    <p class="contact-text mb-0">info@university.edu</p>
+                                </div>
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-phone-filled"></i>
+                                    </div>
+                                    <p class="contact-text mb-0">+1234567890</p>
+                                </div>
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-world-www"></i>
+                                    </div>
+                                    <p class="contact-text mb-0">www.university.edu</p>
+                                </div>
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-map-pin-filled"></i>
+                                    </div>
+                                    <p class="contact-text mb-0">123 University St., City</p>
+                                </div>
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-currency-dollar"></i>
+                                    </div>
+                                    <span class="badge-commission">Commission</span>
+                                </div>
+                                <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
+                                    <i class="ti ti-graduation-cap-filled me-2"></i>
+                                    View Courses
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
+                            <!-- 3-dot Dropdown -->
+                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
+                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
+                                <div class="university-logo flex-shrink-0">
+                                    <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
+                                </div>
+                                <div class="text-end flex-grow-1">
+                                    <h5 class="university-title mb-0">University Name</h5>
+                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
+                                </div>
+                            </div>
+                            <div class="card-body-custom">
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-mail-filled"></i>
+                                    </div>
+                                    <p class="contact-text mb-0">info@university.edu</p>
+                                </div>
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-phone-filled"></i>
+                                    </div>
+                                    <p class="contact-text mb-0">+1234567890</p>
+                                </div>
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-world-www"></i>
+                                    </div>
+                                    <p class="contact-text mb-0">www.university.edu</p>
+                                </div>
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-map-pin-filled"></i>
+                                    </div>
+                                    <p class="contact-text mb-0">123 University St., City</p>
+                                </div>
+                                <div class="contact-item py-1 d-flex align-items-center">
+                                    <div class="contact-icon me-2">
+                                        <i class="ti ti-currency-dollar"></i>
+                                    </div>
+                                    <span class="badge-commission">Commission</span>
+                                </div>
+                                <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
+                                    <i class="ti ti-graduation-cap-filled me-2"></i>
+                                    View Courses
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         </div>
     </div>
