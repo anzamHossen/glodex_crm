@@ -135,11 +135,10 @@
                                     <i class="ti ti-dots-vertical"></i>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    <li><a class="dropdown-item" href="#">Courses</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('university_details', $university->id) }}">University Details</a></li>
+                                    <li><a class="dropdown-item" href="#">Edit</a></li>
+                                    <li><a class="dropdown-item" href="#">Delete</a></li>
                                 </ul>
                             </div>
                             <div class="university-card-header d-flex align-items-center gap-1 pb-3">

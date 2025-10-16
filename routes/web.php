@@ -50,6 +50,7 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::post('/save-new-university', 'saveUniversity')->name('save_new_university');
         Route::get('/edit-university/{id}', 'editUniversity')->name('edit_university');
         Route::post('/update-university/{id}', 'updateUniversity')->name('update_university');
+        Route::get('/university-details/{id}', 'universityDetails')->name('university_details');
         Route::delete('/delete-university/{id}',  'deleteUniversity')->name('delete_university');
     });
 

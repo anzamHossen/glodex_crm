@@ -100,6 +100,12 @@ class UniversityController extends Controller
         $university = University::findOrFail($id);
         return view('admin.university.edit-university', compact('countries','university'));
     }
+    // function to university details
+    public function universityDetails($id)
+    {
+        $universityDetails = University::findOrFail($id);
+        return view('admin.university.university-details', compact('universityDetails'));
+    }
 
     // function to update university
     public function updateUniversity(Request $request, $id )
