@@ -18,64 +18,6 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive-sm">
-                                <table id="dataTable" class="table table-bordered mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Action</th>
-                                            <th>Status</th>
-                                            <th>university Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($universities as  $university)
-                                            <tr>
-                                                <td>
-                                                    <div class="dropdown position-relative">
-                                                        <button
-                                                            type="button"
-                                                            class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            <i class="ti ti-dots-vertical ti-md"></i>
-                                                        </button>
-
-                                                        <div class="dropdown-menu">
-                                                            <a href="{{ route('edit_university', $university->id) }}" class="dropdown-item d-flex align-items-center gap-1" title="Login As">
-                                                                <i class="ti ti-edit ti-md"></i> <span>Edit</span>
-                                                            </a>
-                                                            <a href="javascript:void(0);"
-                                                            onclick="confirmDelete({{ $university->id }})"
-                                                            class="dropdown-item d-flex align-items-center gap-1"
-                                                            title="Delete">
-                                                                <i class="ti ti-trash ti-md"></i> <span>Delete</span>
-                                                            </a>
-                                                            <form id="delete-university-form-{{ $university->id }}" method="POST" style="display: none;">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    @if($university->status == 1)
-                                                        <span class="badge bg-primary badge bg-primary px-2 py-1 fs-11 me-2">Active</span>
-                                                    @else
-                                                        <span class="badge bg-success badge bg-primary px-2 py-1 fs-11 me-2">Inactive</span>
-                                                    @endif
-                                                </td>
-                                                <td>{{ $university->university_name ?? 'Not Added' }}</td>
-                                                <td>{{ $university->admission_email ?? 'Not Added' }}</td>
-                                                <td>{{ $university->admission_phone ?? 'Not Added' }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div> <!-- end table-responsive-->
-                        </div>
                     </div>
                 </div>
             </div>
@@ -84,361 +26,145 @@
                 {{-- show entries --}}
                 <div class="row">
                     <div class="col-12 mb-3">
-                        <div class="glodex-show-entries ">
-
-                            <!-- Show entries dropdown -->
-                            <form class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                                <div class="d-flex align-items-center gap-2">
-                                    <label for="glodex-show-entries" class="form-label mb-0">Show</label>
-                                    <select name="glodex-show-entries" id="glodex-show-entries" class="form-select form-select-sm w-auto">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
+                        <div class="glodex-show-entries">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                <!-- Show entries form -->
+                                <form method="GET" action="{{ route('search_university_name') }}" class="d-flex align-items-center gap-2">
+                                    <label for="show-entries" class="form-label mb-0">Show</label>
+                                    <select name="per_page" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
+                                        <option value="8"  {{ request('per_page') == 8  ? 'selected' : '' }}>8</option>
+                                        <option value="24" {{ request('per_page') == 24 ? 'selected' : '' }}>24</option>
+                                        <option value="60" {{ request('per_page') == 60 ? 'selected' : '' }}>60</option>
+                                        <option value="120"{{ request('per_page') == 120 ? 'selected' : '' }}>120</option>
                                     </select>
                                     <span>entries</span>
-                                </div>
-                                <!-- Search form -->
-                                <div class="d-flex align-items-center align-items-end">
+
+                                    {{-- Keep search filters persistent when changing per_page --}}
+                                    @if (request()->has('search'))
+                                        <input type="hidden" name="search" value="{{ request('search') }}">
+                                    @endif
+                                    @if (request()->has('university_id'))
+                                        <input type="hidden" name="university_id" value="{{ request('university_id') }}">
+                                    @endif
+                                </form>
+
+                                <!-- Search + Filter form -->
+                                <form action="{{ route('search_university_name') }}" method="GET" class="d-flex align-items-center gap-2">
                                     <div class="glodex-show-entries-select">
-                                        <select class="form-control"  id="university_id" name="university_id" data-choices id="choices-single-default">
-                                            <option value="">Select University</option>
-                                            <option value="Oxford" > Oxford</option>
-                                            <option value="Harvard" >Harvard</option>
-                                            <option value="City"> City</option>
-                                            <option value="Oxford">Oxford</option>
+                                        <select class="form-control form-select-sm" id="university_id" name="university_id" data-choices>
+                                            <option value="">Select Country</option>
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}" {{ request('university_id') == $country->id ? 'selected' : '' }}>
+                                                    {{ $country->country_name }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="glodex-search-field d-flex align-items-center">
                                         <input
                                             type="search"
-                                            name="glodex-country-search"
+                                            name="search"
                                             id="glodex-country-search"
                                             class="form-control form-control-sm mb-0"
-                                            placeholder="Search"
-
+                                            placeholder="Search university..."
+                                            value="{{ request('search') }}"
                                         >
-                                        <button type="submit" class="btn btn-sm glodex-blue-btn"><i class="ti ti-search" style="font-size: 1.3rem;"></i></button>
+                                        <button type="submit" class="btn btn-sm glodex-blue-btn ms-2">
+                                            <i class="ti ti-search" style="font-size: 1.3rem;"></i>
+                                        </button>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row g-2">
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
-                            <!-- 3-dot Dropdown -->
-                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
-                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Courses</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('university_details', $university->id) }}">University Details</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
-                                <div class="university-logo flex-shrink-0">
-                                    <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
+                    @foreach($universities as  $university)
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                            <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
+                                <!-- 3-dot Dropdown -->
+                                <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
+                                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Courses</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('university_details', $university->id) }}">University Details</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('edit_university', $university->id) }}">Edit</a></li>
+                                        <li>
+                                            <a class="dropdown-item"  href="#" onclick="confirmDelete({{ $university->id }})">Delete</a>
+                                            <form id="delete-university-form-{{ $university->id }}" method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="text-end flex-grow-1">
-                                    <h5 class="university-title mb-0">University Name</h5>
-                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
-                                </div>
-                            </div>
-                            <div class="card-body-custom">
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-mail-filled"></i>
+                                <div class="university-card-header d-flex align-items-center gap-1 pb-3">
+                                    <div class="university-logo flex-shrink-0">
+                                        <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
                                     </div>
-                                    <p class="contact-text mb-0">info@university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-phone-filled"></i>
+                                    <div class="text-end flex-grow-1">
+                                        <h5 class="university-title mb-0">{{ $university->university_name }}</h5>
+                                        <p class="university-subtitle mb-0 text-muted">{{ $university->country->country_name ?? 'Not added' }} • {{ $university->university_city ?? 'Not added' }}</p>
                                     </div>
-                                    <p class="contact-text mb-0">+1234567890</p>
                                 </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-world-www"></i>
+                                <div class="card-body-custom">
+                                    <div class="contact-item py-1 d-flex align-items-center">
+                                        <div class="contact-icon me-2">
+                                            <i class="ti ti-mail-filled"></i>
+                                        </div>
+                                        <p class="contact-text mb-0">{{ $university->admission_email ?? 'Not added' }}</p>
                                     </div>
-                                    <p class="contact-text mb-0">www.university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-map-pin-filled"></i>
+                                    <div class="contact-item py-1 d-flex align-items-center">
+                                        <div class="contact-icon me-2">
+                                            <i class="ti ti-phone-filled"></i>
+                                        </div>
+                                        <p class="contact-text mb-0">{{ $university->admission_phone ?? 'Not added' }}</p>
                                     </div>
-                                    <p class="contact-text mb-0">123 University St., City</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-currency-dollar"></i>
+                                    <div class="contact-item py-1 d-flex align-items-center">
+                                        <div class="contact-icon me-2">
+                                            <i class="ti ti-world-www"></i>
+                                        </div>
+                                        <p class="contact-text mb-0">{{ $university->website_link ?? 'Not added'}}</p>
                                     </div>
-                                    <span class="badge-commission">Commission</span>
-                                </div>
-                                <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
-                                    <i class="ti ti-graduation-cap-filled me-2"></i>
-                                    View Courses
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
-                            <!-- 3-dot Dropdown -->
-                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
-                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
-                                <div class="university-logo flex-shrink-0">
-                                    <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
-                                </div>
-                                <div class="text-end flex-grow-1">
-                                    <h5 class="university-title mb-0">University Name</h5>
-                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
-                                </div>
-                            </div>
-                            <div class="card-body-custom">
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-mail-filled"></i>
+                                    <div class="contact-item py-1 d-flex align-items-center">
+                                        <div class="contact-icon me-2">
+                                            <i class="ti ti-map-pin-filled"></i>
+                                        </div>
+                                        <p class="contact-text mb-0">{{ $university->address ?? 'Not added'}}</p>
                                     </div>
-                                    <p class="contact-text mb-0">info@university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-phone-filled"></i>
+                                    <div class="contact-item py-1 d-flex align-items-center">
+                                        <div class="contact-icon me-2">
+                                            <i class="ti ti-currency-dollar"></i>
+                                        </div>
+                                        <span class="badge-commission">Commission {{ $university->commission_for_us ?? 'Not added'}}</span>
                                     </div>
-                                    <p class="contact-text mb-0">+1234567890</p>
+                                    <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
+                                        <i class="ti ti-graduation-cap-filled me-2"></i>
+                                        View Courses
+                                    </button>
                                 </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-world-www"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">www.university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-map-pin-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">123 University St., City</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-currency-dollar"></i>
-                                    </div>
-                                    <span class="badge-commission">Commission</span>
-                                </div>
-                                <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
-                                    <i class="ti ti-graduation-cap-filled me-2"></i>
-                                    View Courses
-                                </button>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
-                            <!-- 3-dot Dropdown -->
-                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
-                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
-                                <div class="university-logo flex-shrink-0">
-                                    <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
-                                </div>
-                                <div class="text-end flex-grow-1">
-                                    <h5 class="university-title mb-0">University Name</h5>
-                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
-                                </div>
-                            </div>
-                            <div class="card-body-custom">
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-mail-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">info@university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-phone-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">+1234567890</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-world-www"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">www.university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-map-pin-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">123 University St., City</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-currency-dollar"></i>
-                                    </div>
-                                    <span class="badge-commission">Commission</span>
-                                </div>
-                                <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
-                                    <i class="ti ti-graduation-cap-filled me-2"></i>
-                                    View Courses
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
-                            <!-- 3-dot Dropdown -->
-                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
-                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
-                                <div class="university-logo flex-shrink-0">
-                                    <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
-                                </div>
-                                <div class="text-end flex-grow-1">
-                                    <h5 class="university-title mb-0">University Name</h5>
-                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
-                                </div>
-                            </div>
-                            <div class="card-body-custom">
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-mail-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">info@university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-phone-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">+1234567890</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-world-www"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">www.university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-map-pin-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">123 University St., City</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-currency-dollar"></i>
-                                    </div>
-                                    <span class="badge-commission">Commission</span>
-                                </div>
-                                <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
-                                    <i class="ti ti-graduation-cap-filled me-2"></i>
-                                    View Courses
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
-                        <div class="university-card border rounded-4 shadow-md py-3 px-2 position-relative h-100">
-                            <!-- 3-dot Dropdown -->
-                            <div class="btn-group glodex-custom-3dot-dropdown position-absolute top-0 end-0 m-2">
-                                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
-                                <div class="university-logo flex-shrink-0">
-                                    <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
-                                </div>
-                                <div class="text-end flex-grow-1">
-                                    <h5 class="university-title mb-0">University Name</h5>
-                                    <p class="university-subtitle mb-0 text-muted">United States • New York</p>
-                                </div>
-                            </div>
-                            <div class="card-body-custom">
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-mail-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">info@university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-phone-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">+1234567890</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-world-www"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">www.university.edu</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-map-pin-filled"></i>
-                                    </div>
-                                    <p class="contact-text mb-0">123 University St., City</p>
-                                </div>
-                                <div class="contact-item py-1 d-flex align-items-center">
-                                    <div class="contact-icon me-2">
-                                        <i class="ti ti-currency-dollar"></i>
-                                    </div>
-                                    <span class="badge-commission">Commission</span>
-                                </div>
-                                <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
-                                    <i class="ti ti-graduation-cap-filled me-2"></i>
-                                    View Courses
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
-
+                <div class="row mt-4">
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="pagination-container">
+                            {{ $universities->appends(request()->query())->links() }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p>
+                            Showing {{ $universities->count() }} records on page {{ $universities->currentPage() }} of {{ $universities->lastPage() }}
+                            (Total: {{ $universities->total() }} records)
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

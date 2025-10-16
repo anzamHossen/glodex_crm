@@ -23,9 +23,37 @@ class UniversityController extends Controller
    
     public function universityList()
     {
-        $universities = University::all();
-        return view('admin.university.university-list', compact('universities'));
+        $universities = University::with('country')->orderBy('id','desc')->paginate(8);
+        $countries    = Country::where('status', 1)->get();
+        return view('admin.university.university-list', compact('universities','countries'));
     }
+
+    
+    // Function to search university by name and country
+    public function searchUniversityName(Request $request)
+    {
+        $query = University::with('country')->orderBy('id', 'desc');
+
+        // Search by university name
+        if ($request->filled('search')) {
+            $searchTerm = $request->input('search');
+            $query->where('university_name', 'LIKE', '%' . $searchTerm . '%');
+        }
+
+        if ($request->filled('university_id')) {
+            $countryId = $request->input('university_id');
+            $query->where('country_id', $countryId);
+        }
+
+        // Pagination
+        $perPage = $request->input('per_page', 8);
+        $universities = $query->paginate($perPage)->appends($request->all());
+
+        $countries = Country::where('status', 1)->get();
+
+        return view('admin.university.university-list', compact('universities', 'countries'));
+    }
+
 
     // function to add university
     public function addUniversity()
