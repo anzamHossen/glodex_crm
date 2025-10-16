@@ -143,23 +143,23 @@
                                 <!-- Universities -->
                                 <section class="py-4 country-details-universities-list">
                                     <div class="container">
-                                        <div class="text-center mb-5">
+                                        <div class="text-center pb-3">
                                             <h2 class="h2 fw-bold text-white mb-3">Top Universities</h2>
                                             <p class="text-white opacity-75">Explore the leading institutions offering world-class education</p>
                                         </div>
 
-                                        <div class="row g-4">
+                                        <div class="row g-3">
                                             @forelse ($randomUniversities as $university)
                                                 <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                                                    <div class="card border-0 shadow-sm h-100 university-card p-2">
+                                                    <div class="card border-0 shadow-sm university-card px-2 py-3">
                                                         <div class="card-img-top position-relative">
                                                             <img
                                                                 src="{{ $university->logo && file_exists(public_path($university->logo)) ? asset($university->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                                 alt="{{ $university->university_name }}"
                                                                 class=" img-fluid rounded-top-4">
                                                         </div>
-                                                        <div class="card-body p-2 mt-2 text-center">
-                                                            <h4 class="text-white h-4 fw-bold mb-3">{{ $university->university_name }}</h4>
+                                                        <div class="card-body mt-3 text-center p-0">
+                                                            <h4 class="text-white h-4 fw-bold mb-2">{{ $university->university_name }}</h4>
                                                             <a href="#"
                                                             class="btn btn-sm btn-gradient w-100">
                                                                 View Details
@@ -175,7 +175,7 @@
                                 </section>
 
                                 <!-- Back Button -->
-                                <section class="py-4 text-center">
+                                <section class="pb-4 text-center">
                                     <div class="container">
                                         <a href="#" class="btn btn-gradient btn-lg text-white border-0 d-inline-flex align-items-center gap-2"
                                             >
