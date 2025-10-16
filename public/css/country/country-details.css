@@ -5,6 +5,7 @@
 .country-details-stats-section .card {
     background-color: var(--blue-color);
     border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(94, 171, 214, 0.5) !important;
 }
 .country-details-stats-icon {
     width:80px;

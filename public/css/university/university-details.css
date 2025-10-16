@@ -11,6 +11,7 @@ info-section {
     padding: 25px;
     margin-bottom: 20px;
     border-left: 4px solid var(--light-color);
+    box-shadow: 0 4px 8px rgba(94, 171, 214, 0.5) !important;
 }
 
 .info-label {
@@ -26,25 +27,12 @@ info-section {
     font-size: 18px;
 }
 
-/* .university-logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #00bcd4;
-    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
-    object-fit: cover;
-    margin: 0 auto 30px;
-    display: block;
-} */
-
-
-
 
 .description-box {
     background: var(--blue-color);
     border-radius: 15px;
     padding: 30px;
-    line-height: 1.8;
+    box-shadow: 0 4px 8px rgba(94, 171, 214, 0.5) !important;
 }
 
 .section-title {
