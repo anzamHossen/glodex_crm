@@ -1,0 +1,186 @@
+.program-card {
+    background: var(--white-color);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    max-width: 450px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+.card-header-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--blue-color) 100%);
+    padding: 35px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 15s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.program-title {
+    color: var(--white-color);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+}
+
+.university-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.university-details h3 {
+    color: var(--light-color);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.university-details p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.university-logo {
+    width: 90px;
+    height: 90px;
+    background: var(--white-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.university-logo img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.card-body-section {
+    padding: 30px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.info-item {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateX(5px);
+    border-left-color: var(--light-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.info-item.highlight {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--blue-color) 100%);
+    border-left-color: var(--light-color);
+}
+
+.info-item.highlight .info-label {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.info-item.highlight .info-value {
+    color: var(--white-color);
+}
+
+.info-label {
+    font-size: 12px;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.info-value {
+    font-size: 20px;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.info-value.price {
+    color: #28a745;
+    font-size: 24px;
+}
+
+.info-item.highlight .info-value.price {
+    color: #4ade80;
+}
+
+@media (max-width: 576px) {
+    .program-title {
+        font-size: 24px;
+    }
+
+    .university-details h3 {
+        font-size: 18px;
+    }
+
+    .university-logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .university-logo img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card-body-section {
+        padding: 20px;
+    }
+
+    .card-header-section {
+        padding: 25px 20px;
+    }
+}

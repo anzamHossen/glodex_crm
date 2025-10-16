@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('page-css')
+    <link rel="stylesheet" href="{{ asset('css/course/course-list.css') }}">
+@endpush
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">
@@ -9,7 +12,7 @@
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">Courses</h4>
                             <div class="d-flex">
-                                <a href="{{ route('add_new_course') }}" class="btn btn-sm btn-primary">
+                                <a href="{{ route('add_new_course') }}" class="btn btn-sm btn-gradient">
                                     <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Add New
                                 </a>
@@ -41,9 +44,9 @@
                                                             <a href="{{ route('edit_course', $course->id) }}" class="dropdown-item d-flex align-items-center gap-1" title="Login As">
                                                                 <i class="ti ti-edit ti-md"></i> <span>Edit</span>
                                                             </a>
-                                                            <a href="javascript:void(0);" 
-                                                            onclick="confirmDelete({{ $course->id }})" 
-                                                            class="dropdown-item d-flex align-items-center gap-1" 
+                                                            <a href="javascript:void(0);"
+                                                            onclick="confirmDelete({{ $course->id }})"
+                                                            class="dropdown-item d-flex align-items-center gap-1"
                                                             title="Delete">
                                                                 <i class="ti ti-trash ti-md"></i> <span>Delete</span>
                                                             </a>
@@ -60,11 +63,73 @@
                                     </tbody>
                                 </table>
                             </div> <!-- end table-responsive-->
+
+
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div> 
+
+            <div class="row py-4">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                    <div class="program-card">
+                        <div class="card-header-section">
+                            <h1 class="program-title">Master of Business Administration</h1>
+                            <div class="university-info">
+                                <div class="university-details">
+                                    <h3>Stanford University</h3>
+                                    <p><i class="bi bi-geo-alt-fill"></i> United States</p>
+                                </div>
+                                <div class="university-logo">
+                                    <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" alt="Stanford University Logo">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body-section">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <div class="info-label">
+                                        <i class="bi bi-mortarboard-fill"></i> Program Level
+                                    </div>
+                                    <div class="info-value">Master's</div>
+                                </div>
+
+                                <div class="info-item">
+                                    <div class="info-label">
+                                        <i class="bi bi-calendar-check"></i> Intake Month
+                                    </div>
+                                    <div class="info-value">September</div>
+                                </div>
+
+                                <div class="info-item highlight">
+                                    <div class="info-label">
+                                        <i class="bi bi-cash-coin"></i> Application Fees
+                                    </div>
+                                    <div class="info-value price">$275</div>
+                                </div>
+
+                                <div class="info-item highlight">
+                                    <div class="info-label">
+                                        <i class="bi bi-currency-dollar"></i> Tuition Fees/Year
+                                    </div>
+                                    <div class="info-value price">$82,000</div>
+                                </div>
+
+                                <div class="info-item">
+                                    <div class="info-label">
+                                        <i class="bi bi-clock-history"></i> Program Length
+                                    </div>
+                                    <div class="info-value">2 Years</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
     <!-- END wrapper -->
 @endsection
