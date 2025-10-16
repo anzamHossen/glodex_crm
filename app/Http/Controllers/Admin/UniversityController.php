@@ -23,7 +23,7 @@ class UniversityController extends Controller
    
     public function universityList()
     {
-        $universities = University::all();
+        $universities = University::with('country')->orderBy('id','desc')->paginate(8);
         return view('admin.university.university-list', compact('universities'));
     }
 
