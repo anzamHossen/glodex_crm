@@ -86,12 +86,18 @@ class StudentInfoController extends Controller
             $englishTests = [];
             foreach ($request->english_tests as $test) {
                 $englishTests[] = [
-                    'type'    => $test['type'] ?? null,
-                    'overall' => $test['overall'] ?? null,
+                    'type'      => $test['type'] ?? null,
+                    'listening' => $test['listening'] ?? null,
+                    'reading'   => $test['reading'] ?? null,
+                    'writing'   => $test['writing'] ?? null,
+                    'speaking'  => $test['speaking'] ?? null,
+                    'overall'   => $test['overall'] ?? null,
                 ];
             }
+
             $studentInfo->english_proficiency = json_encode($englishTests);
         }
+
 
         // Save Academic Qualifications
         if ($request->has('academic_qualifications')) {
@@ -178,10 +184,15 @@ class StudentInfoController extends Controller
             $englishTests = [];
             foreach ($request->english_tests as $test) {
                 $englishTests[] = [
-                    'type'    => $test['type'] ?? null,
-                    'overall' => $test['overall'] ?? null,
+                    'type'      => $test['type'] ?? null,
+                    'listening' => $test['listening'] ?? null,
+                    'reading'   => $test['reading'] ?? null,
+                    'writing'   => $test['writing'] ?? null,
+                    'speaking'  => $test['speaking'] ?? null,
+                    'overall'   => $test['overall'] ?? null,
                 ];
             }
+
             $studentInfo->english_proficiency = json_encode($englishTests);
         }
 

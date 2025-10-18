@@ -97,11 +97,11 @@
                                             <option value="2" {{ old('moi', $student->moi ?? '') == 2 ? 'selected' : '' }}>Not Avaiable</option>
                                         </select>
                                     </div>
-                                    <div id="englishTestsContainer">
+                                   <div id="englishTestsContainer">
                                         @if(!empty($englishTests))
                                             @foreach($englishTests as $index => $test)
                                                 <div class="row english-test-row align-items-end mb-3">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-3">
                                                         <label class="form-label">English Proficiency</label>
                                                         <select class="form-control" name="english_tests[{{ $index }}][type]" required>
                                                             <option value="">--Select Proficiency--</option>
@@ -112,13 +112,48 @@
                                                             <option value="OIETC" {{ $test['type'] == 'OIETC' ? 'selected' : '' }}>OIETC</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4">
+
+                                                    <div class="col-md-1">
+                                                        <label class="form-label">Listening</label>
+                                                        <input type="text" class="form-control" 
+                                                            name="english_tests[{{ $index }}][listening]" 
+                                                            placeholder="Listening"
+                                                            value="{{ $test['listening'] ?? '' }}" required>
+                                                    </div>
+
+                                                    <div class="col-md-1">
+                                                        <label class="form-label">Reading</label>
+                                                        <input type="text" class="form-control" 
+                                                            name="english_tests[{{ $index }}][reading]" 
+                                                            placeholder="Reading"
+                                                            value="{{ $test['reading'] ?? '' }}" required>
+                                                    </div>
+
+                                                    <div class="col-md-1">
+                                                        <label class="form-label">Writing</label>
+                                                        <input type="text" class="form-control" 
+                                                            name="english_tests[{{ $index }}][writing]" 
+                                                            placeholder="Writing"
+                                                            value="{{ $test['writing'] ?? '' }}" required>
+                                                    </div>
+
+                                                    <div class="col-md-1">
+                                                        <label class="form-label">Speaking</label>
+                                                        <input type="text" class="form-control" 
+                                                            name="english_tests[{{ $index }}][speaking]" 
+                                                            placeholder="Speaking"
+                                                            value="{{ $test['speaking'] ?? '' }}" required>
+                                                    </div>
+
+                                                    <div class="col-md-1">
                                                         <label class="form-label">Overall</label>
-                                                        <input type="text" class="form-control" name="english_tests[{{ $index }}][overall]"
-                                                            placeholder="Enter overall score"
+                                                        <input type="text" class="form-control" 
+                                                            name="english_tests[{{ $index }}][overall]" 
+                                                            placeholder="Overall"
                                                             value="{{ $test['overall'] ?? '' }}" required>
                                                     </div>
-                                                    <div class="col-md-2">
+
+                                                    <div class="col-md-1 mt-4">
                                                         @if($loop->first)
                                                             <button type="button" class="btn btn-success add-row">+</button>
                                                         @else
@@ -130,7 +165,7 @@
                                         @else
                                             <!-- Default empty row when no data -->
                                             <div class="row english-test-row align-items-end mb-3">
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <label class="form-label">English Proficiency</label>
                                                     <select class="form-control" name="english_tests[0][type]" required>
                                                         <option value="">--Select Proficiency--</option>
@@ -141,11 +176,33 @@
                                                         <option value="OIETC">OIETC</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label class="form-label">Overall</label>
-                                                    <input type="text" class="form-control" name="english_tests[0][overall]" placeholder="Enter overall score" required>
+
+                                                <div class="col-md-1">
+                                                    <label class="form-label">Listening</label>
+                                                    <input type="text" class="form-control" name="english_tests[0][listening]" placeholder="Listening" required>
                                                 </div>
-                                                <div class="col-md-2">
+
+                                                <div class="col-md-1">
+                                                    <label class="form-label">Reading</label>
+                                                    <input type="text" class="form-control" name="english_tests[0][reading]" placeholder="Reading" required>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <label class="form-label">Writing</label>
+                                                    <input type="text" class="form-control" name="english_tests[0][writing]" placeholder="Writing" required>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <label class="form-label">Speaking</label>
+                                                    <input type="text" class="form-control" name="english_tests[0][speaking]" placeholder="Speaking" required>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <label class="form-label">Overall</label>
+                                                    <input type="text" class="form-control" name="english_tests[0][overall]" placeholder="Overall" required>
+                                                </div>
+
+                                                <div class="col-md-1 mt-4">
                                                     <button type="button" class="btn btn-success add-row">+</button>
                                                 </div>
                                             </div>

@@ -99,7 +99,7 @@
                                     </div>
                                     <div id="englishTestsContainer">
                                         <div class="row english-test-row align-items-end mb-3">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <label class="form-label">English Proficiency</label>
                                                 <select class="form-control" name="english_tests[0][type]" required>
                                                     <option value="">--Select Proficiency--</option>
@@ -110,12 +110,34 @@
                                                     <option value="OIETC">OIETC</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-4">
-                                                <label class="form-label">Overall</label>
-                                                <input type="text" class="form-control" name="english_tests[0][overall]" placeholder="Enter overall score" required>
+
+                                            <div class="col-md-1">
+                                                <label class="form-label">Listening</label>
+                                                <input type="text" class="form-control" name="english_tests[0][listening]" placeholder="Listening" required>
                                             </div>
-                                            <div class="col-md-2">
-                                                <button type="button" class="btn btn-success add-row">+</button>
+
+                                            <div class="col-md-1">
+                                                <label class="form-label">Reading</label>
+                                                <input type="text" class="form-control" name="english_tests[0][reading]" placeholder="Reading" required>
+                                            </div>
+
+                                            <div class="col-md-1">
+                                                <label class="form-label">Writing</label>
+                                                <input type="text" class="form-control" name="english_tests[0][writing]" placeholder="Writing" required>
+                                            </div>
+
+                                            <div class="col-md-1">
+                                                <label class="form-label">Speaking</label>
+                                                <input type="text" class="form-control" name="english_tests[0][speaking]" placeholder="Speaking" required>
+                                            </div>
+
+                                            <div class="col-md-1">
+                                                <label class="form-label">Overall</label>
+                                                <input type="text" class="form-control" name="english_tests[0][overall]" placeholder="Overall" required>
+                                            </div>
+
+                                            <div class="col-md-1">
+                                                <button type="button" class="btn btn-success add-row mt-4">+</button>
                                             </div>
                                         </div>
                                     </div>
