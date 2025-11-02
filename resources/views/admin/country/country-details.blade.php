@@ -53,69 +53,69 @@
                                     </div>
                                 </section>
                                 <!-- Stats Section -->
-                                <section class="py-4">
+                                <section class="py-3">
                                     <div class="container">
-                                        <div class="row g-2 text-center country-details-stats-section">
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                        <div class="row justify-center text-center country-details-stats-section">
+                                            <div class="col-md-6 col-lg-4 col-xl-3 col-sm-6 col-xxl">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-body px-2 py-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-2 country-details-stats-icon"
                                                             >
                                                             <i class="ti ti-school text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $totalUniversities ?? 0 }}+</h3>
+                                                        <h3 class="h3 fw-bold text-white mb-2">{{ $totalUniversities ?? 0 }}+</h3>
                                                         <p class="text-white opacity-75 mb-0">Total Universities</p>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                            <div class="col-md-6 col-lg-4 col-xl-3 col-sm-6 col-xxl">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-body px-2 py-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-2 country-details-stats-icon"
                                                             >
                                                             <i class="ti ti-book-2 text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $totalCourses ?? 0 }}+</h3>
+                                                        <h3 class="h3 fw-bold text-white mb-2">{{ $totalCourses ?? 0 }}+</h3>
                                                         <p class="text-white opacity-75 mb-0">Total Courses</p>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                            <div class="col-md-6 col-lg-4 col-xl-3 col-sm-6 col-xxl">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-body px-2 py-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-2 country-details-stats-icon"
                                                             >
                                                             <i class="ti ti-users text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_population ?? 0 }}</h3>
+                                                        <h3 class="h3 fw-bold text-white mb-2">{{ $country->country_population ?? 0 }}</h3>
                                                         <p class="text-white opacity-75 mb-0">Population</p>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                            <div class="col-md-6 col-lg-4 col-xl-3 col-sm-6 col-xxl">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-body px-2 py-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-2 country-details-stats-icon"
                                                             >
                                                             <i class="ti ti-map-pin text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_capital ?? 0 }}</h3>
+                                                        <h3 class="h3 fw-bold text-white mb-2">{{ $country->country_capital ?? 0 }}</h3>
                                                         <p class="text-white opacity-75 mb-0">Capital</p>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
+                                            <div class="col-md-6 col-lg-4 col-xl-3 col-sm-6 col-xxl">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-body px-2 py-3">
+                                                        <div class="d-inline-flex align-items-center justify-content-center mb-2 country-details-stats-icon"
                                                             >
                                                             <i class="ti ti-trending-up text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_gdp ?? 0 }}</h3>
+                                                        <h3 class="h3 fw-bold text-white mb-2">{{ $country->country_gdp ?? 0 }}</h3>
                                                         <p class="text-white opacity-75 mb-0">GDP</p>
                                                     </div>
                                                 </div>
@@ -161,7 +161,7 @@
                                                         <div class="card-body mt-3 text-center p-0">
                                                             <h4 class="text-white h-4 fw-bold mb-2">{{ $university->university_name }}</h4>
                                                             <a href="#"
-                                                            class="btn btn-sm btn-gradient w-100">
+                                                            class="btn btn-sm btn-gradient">
                                                                 View Details
                                                             </a>
                                                         </div>
