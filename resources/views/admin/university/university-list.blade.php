@@ -97,13 +97,13 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="university-card-header d-flex align-items-center gap-1 pb-3">
+                                            <div class="university-card-header d-flex align-items-center gap-2 pb-3">
                                                 <div class="university-logo flex-shrink-0">
                                                     <img src="{{ $university->logo && file_exists(public_path($university->logo)) ? asset($university->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" alt="Logo" class="img-fluid">
                                                 </div>
-                                                <div class="text-end flex-grow-1">
-                                                    <h5 class="university-title mb-0">{{ $university->university_name }}</h5>
-                                                    <p class="university-subtitle mb-0 text-muted">{{ $university->country->country_name ?? 'Not added' }} • {{ $university->university_city ?? 'Not added' }}</p>
+                                                <div class="flex-grow-1 text-left">
+                                                    <h5 class="university-title mb-0 text-left">{{ $university->university_name }}</h5>
+                                                    <p class="university-subtitle mb-0 text-left text-muted">{{ $university->country->country_name ?? 'Not added' }} • {{ $university->university_city ?? 'Not added' }}</p>
                                                 </div>
                                             </div>
                                             <div class="card-body-custom">
@@ -137,10 +137,13 @@
                                                     </div>
                                                     <span class="badge-commission">Commission {{ $university->commission_for_us ?? 'Not added'}}</span>
                                                 </div>
-                                                <button class="btn btn-sm py-2 btn-gradient w-100 mt-3">
-                                                    <i class="ti ti-graduation-cap-filled me-2"></i>
-                                                    View Courses
-                                                </button>
+                                                <div class="d-flex justify-content-center">
+                                                    <button class="btn btn-sm py-2 btn-gradient mt-3">
+                                                        <i class="ti ti-graduation-cap-filled me-2"></i>
+                                                        View Courses
+                                                    </button>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>

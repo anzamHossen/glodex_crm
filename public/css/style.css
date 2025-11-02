@@ -50,7 +50,7 @@ body {
 }
 .glodex-search-field input {
     width: 300px;
-    padding: 8px 50px 8px 15px;
+    padding: 9px 50px 9px 15px;
 }
 .glodex-search-field button {
     position: absolute;
@@ -81,7 +81,11 @@ body {
     border-bottom-right-radius: 8px !important;
     border-left: 0 !important;
 }
-
+.university-filter-form .glodex-show-entries-select .choices__inner {
+    border-radius: 0 !important;
+    border-top-left-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+}
 
 /*Start 3 dot dropdown */
 .glodex-custom-3dot-dropdown {

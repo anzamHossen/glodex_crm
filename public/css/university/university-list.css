@@ -31,15 +31,13 @@
 
 .university-title {
     color: var(--white-color);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     margin-bottom: 10px !important;
-    text-align: center;
     letter-spacing: 0.4px;
 }
 .university-subtitle {
     color: var(--white-color);
-    text-align: center;
 }
 
 .contact-item {
