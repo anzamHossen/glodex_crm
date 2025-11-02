@@ -100,7 +100,7 @@ body {
     background: var(--light-color);
     box-shadow: 0 4px 6px rgba(255, 255, 255, 0.6);
     color: var(--white-color);
-    z-index: 1;
+    z-index: 100;
 }
 .glodex-custom-3dot-dropdown button {
     border: none;
