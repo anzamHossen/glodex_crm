@@ -99,7 +99,7 @@
                                             </div>
                                             <div class="university-card-header d-flex align-items-center gap-1 pb-3">
                                                 <div class="university-logo flex-shrink-0">
-                                                    <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Logo" class="img-fluid">
+                                                    <img src="{{ $university->logo && file_exists(public_path($university->logo)) ? asset($university->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" alt="Logo" class="img-fluid">
                                                 </div>
                                                 <div class="text-end flex-grow-1">
                                                     <h5 class="university-title mb-0">{{ $university->university_name }}</h5>

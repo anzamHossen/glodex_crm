@@ -100,13 +100,13 @@ class UniversityController extends Controller
 
         if ($request->hasFile('logo')) {
         $file = $request->file('logo');
-        $filePath = $this->imageHandler->countryFlag($file);
+        $filePath = $this->imageHandler->universityLogo($file);
         $university->logo = $filePath;
       }
 
       if ($request->hasFile('cover_image')) {
           $file = $request->file('cover_image');
-          $filePath = $this->imageHandler->countryCoverPhoto($file);
+          $filePath = $this->imageHandler->universityCoverImage($file);
           $university->cover_image = $filePath;
         }
 
@@ -131,7 +131,7 @@ class UniversityController extends Controller
     // function to university details
     public function universityDetails($id)
     {
-        $universityDetails = University::findOrFail($id);
+        $universityDetails = University::with('country')->findOrFail($id);
         return view('admin.university.university-details', compact('universityDetails'));
     }
 

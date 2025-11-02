@@ -30,14 +30,13 @@
                                                 <div class="country-details-cover-photo border-0 shadow-sm position-relative">
                                                     <img
                                                         class="img-fluid"
-                                                        src="{{asset('back-end/assets/images/sellers/s-1.svg') }}"
+                                                        src="{{ $universityDetails->cover_image && file_exists(public_path($universityDetails->cover_image)) ? asset($universityDetails->cover_image) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                         alt="cover photo">
                                                         <div class="country-details-top-info">
                                                             <div class="text-white country-details-top-info-inner">
-                                                                <p class="text-uppercase mb-2" style="letter-spacing: 2px; font-size: 0.875rem;">
-                                                                   Europe
-                                                                </p>
-                                                                <h1 class="display-5 fw-bold mb-2">Italy</h1>
+                                                                <h1 class="display-5 fw-bold mb-2">
+                                                                    {{ $universityDetails->country->country_name ?? 'Not Added'}}
+                                                                </h1>
                                                                 <p class="lead">
                                                                     Discover world-class education opportunities in one of the most prestigious academic destinations.
                                                                 </p>
@@ -45,94 +44,9 @@
                                                         </div>
                                                         <div class="country-details-cover-bottom-flag">
                                                             <img
-                                                                src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" alt="United Kingdom flag"
+                                                                src="{{ $universityDetails->logo && file_exists(public_path($universityDetails->logo)) ? asset($universityDetails->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}" alt="United Kingdom flag"
                                                                 class="img-fluid rounded-circle">
                                                         </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section class="py-4">
-                                    <div class="container">
-                                        <div class="row g-2 text-center country-details-stats-section">
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
-                                                            >
-                                                            <i class="ti ti-school text-white fs-3"></i>
-                                                        </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $totalUniversities ?? 0 }}+</h3>
-                                                        <p class="text-white opacity-75 mb-0">Total Universities</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
-                                                            >
-                                                            <i class="ti ti-book-2 text-white fs-3"></i>
-                                                        </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $totalCourses ?? 0 }}+</h3>
-                                                        <p class="text-white opacity-75 mb-0">Total Courses</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
-                                                            >
-                                                            <i class="ti ti-users text-white fs-3"></i>
-                                                        </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_population ?? 0 }}</h3>
-                                                        <p class="text-white opacity-75 mb-0">Population</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
-                                                            >
-                                                            <i class="ti ti-map-pin text-white fs-3"></i>
-                                                        </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_capital ?? 0 }}</h3>
-                                                        <p class="text-white opacity-75 mb-0">Capital</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-lg-4 col-xl col-sm-6">
-                                                <div class="card h-100 border-0 shadow-sm">
-                                                    <div class="card-body p-3">
-                                                        <div class="d-inline-flex align-items-center justify-content-center mb-3 country-details-stats-icon"
-                                                            >
-                                                            <i class="ti ti-trending-up text-white fs-3"></i>
-                                                        </div>
-                                                        <h3 class="h2 fw-bold text-white mb-2">{{ $country->country_gdp ?? 0 }}</h3>
-                                                        <p class="text-white opacity-75 mb-0">GDP</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <section class="py-4">
-                                    <div class="container">
-                                        <div class="row justify-content-center country-details-description">
-                                            <div class="col-lg-10 col-sm-12 col-12">
-                                                <div class="card border-0 shadow-sm p-4 mb-0">
-                                                    <h3 class="h4">About Germany </h3>
-                                                    <p class="text-white">
-                                                       Lorem ipsum dolor sit amet consectetur adipisicing elit. In a quis, quo ratione, necessitatibus quia neque provident impedit commodi vero dolor porro! Sunt mollitia beatae iure inventore, impedit neque architecto.
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,27 +67,27 @@
                                                 <div class="col-md-6">
                                                     <div class="info-card">
                                                         <div class="info-label">University Name</div>
-                                                        <div class="info-value">Harvard University</div>
+                                                        <div class="info-value">{{ $universityDetails->university_name }}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="info-card">
                                                         <div class="info-label">Country</div>
-                                                        <div class="info-value">Germany</div>
+                                                        <div class="info-value">{{ $universityDetails->country->country_name ?? 'Not Added'}}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="info-card">
                                                         <div class="info-label">City</div>
-                                                        <div class="info-value">Berlin</div>
+                                                        <div class="info-value">{{ $universityDetails->university_city ?? 'Not Added'}}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="info-card">
                                                         <div class="info-label">Email</div>
                                                         <div class="info-value">
-                                                            <a href="mailto:admission@university.edu" class="text-decoration-none" style="color: #00bcd4;">
-                                                                <i class="bi bi-envelope me-2"></i>admission@university.edu
+                                                            <a href="#" class="text-decoration-none text-white">
+                                                                <i class="bi bi-envelope me-2"></i>{{ $universityDetails->admission_email ?? 'Not Added'}}
                                                             </a>
                                                         </div>
                                                     </div>
@@ -182,7 +96,7 @@
                                                     <div class="info-card">
                                                         <div class="info-label">Phone</div>
                                                         <div class="info-value">
-                                                            <i class="bi bi-telephone me-2"></i>+49 123 456 7890
+                                                            <i class="bi bi-telephone me-2"></i>{{ $universityDetails->admission_phone ?? 'Not Added'}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -190,8 +104,8 @@
                                                     <div class="info-card">
                                                         <div class="info-label">Website</div>
                                                         <div class="info-value">
-                                                            <a href="https://www.university.edu" target="_blank" class="text-decoration-none" style="color: #00bcd4;">
-                                                                <i class="bi bi-globe me-2"></i>www.university.edu
+                                                            <a href="#" target="_blank" class="text-decoration-none text-white">
+                                                                <i class="bi bi-globe me-2"></i>{{ $universityDetails->website_link ?? 'Not Added'}}
                                                             </a>
                                                         </div>
                                                     </div>
@@ -200,20 +114,14 @@
                                                     <div class="info-card">
                                                         <div class="info-label">Location</div>
                                                         <div class="info-value">
-                                                            <i class="bi bi-pin-map me-2"></i>123 University Street, Berlin, Germany
+                                                            <i class="bi bi-pin-map me-2"></i>{{ $universityDetails->address ?? 'Not Added'}}
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="info-card">
                                                         <div class="info-label">Commission For Us</div>
-                                                        <div class="info-value">5%</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="info-card">
-                                                        <div class="info-label">Commission For Agent</div>
-                                                        <div class="info-value">3%</div>
+                                                        <div class="info-value">{{ $universityDetails->commission_for_us ?? 'Not Added' }}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -224,8 +132,7 @@
                                                         <h3 class="section-title">
                                                             <i class="ti ti-file-text me-2"></i>About the University
                                                         </h3>
-                                                        <p class="text-white">This prestigious institution offers world-class education with state-of-the-art facilities and renowned faculty members. Students from around the globe come here to pursue their academic dreams and build successful careers.</p>
-                                                        <p class="text-white">The university is known for its cutting-edge research programs, diverse student community, and strong industry connections that provide excellent career opportunities for graduates.</p>
+                                                        <h4 class="text-white"> {!! $universityDetails->description !!}</h4>
                                                     </div>
                                                 </div>
                                             </div>
