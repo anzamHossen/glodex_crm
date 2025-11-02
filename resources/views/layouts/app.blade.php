@@ -22,6 +22,9 @@
 
     <!-- Icons css -->
     <link href="{{asset('back-end/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Owl Carousel css -->
+    <link href="{{ asset('css/owl.carousel.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/owl.theme.default.min.css')}}" rel="stylesheet" type="text/css" />
 
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -100,6 +103,7 @@
 
     <!-- Wizard Form Demo js -->
     <script src="{{ asset('back-end/assets/js/pages/form-wizard.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js')}}"></script>
 
     @stack('page-js')
 
