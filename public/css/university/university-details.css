@@ -42,3 +42,7 @@ info-section {
     padding-bottom: 15px;
     border-bottom: 2px solid rgba(100, 181, 246, 0.3);
 }
+
+.course-entry-requirements .list-group-item.border-bottom {
+    border-bottom: 1px solid var(--light-color) !important;
+}

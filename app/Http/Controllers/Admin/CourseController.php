@@ -20,7 +20,14 @@ class CourseController extends Controller
         $courses = Course::all();
         return view('admin.course.course-list', compact('courses'));
     }
-    
+
+    // function to show course details
+    public function courseDetails()
+    {
+        $course = Course::all();
+        return view('admin.course.course-details', compact('course'));
+    }
+
     // function to show add course page
     public function addCourse()
     {
@@ -48,7 +55,7 @@ class CourseController extends Controller
 
         DB::beginTransaction();
         try {
-        
+
             $course = new Course();
             $course->university_id        = $request->university_id;
             $course->country_id           = $request->country_id;
@@ -60,7 +67,7 @@ class CourseController extends Controller
             $course->program_length       = $request->program_length;
             $course->course_details       = $request->course_details;
             $course->save();
-            
+
             DB::commit();
             Alert::success('Success', 'Course added successfuly');
             return redirect()->back();
@@ -82,7 +89,7 @@ class CourseController extends Controller
         $course->intake_month_ids = json_decode($course->intake_month_id, true) ?? [];
         return view('admin.course.edit-course', compact('countries','universities','coursePrograms','intakeMonths','course'));
     }
-    
+
     // function to update course
     public function updateCourse(Request $request, $id)
     {
@@ -96,7 +103,7 @@ class CourseController extends Controller
             'tuition_fee_per_year'=> 'required|string|max:255',
             'program_length'      => 'required|string|max:255',
             'course_details'      => 'required',
-        ]); 
+        ]);
         DB::beginTransaction();
         try {
             $course = Course::findOrFail($id);
@@ -119,7 +126,7 @@ class CourseController extends Controller
             return redirect()->back();
         }
     }
-                                                                   
+
     // function to delete course
     public function deleteCourse($id)
     {
@@ -133,4 +140,4 @@ class CourseController extends Controller
             return redirect()->back();
         }
     }
-}   
+}
