@@ -140,8 +140,9 @@ body {
     background-color: var(--light-color);
 }
 
-.glodex-custom-3dot-dropdown ul.dropdown-menu.show {
-    transform: translate(-80%, 37px) !important;
+.glodex-custom-3dot-dropdown ul.dropdown-menu {
+    transform: translate(0px, 37px) !important;
+    inset: 0 0 auto auto !important;
 }
 
 /*End 3 dot dropdown */
