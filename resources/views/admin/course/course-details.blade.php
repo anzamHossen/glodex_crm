@@ -200,54 +200,6 @@
                                         </div>
                                     </div>
                                 </section>
-                                <section class="details-section course-entry-requirements">
-                                    <div class="container">
-                                        <h2 class="section-title">Entry Requirements</h2>
-
-                                        <div class="row ">
-                                            <div class="col-md-6">
-                                                <ul class="list-group list-group-flush">
-                                                    <li
-                                                        class="list-group-item bg-transparent h5 border-bottom  text-light">
-                                                        <i class="ti ti-checks "></i> Bachelor's degree in Computer
-                                                        Science or related field
-                                                    </li>
-                                                    <li
-                                                        class="list-group-item bg-transparent h5 border-bottom  text-light">
-                                                        <i class="ti ti-checks "></i> Minimum GPA of 3.0
-                                                    </li>
-                                                    <li
-                                                        class="list-group-item bg-transparent h5 border-bottom  text-light">
-                                                        <i class="ti ti-checks "></i> English Language Proficiency (IELTS
-                                                        6.5+)
-                                                    </li>
-                                                    <li class="list-group-item bg-transparent h5 text-light">
-                                                        <i class="ti ti-checks "></i> Statement of Purpose
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <ul class="list-group list-group-flush">
-                                                    <li
-                                                        class="list-group-item bg-transparent h5 border-bottom  text-light">
-                                                        <i class="ti ti-checks "></i> 3 Letters of Recommendation
-                                                    </li>
-                                                    <li
-                                                        class="list-group-item bg-transparent h5 border-bottom  text-light">
-                                                        <i class="ti ti-checks "></i> Work Experience (2+ years preferred)
-                                                    </li>
-                                                    <li
-                                                        class="list-group-item bg-transparent h5 border-bottom  text-light">
-                                                        <i class="ti ti-checks "></i> GRE Score (optional)
-                                                    </li>
-                                                    <li class="list-group-item bg-transparent h5 text-light">
-                                                        <i class="ti ti-checks "></i> Portfolio or Project Work
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
                                 <!-- Back Button -->
                                 <section class="py-4 text-center">
                                     <div class="container">

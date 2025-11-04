@@ -142,7 +142,7 @@
                                             </div>
 
                                             <div class="pt-2 d-flex justify-content-center">
-                                                <a href="#" class="btn btn-sm btn-gradient">View Details</a>
+                                                <a href="#" class="btn btn-sm btn-gradient">Apply Now</a>
                                             </div>
                                         </div>
                                     </div>
