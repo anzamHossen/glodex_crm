@@ -146,42 +146,6 @@
                                         </div>
                                     </div>
                                 </section>
-
-                                <!-- Universities -->
-                                {{-- <section class="py-4 country-details-universities-list">
-                                    <div class="container">
-                                        <div class="text-center pb-3">
-                                            <h2 class="h2 fw-bold text-white mb-3">Top Universities</h2>
-                                            <p class="text-white opacity-75">Explore the leading institutions offering
-                                                world-class education</p>
-                                        </div>
-
-                                        <div class="row g-3">
-                                            @forelse ($randomUniversities as $university)
-                                                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                                                    <div class="card border-0 shadow-sm university-card px-2 py-3">
-                                                        <div class="card-img-top position-relative">
-                                                            <img src="{{ $university->logo && file_exists(public_path($university->logo)) ? asset($university->logo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                                alt="{{ $university->university_name }}"
-                                                                class=" img-fluid rounded-top-4">
-                                                        </div>
-                                                        <div class="card-body mt-3 text-center p-0">
-                                                            <h4 class="text-white h-4 fw-bold mb-2">
-                                                                {{ $university->university_name }}</h4>
-                                                            <a href="#" class="btn btn-sm btn-gradient">
-                                                                View Details
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @empty
-                                                <h1 class="text-white h-3 text-center">No universities available for this
-                                                    country.</h1>
-                                            @endforelse
-                                        </div>
-                                    </div>
-                                </section> --}}
-
                                 <section class="py-4 country-details-universities-list">
                                     <div class="container">
                                         <div class="text-center pb-3">
@@ -207,7 +171,7 @@
                                                             class="glodex-details-carousel-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
                                                             <h4 class="text-white fw-bold mb-2">
                                                                 {{ $university->university_name }}</h4>
-                                                            <a href="#" class="btn btn-sm btn-gradient">View
+                                                            <a href="{{ route('country_details', $country->id) }}" class="btn btn-sm btn-gradient">View
                                                                 Details</a>
                                                         </div>
                                                     </div>

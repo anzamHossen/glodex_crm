@@ -58,12 +58,12 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
     // Route for course
     Route::controller(CourseController::class)->group(function () {
         Route::get('/course-list', 'courseList')->name('course_list');
-        Route::get('/course-details', 'courseDetails')->name('course_details');
+        Route::get('/course-details/{id}', 'courseDetails')->name('course_details');
         Route::get('/add-new-course', 'addCourse')->name('add_new_course');
         Route::post('/save-new-course', 'saveCourse')->name('save_new_course');
         Route::get('/edit-course/{id}', 'editCourse')->name('edit_course');
         Route::post('/update-course/{id}', 'updateCourse')->name('update_course');
-        Route::delete('/delete-course/{id}',  'deleteCourse')->name('delete_course');
+        Route::delete('/delete-course/{id}',  'deleteCourse')->name('delete_course');           
     });
 
     // Route for course

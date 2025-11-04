@@ -15,4 +15,10 @@ class University extends Model
     {
         return $this->belongsTo(Country::class, 'country_id');
     }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'university_id');
+    }
+
 }

@@ -106,7 +106,7 @@
                                             <option value="1">1 Year</option>
                                             <option value="2">2 Year</option>
                                             <option value="3">3 Year</option>
-                                            <option value="4">4 Year</option>
+                                            <option value="4">4 Year</option>               
                                             <option value="5">5 Year</option>
                                         </select>
                                         @error('program_length')

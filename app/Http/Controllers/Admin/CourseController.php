@@ -17,16 +17,18 @@ class CourseController extends Controller
     // function to show course list page
     public function courseList()
     {
-        $courses = Course::all();
-        return view('admin.course.course-list', compact('courses'));
+        $courses = Course::with('university','country','courseProgram')
+            ->orderBy('id', 'desc')
+            ->paginate(8);
+       return view('admin.course.course-list', compact('courses'));
     }
 
     // function to show course details
-    public function courseDetails()
+    public function courseDetails($id)
     {
-        $course = Course::all();
+        $course = Course::findOrFail($id);
         return view('admin.course.course-details', compact('course'));
-    }
+    }           
 
     // function to show add course page
     public function addCourse()

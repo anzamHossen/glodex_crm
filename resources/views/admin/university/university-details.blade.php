@@ -145,206 +145,54 @@
                                         </div>
                                     </div>
                                 </section>
-                                {{-- <section class="py-4 country-details-universities-list">
-                                    <div class="container">
-                                        <div class="text-center pb-3">
-                                            <h2 class="h2 fw-bold text-white mb-3">Top Courses</h2>
-                                            <p class="text-white opacity-75">Explore the leading institutions offering
-                                                world-class education</p>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                                                <div class="card border-0 shadow-sm university-card px-2 py-3">
-                                                    <div class="card-img-top position-relative">
-                                                        <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                            alt="University Image" class=" img-fluid rounded-top-4">
-                                                    </div>
-                                                    <div class="card-body mt-3 text-center p-0">
-                                                        <h4 class="text-white h-4 fw-bold mb-2"> Computer Science</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">
-                                                            View Details
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                                                <div class="card border-0 shadow-sm university-card px-2 py-3">
-                                                    <div class="card-img-top position-relative">
-                                                        <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                            alt="University Image" class=" img-fluid rounded-top-4">
-                                                    </div>
-                                                    <div class="card-body mt-3 text-center p-0">
-                                                        <h4 class="text-white h-4 fw-bold mb-2"> Computer Science</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">
-                                                            View Details
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                                                <div class="card border-0 shadow-sm university-card px-2 py-3">
-                                                    <div class="card-img-top position-relative">
-                                                        <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                            alt="University Image" class=" img-fluid rounded-top-4">
-                                                    </div>
-                                                    <div class="card-body mt-3 text-center p-0">
-                                                        <h4 class="text-white h-4 fw-bold mb-2"> Computer Science</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">
-                                                            View Details
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                                                <div class="card border-0 shadow-sm university-card px-2 py-3">
-                                                    <div class="card-img-top position-relative">
-                                                        <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                            alt="University Image" class=" img-fluid rounded-top-4">
-                                                    </div>
-                                                    <div class="card-body mt-3 text-center p-0">
-                                                        <h4 class="text-white h-4 fw-bold mb-2"> Computer Science</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">
-                                                            View Details
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </section> --}}
-
                                 <section class="py-4 country-details-universities-list">
                                     <div class="container">
                                         <div class="text-center pb-3">
                                             <h2 class="h2 fw-bold text-white mb-3">Top Courses</h2>
                                             <p class="text-white opacity-75">
-                                                Explore the leading institutions offering world-class education
+                                                Explore the leading courses offering world-class education
                                             </p>
                                         </div>
 
                                         {{-- Owl Carousel Wrapper --}}
-                                        <div class="owl-carousel owl-theme glodex-details-carousel"
-                                            id="university-details-universities-carousel">
-                                            {{-- @forelse ($randomUniversities as $university) --}}
-                                            <div class="glodex-details-carousel-item">
-                                                <div
-                                                    class="glodex-details-carousel-image position-relative rounded-4 overflow-hidden">
-                                                    <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                        alt="University Image" class="w-100 object-fit-cover img-fluid">
+                                        <div class="owl-carousel owl-theme glodex-details-carousel" id="university-details-universities-carousel">
+                                            @forelse ($randomCourses as $course)
+                                                <div class="glodex-details-carousel-item">
+                                                    <div class="glodex-details-carousel-image position-relative rounded-4 overflow-hidden">
+                                                        <img 
+                                                            src="{{ $universityDetails->logo && file_exists(public_path($universityDetails->logo)) 
+                                                                    ? asset($universityDetails->logo) 
+                                                                    : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
+                                                            alt="{{ $universityDetails->university_name }}"
+                                                            class="w-100 object-fit-cover img-fluid">
 
-                                                    <!-- Overlay -->
-                                                    <div
-                                                        class="glodex-details-carousel-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
-                                                        <h4 class="text-white fw-bold mb-2">
-                                                            University Image</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">View
-                                                            Details</a>
+                                                        <!-- Overlay -->
+                                                        <div class="glodex-details-carousel-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                                                            <h4 class="text-white fw-bold mb-2">
+                                                                {{ $course->course_name }}
+                                                            </h4>
+                                                            <a href="#" class="btn btn-sm btn-gradient">View Details</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="glodex-details-carousel-item">
-                                                <div
-                                                    class="glodex-details-carousel-image position-relative rounded-4 overflow-hidden">
-                                                    <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                        alt="University Image" class="w-100 object-fit-cover img-fluid">
+                                            @empty
+                                                <h1 class="text-white h-3 text-center">
+                                                    No courses available for this university.
+                                                </h1>
+                                            @endforelse
 
-                                                    <!-- Overlay -->
-                                                    <div
-                                                        class="glodex-details-carousel-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
-                                                        <h4 class="text-white fw-bold mb-2">
-                                                            University Image</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">View
-                                                            Details</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="glodex-details-carousel-item">
-                                                <div
-                                                    class="glodex-details-carousel-image position-relative rounded-4 overflow-hidden">
-                                                    <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                        alt="University Image" class="w-100 object-fit-cover img-fluid">
-
-                                                    <!-- Overlay -->
-                                                    <div
-                                                        class="glodex-details-carousel-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
-                                                        <h4 class="text-white fw-bold mb-2">
-                                                            University Image</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">View
-                                                            Details</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="glodex-details-carousel-item">
-                                                <div
-                                                    class="glodex-details-carousel-image position-relative rounded-4 overflow-hidden">
-                                                    <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                        alt="University Image" class="w-100 object-fit-cover img-fluid">
-
-                                                    <!-- Overlay -->
-                                                    <div
-                                                        class="glodex-details-carousel-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
-                                                        <h4 class="text-white fw-bold mb-2">
-                                                            University Image</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">View
-                                                            Details</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="glodex-details-carousel-item">
-                                                <div
-                                                    class="glodex-details-carousel-image position-relative rounded-4 overflow-hidden">
-                                                    <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                        alt="University Image" class="w-100 object-fit-cover img-fluid">
-
-                                                    <!-- Overlay -->
-                                                    <div
-                                                        class="glodex-details-carousel-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
-                                                        <h4 class="text-white fw-bold mb-2">
-                                                            University Image</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">View
-                                                            Details</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="glodex-details-carousel-item">
-                                                <div
-                                                    class="glodex-details-carousel-image position-relative rounded-4 overflow-hidden">
-                                                    <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                        alt="University Image" class="w-100 object-fit-cover img-fluid">
-
-                                                    <!-- Overlay -->
-                                                    <div
-                                                        class="glodex-details-carousel-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center">
-                                                        <h4 class="text-white fw-bold mb-2">
-                                                            University Image</h4>
-                                                        <a href="#" class="btn btn-sm btn-gradient">View
-                                                            Details</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {{-- @empty --}}
-                                            {{-- <h1 class="text-white h-3 text-center">
-                                                No universities available for this country.
-                                            </h1> --}}
-                                            {{-- @endforelse --}}
                                         </div>
                                     </div>
                                 </section>
-
-
-                                {{-- <section class="pb-4 text-center">
+                                <section class="pb-4 text-center">
                                     <div class="container">
                                         <a href="#" class="btn btn-gradient btn-lg text-white border-0 d-inline-flex align-items-center gap-2"
                                             >
                                             <i class="ti ti-arrow-left"></i>
-                                            Back to All Countries
+                                            Back to all courses
                                         </a>
                                     </div>
-                                </section> --}}
+                                </section>
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Handler\ImageHandlerController;
 use App\Models\Admin\Country;
 use App\Models\Admin\CountryContinent;
+use App\Models\Admin\University;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -165,12 +166,22 @@ class CountryController extends Controller
     // function to country details
     public function countryDetails($id)
     {
-        $country           = Country::findOrFail($id);
+        $country = Country::findOrFail($id);
         $totalUniversities = $country->universities()->count();
-        $totalCourses      = $country->courses()->count();
-        $randomUniversities = $country->universities()->inRandomOrder()->take(4)->get();
-        return view('admin.country.country-details', compact('country','totalUniversities','totalCourses','randomUniversities'));
+        $totalCourses = $country->courses()->count();
+        $randomUniversities = University::where('country_id', $country->id)
+                                        ->inRandomOrder()
+                                        ->take(10)
+                                        ->get();
+
+        return view('admin.country.country-details', compact(
+            'country',
+            'totalUniversities',
+            'totalCourses',
+            'randomUniversities'
+        ));
     }
+
 
     // function to delete country
     public function deleteCountry($id)
