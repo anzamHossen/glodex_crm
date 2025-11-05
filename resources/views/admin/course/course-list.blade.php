@@ -49,12 +49,12 @@
                                         <div class="glodex-search-field glodex-search-field-doble">
                                             <input type="search" name="search_country" id="glodex-country-search"
                                                 class="form-control form-control-sm mb-0"
-                                                value="" placeholder="Search country...">
+                                                value="" placeholder="What to Study?">
                                         </div>
                                         <div class="glodex-search-field glodex-search-field-right d-flex align-items-center">
                                             <input type="search" name="search_country" id="glodex-country-search"
                                                 class="form-control form-control-sm mb-0"
-                                                value="{{ request('search_country') }}" placeholder="Search country...">
+                                                value="{{ request('search_country') }}" placeholder="Where to Study?">
                                             <button type="submit" class="btn btn-sm glodex-blue-btn">
                                                 <i class="ti ti-search" style="font-size: 1.3rem;"></i>
                                             </button>
