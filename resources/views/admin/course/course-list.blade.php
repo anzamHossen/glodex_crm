@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                         <h4 class="header-title mb-0">Courses</h4>
-                        <div class="d-flex items-center gap-2">
+                        <div class="d-flex items-center gap-1">
                             <a href="{{ route('add_new_course') }}" class="btn btn-sm glodex-blue-btn">
                                 <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                 Add New
@@ -19,6 +19,10 @@
                                 <i class="ti ti-rotate me-2"></i>
                                 Refresh
                             </a>
+                            <button class="btn btn-sm glodex-blue-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#course_filterBtn" aria-controls="offcanvasRight">
+                                <i class="ti ti-filter me-2"></i>
+                                Filter
+                            </button>
                         </div>
                     </div>
 
@@ -173,6 +177,73 @@
             </div>
         </div>
     </div>
+</div>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="course_filterBtn" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Course Filter</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+        <div class="mb-3">
+            <label for="university_name" class="form-label">University Name:</label>
+            <input type="text" class="form-control" id="university_name" placeholder="University Name">
+        </div>
+        <div class="mb-3">
+            <label for="country_name" class="form-label">Country Name:</label>
+            <input type="text" class="form-control" id="country_name" placeholder="Country Name:">
+        </div>
+        <div class="mb-3">
+            <label for="course_name" class="form-label">Course Name:</label>
+            <input type="text" class="form-control" id="course_name" placeholder="Course Name">
+        </div>
+        <div class="mb-3">
+            <label for="tuition_fees:" class="form-label">Tuition Fees:</label>
+            <input type="text" class="form-control" id="tuition_fees" placeholder="Tuition Fees">
+        </div>
+        <div class="mb-3">
+            <label for="program_level" class="form-label">Program Level:</label>
+            <input type="text" class="form-control" id="program_level" placeholder="Program Level">
+        </div>
+        <div class="mb-3">
+            <label for="application_fees" class="form-label">Application Fees</label>
+            <input type="text" class="form-control" id="application_fees" placeholder="Application Fees">
+        </div>
+        <div class="mb-3">
+            <label for="program_length" class="form-label">Program Length:</label>
+            <input type="text" class="form-control" id="program_length" placeholder="Program Length">
+        </div>
+        <div class="mb-3">
+            <label for="moi_program" class="form-label">MOI </label>
+            <select class="form-select" id="moi_program" name="program_level">
+                <option value="">Select MOI</option>
+                    <option value="Value">Value</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="ielts_program" class="form-label">IELTS Proficiency:</label>
+            <select class="form-select" id="ielts_program" name="country">
+                <option value="">Select IELTS</option>
+                    <option value="Value">Value</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="toefl_program" class="form-label">TOEFL Proficiency:</label>
+            <select class="form-select" id="toefl_program" name="country">
+                <option value="">Select IELTS</option>
+                    <option value="Value">Value</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="pte_program" class="form-label">PTE Proficiency:</label>
+            <select class="form-select" id="pte_program" name="country">
+                <option value="">Select IELTS</option>
+                    <option value="Value">Value</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-sm glodex-blue-btn">Apply Filter</button>
+    </form>
+  </div>
 </div>
 <!-- END wrapper -->
 @endsection
