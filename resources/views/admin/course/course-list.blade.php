@@ -46,7 +46,12 @@
 
                                     <!-- Search form -->
                                     <form action="#" method="GET" class="d-flex align-items-center align-items-end">
-                                        <div class="glodex-search-field d-flex align-items-center">
+                                        <div class="glodex-search-field glodex-search-field-doble">
+                                            <input type="search" name="search_country" id="glodex-country-search"
+                                                class="form-control form-control-sm mb-0"
+                                                value="" placeholder="Search country...">
+                                        </div>
+                                        <div class="glodex-search-field glodex-search-field-right d-flex align-items-center">
                                             <input type="search" name="search_country" id="glodex-country-search"
                                                 class="form-control form-control-sm mb-0"
                                                 value="{{ request('search_country') }}" placeholder="Search country...">
