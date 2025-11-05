@@ -26,8 +26,8 @@ class CourseController extends Controller
     // function to show course details
     public function courseDetails($id)
     {
-        $course = Course::findOrFail($id);
-        return view('admin.course.course-details', compact('course'));
+        $courseDetails = Course::with('country', 'university','courseProgram')->findOrFail($id);
+        return view('admin.course.course-details', compact('courseDetails'));   
     }           
 
     // function to show add course page

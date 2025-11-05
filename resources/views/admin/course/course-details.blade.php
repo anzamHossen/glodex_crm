@@ -30,17 +30,15 @@
                                                 <div
                                                     class="country-details-cover-photo border-0 shadow-sm position-relative">
                                                     <img class="img-fluid"
-                                                        src="{{ asset('back-end/assets/images/sellers/s-1.svg') }}"
-                                                        alt="cover photo">
+                                                        src="{{ $courseDetails->university && $courseDetails->university->cover_image && file_exists(public_path($courseDetails->university->cover_image)) 
+                                                        ? asset($courseDetails->university->cover_image) 
+                                                        : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
+                                                        alt="University Cover Photo">
                                                     <div class="country-details-top-info">
                                                         <div class="text-white country-details-top-info-inner">
-                                                            <p class="text-uppercase mb-2"
-                                                                style="letter-spacing: 2px; font-size: 0.875rem;">
-                                                                {{-- {{ $country->countryContinent->continent_name ?? 'Not Added' }} --}}
-                                                                Master of Computer Science
-                                                            </p>
-                                                            <h1 class="display-5 fw-bold mb-2">
-                                                                'Not Added'</h1>
+                                                            <h2 class="mb-2">
+                                                                {{ $courseDetails->course_name ?? 'Not Added' }}
+                                                            </h2>
                                                             <p class="lead">
                                                                 Discover world-class education opportunities in one of the
                                                                 most prestigious academic destinations.
@@ -48,8 +46,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="country-details-cover-bottom-flag">
-                                                        <img src="{{ asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                            alt="United Kingdom flag" class="img-fluid rounded-circle">
+                                                    <img src="{{ $courseDetails->university && $courseDetails->university->logo && file_exists(public_path($courseDetails->university->logo)) 
+                                                        ? asset($courseDetails->university->logo) 
+                                                        : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
+                                                        alt="{{ $courseDetails->university->name ?? 'University Logo' }}"
+                                                        class="img-fluid rounded-circle">
                                                     </div>
                                                 </div>
                                             </div>
@@ -68,7 +69,8 @@
                                                             <i class="ti ti-building text-white fs-3"></i>
                                                         </div>
                                                         <h3 class="h3 fw-bold text-white mb-2">
-                                                            Oxford University</h3>
+                                                            {{ $courseDetails->university->university_name ?? 'Not Added' }}
+                                                        </h3>
                                                         <p class="text-white opacity-75 mb-0">Location</p>
                                                     </div>
                                                 </div>
@@ -81,7 +83,7 @@
                                                             class="d-inline-flex align-items-center justify-content-center mb-2 country-details-stats-icon">
                                                             <i class="ti ti-world-star text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h3 fw-bold text-white mb-2">Uk</h3>
+                                                        <h3 class="h3 fw-bold text-white mb-2">{{ $courseDetails->country->country_name ?? 'Not Added' }}</h3>
                                                         <p class="text-white opacity-75 mb-0">Country</p>
                                                     </div>
                                                 </div>
@@ -94,8 +96,21 @@
                                                             class="d-inline-flex align-items-center justify-content-center mb-2 country-details-stats-icon">
                                                             <i class="ti ti-vocabulary text-white fs-3"></i>
                                                         </div>
-                                                        <h3 class="h3 fw-bold text-white mb-2">
-                                                            2 years</h3>
+                                                        <h3 class="h3 fw-bold text-white">
+                                                            @if($courseDetails->program_length == 1)
+                                                                1 Year
+                                                            @elseif($courseDetails->program_length == 2)
+                                                                2 Years
+                                                            @elseif($courseDetails->program_length == 3)
+                                                                3 Years
+                                                            @elseif($courseDetails->program_length == 4)
+                                                                4 Years
+                                                            @elseif($courseDetails->program_length == 5)
+                                                                5 Years
+                                                            @else
+                                                                Not Specified
+                                                            @endif
+                                                        </h3>
                                                         <p class="text-white opacity-75 mb-0">Duration</p>
                                                     </div>
                                                 </div>
@@ -109,7 +124,8 @@
                                                             <i class="ti ti-briefcase text-white fs-3"></i>
                                                         </div>
                                                         <h3 class="h3 fw-bold text-white mb-2">
-                                                            Master</h3>
+                                                            {{ $courseDetails->courseProgram->course_program ?? 'Not Added' }}
+                                                        </h3>
                                                         <p class="text-white opacity-75 mb-0">Level</p>
                                                     </div>
                                                 </div>
@@ -133,36 +149,22 @@
                                             <div class="col-md-6">
                                                 <div class="info-card">
                                                     <div class="info-label">Application Fee</div>
-                                                    <div class="info-value">$ 275</div>
+                                                    <div class="info-value">{{ $courseDetails->application_fee ?? 'N/A' }}</div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="info-card">
                                                     <div class="info-label">Tuition Fee/Year</div>
                                                     <div class="info-value">
-                                                        $35,000</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="info-card">
-                                                    <div class="info-label">Program Length</div>
-                                                    <div class="info-value">
-                                                        2 Years</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="info-card">
-                                                    <div class="info-label">Intake Month</div>
-                                                    <div class="info-value">
-                                                        September
+                                                        {{ $courseDetails->tuition_fee_per_year ?? 'N/A' }}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="info-card">
-                                                    <div class="info-label">Total Duration</div>
+                                                    <div class="info-label">Intake/Year</div>
                                                     <div class="info-value">
-                                                        24 Months
+                                                        {{ $courseDetails->intake_month_names ?? 'Not Added' }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -188,13 +190,7 @@
                                                         This Course
                                                     </h3>
                                                     <p class="text-white">
-                                                        This Master's program in Computer Science is designed to equip you
-                                                        with advanced knowledge and practical skills in software
-                                                        development, artificial intelligence, cybersecurity, and data
-                                                        science. Our curriculum combines theoretical foundations with
-                                                        hands-on experience through industry collaborations and research
-                                                        projects. Faculty members are leading experts in their fields, and
-                                                        you'll have access to state-of-the-art computing facilities.
+                                                         {!! $courseDetails->course_details !!}
                                                     </p>
                                                 </div>
                                             </div>
@@ -212,7 +208,7 @@
                                                 </h2>
                                                 <a href="#"
                                                     class="btn btn-gradient btn-lg text-white border-0 d-inline-flex align-items-center gap-2">
-                                                    <i class="ti ti-arrow-left"></i>
+                                                    <i class="ti ti-arrow-right"></i>
                                                     Apply Now
                                                 </a>
                                             </div>
