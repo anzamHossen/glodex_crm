@@ -121,7 +121,7 @@
                                 <!-- Description -->
                                 <section class="py-4">
                                     <div class="container">
-                                        <div class="row justify-content-center country-details-description">
+                                        <div class="row country-details-description">
                                             <div class="col-lg-10 col-sm-12 col-12">
                                                 <div class="card border-0 shadow-sm p-4 mb-0">
                                                     <h3 class="h3 fw-bold text-white mb-2 "><i
