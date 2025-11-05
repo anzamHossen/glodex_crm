@@ -8,10 +8,14 @@
                     <div class="card">
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">My Students</h4>
-                            <div class="d-flex">
-                                <a href="{{ route('add_new_student') }}" class="btn btn-sm btn-primary">
-                                    <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
+                            <div class="d-flex items-center gap-2">
+                                <a href="{{ route('add_new_student') }}" class="btn btn-sm glodex-blue-btn">
+                                    <i class="ti ti-plus me-2"></i>
                                     Add New
+                                </a>
+                                <a href="#" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
+                                    <i class="ti ti-rotate me-2"></i>
+                                    Refresh
                                 </a>
                             </div>
                         </div>
@@ -45,9 +49,9 @@
                                                             <a href="{{ route('edit_student', $student->id) }}" class="dropdown-item d-flex align-items-center gap-1" title="Login As">
                                                                 <i class="ti ti-edit ti-md"></i> <span>Edit</span>
                                                             </a>
-                                                            <a href="javascript:void(0);" 
-                                                            onclick="confirmDelete" 
-                                                            class="dropdown-item d-flex align-items-center gap-1" 
+                                                            <a href="javascript:void(0);"
+                                                            onclick="confirmDelete"
+                                                            class="dropdown-item d-flex align-items-center gap-1"
                                                             title="Delete">
                                                                 <i class="ti ti-trash ti-md"></i> <span>Delete</span>
                                                             </a>
@@ -67,9 +71,9 @@
                                                 <td>
                                                     @if($student->gender == 1)
                                                         <span class="badge bg-primary">Male</span>
-                                                    @else   
+                                                    @else
                                                         <span class="badge bg-secondary">Female</span>
-                                                    @endif                   
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -80,7 +84,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
     <!-- END wrapper -->
 @endsection

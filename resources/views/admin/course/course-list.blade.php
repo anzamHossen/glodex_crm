@@ -10,10 +10,14 @@
                 <div class="card">
                     <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                         <h4 class="header-title mb-0">Courses</h4>
-                        <div class="d-flex">
+                        <div class="d-flex items-center gap-2">
                             <a href="{{ route('add_new_course') }}" class="btn btn-sm glodex-blue-btn">
                                 <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                 Add New
+                            </a>
+                            <a href="#" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
+                                <i class="ti ti-rotate me-2"></i>
+                                Refresh
                             </a>
                         </div>
                     </div>
@@ -83,8 +87,8 @@
                                                     <p><i class="ti ti-flag"></i>{{ $course->country->country_name ?? 'Not Added' }}</p>
                                                 </div>
                                                 <div class="university-logo">
-                                                   <img src="{{ $course->university && $course->university->logo && file_exists(public_path($course->university->logo)) 
-                                                            ? asset($course->university->logo) 
+                                                   <img src="{{ $course->university && $course->university->logo && file_exists(public_path($course->university->logo))
+                                                            ? asset($course->university->logo)
                                                             : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                     alt="{{ $course->university->university_name ?? 'University Logo' }}"
                                                     class="img-fluid rounded-4">

@@ -11,10 +11,14 @@
                     <div class="card">
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">University List</h4>
-                            <div class="d-flex">
+                            <div class="d-flex items-center gap-2">
                                 <a href="{{ route('add_new_university') }}" class="btn btn-sm glodex-blue-btn">
                                     <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Add New
+                                </a>
+                                <a href="#" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
+                                    <i class="ti ti-rotate me-2"></i>
+                                    Refresh
                                 </a>
                             </div>
                         </div>
