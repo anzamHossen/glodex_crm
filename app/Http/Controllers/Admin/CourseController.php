@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Handler\ImageHandlerController;
 use App\Models\Admin\Country;
 use App\Models\Admin\Course;
 use App\Models\Admin\CourseProgram;
@@ -14,6 +15,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CourseController extends Controller
 {
+    protected $imageHandler;
+
+    // Functio to call image handler
+    public function __construct(ImageHandlerController $imageHandler)
+    {
+        $this->imageHandler = $imageHandler;
+    }
+    
     // function to show course list page
     public function courseList()
     {
@@ -52,6 +61,7 @@ class CourseController extends Controller
             'application_fee'     => 'required|string|max:255',
             'tuition_fee_per_year'=> 'required|string|max:255',
             'program_length'      => 'required|string|max:255',
+            'course_photo'        => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
             'course_details'      => 'required',
         ]);
 
@@ -68,12 +78,19 @@ class CourseController extends Controller
             $course->tuition_fee_per_year = $request->tuition_fee_per_year;
             $course->program_length       = $request->program_length;
             $course->course_details       = $request->course_details;
-            $course->save();
 
+            if ($request->hasFile('course_photo')) {
+                $file = $request->file('course_photo');
+                $filePath = $this->imageHandler->coursePhoto($file);
+                $course->course_photo = $filePath;
+            }
+
+            $course->save();
             DB::commit();
             Alert::success('Success', 'Course added successfuly');
             return redirect()->back();
         }catch (\Exception $e) {
+            // dd($e);
             DB::rollback();
             Alert::error('Error', 'Failed to added course. Please try again.');
             return redirect()->back();
@@ -118,6 +135,13 @@ class CourseController extends Controller
             $course->tuition_fee_per_year = $request->tuition_fee_per_year;
             $course->program_length       = $request->program_length;
             $course->course_details       = $request->course_details;
+
+            if ($request->hasFile('course_photo')) {
+                $file = $request->file('course_photo');
+                $filePath = $this->imageHandler->coursePhoto($file);
+                $course->course_photo = $filePath;
+            }
+
             $course->update();
             DB::commit();
             Alert::success('Success', 'Course updated successfuly');

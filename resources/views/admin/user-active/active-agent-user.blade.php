@@ -52,7 +52,7 @@
                                                                 <i class="ti ti-login-2 ti-md"></i> <span>Login</span>
                                                             </a>
 
-                                                            <a href="#" class="dropdown-item d-flex align-items-center gap-1" title="Profile">
+                                                            <a href="{{ route('user_profile', $user->id) }}" class="dropdown-item d-flex align-items-center gap-1" title="Profile">
                                                                 <i class="ti ti-users ti-md"></i> <span>Profile</span>
                                                             </a>
 

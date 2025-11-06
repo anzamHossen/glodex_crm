@@ -10,7 +10,7 @@
                             class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">Edit Course</h4>
                             <div class="d-flex">
-                                <a href="#" class="btn btn-sm btn-secondary me-2">
+                                <a href="{{ route('course_list') }}" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up"
                                         style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Go Back
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form id="courseForm" action="{{ route('update_course', $course->id) }}" method="post">
+                            <form id="courseForm" action="{{ route('update_course', $course->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -118,6 +118,28 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="col-md-6 mt-2">
+                                        <label for="countryFlag" class="form-label">Course Photo<span class="text-danger">*</span>:</label>
+                                        <!-- Preview Box -->
+                                        <div class="col-md-3">
+                                            <div class="photo-preview overflow-hidden shadow" style="width: 160px; height: 160px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                                                <img id="preview"
+                                                    src="{{ $course->course_photo && file_exists(public_path($course->course_photo)) ? asset($course->course_photo) : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
+                                                    class="w-100 img-fluid"
+                                                    style="object-fit: cover; width: 100%; height: 100%; border-radius: 10px; {{ $course->course_photo ? '' : 'display: none;' }}" 
+                                                    alt="Image Preview">
+                                            </div>
+                                        </div>
+                                        <!-- File Input for Country Image -->
+                                        <img id="image_preview" src="#" alt="Image Preview" style="display: none; margin-top: 10px; max-width: 100%; height: auto;" />
+                                        <div class="fallback mt-3">
+                                            <input type="file" name="course_photo" class="form-control" accept="image/png, image/gif, image/jpeg, image/jpg" id="country_image_input" onchange="previewImage(event)"/>
+                                        </div>
+
+                                        @error('course_photo')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                     <div class="col-md-12 mt-3">
                                         <label for="course_details" class="form-label">Course Details<span class="text-danger">*</span></label>
                                         <div id="snow-editor" style="height: 400px;">
@@ -142,6 +164,28 @@
     <!-- END wrapper -->
 @endsection
 @push('page-js')
+
+<script>
+    function previewImage(event) {
+        const preview = document.getElementById('preview');
+        const imagePreview = document.getElementById('image_preview');
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'none';
+            }
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '{{ $course->course_photo ? asset($course->course_photo) : '' }}';
+            preview.style.display = '{{ $course->course_photo ? 'block' : 'none' }}';
+        }
+    }
+</script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.js-choices').forEach(function (el) {
