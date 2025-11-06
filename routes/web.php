@@ -9,6 +9,7 @@ use App\Http\Controllers\Agent\AgentDashboardController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Student\StudentDashboardController;
 use App\Http\Controllers\StudentInfoController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,6 +30,11 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::get('/update-user-status/{id}', 'updateUserStatus')->name('update_user_status');
         Route::get('/active-agent-user',  'activeAgentUser')->name('active_agent_user');
         Route::post('/save-agent', 'saveAgent')->name('save_agent');
+    });
+
+    // route for user 
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/user-profile/{id}', 'userProfile')->name('user_profile');
     });
 
     // Route for country

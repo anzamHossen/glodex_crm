@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('application_fee');
             $table->string('tuition_fee_per_year');
             $table->string('program_length');
+            $table->longText('course_photo');
             $table->longText('course_details');
             $table->softDeletes();
             $table->timestamps();

@@ -75,6 +75,22 @@ class ImageHandlerController extends Controller
         return 'storage/' . $path . '/' . $fileName;
     }
 
+    // Function to upload course photo
+    public function coursePhoto($file, $path = 'course-photo', $previousImagePath = null)
+    {
+        if ($previousImagePath) {
+        $this->deleteImage($previousImagePath);
+        }
+    
+        // Use a shorter random string
+        $fileName = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+
+        // Save to storage/app/public/file-opening-image
+        $file->storeAs($path, $fileName, 'public');
+
+        return 'storage/' . $path . '/' . $fileName;
+    }
+
     // Delete Image Method
     public function deleteImage($filePath)
     {
