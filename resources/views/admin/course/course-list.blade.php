@@ -144,7 +144,21 @@
                                                     <h4 class="d-flex align-items-center gap-1">
                                                         <i class="ti ti-brand-codepen" style="font-size: 18px;"></i> Program Length
                                                     </h4>
-                                                    <div class="info-value">2 Years</div>
+                                                    <div class="info-value">
+                                                        @if($course->program_length == 1)
+                                                            1 Year
+                                                        @elseif($course->program_length == 2)
+                                                            2 Years
+                                                        @elseif($course->program_length == 3)
+                                                            3 Years
+                                                        @elseif($course->program_length == 4)
+                                                            4 Years
+                                                        @elseif($course->program_length == 5)
+                                                            5 Years
+                                                        @else
+                                                            Not Specified
+                                                        @endif
+                                                    </div>
                                                 </div>
                                                 <div class="info-item">
                                                     <h4 class="d-flex align-items-center gap-1">
