@@ -15,7 +15,7 @@
                                 <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                 Add New
                             </a>
-                            <a href="#" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
+                            <a href="{{ route('course_list') }}" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
                                 <i class="ti ti-rotate me-2"></i>
                                 Refresh
                             </a>
@@ -30,28 +30,32 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <div class="glodex-show-entries d-flex align-items-center justify-content-between flex-wrap gap-3">
-
                                     <!-- Show entries dropdown -->
-                                    <form method="GET" action="#" class="d-flex align-items-center gap-2">
+                                    <form method="GET" action="{{ route('search_course') }}" class="d-flex align-items-center gap-2">
                                         <label for="glodex-show-entries" class="form-label mb-0">Show</label>
-                                        <select name="per_page" id="glodex-show-entries" class="form-select form-select-sm w-auto">
-                                            <option value="8">8</option>
-                                            <option value="20">20</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
+                                        <select name="per_page" id="glodex-show-entries" class="form-select form-select-sm w-auto"
+                                            onchange="this.form.submit()">
+                                            <option value="8" {{ request('per_page') == 8 ? 'selected' : '' }}>8</option>
+                                            <option value="20" {{ request('per_page') == 20 ? 'selected' : '' }}>20</option>
+                                            <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                                            <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
                                         </select>
                                         <span>entries</span>
+                                        <input type="hidden" name="search_course" value="{{ request('search_course') }}">
                                         <input type="hidden" name="search_country" value="{{ request('search_country') }}">
                                     </form>
 
                                     <!-- Search form -->
-                                    <form action="#" method="GET" class="d-flex align-items-center align-items-end">
+                                    <form action="{{ route('search_course') }}" method="GET" class="d-flex align-items-center align-items-end">
                                         <div class="glodex-search-field glodex-search-field-doble">
-                                            <input type="search" name="search_country" id="glodex-country-search"
+                                            <!-- What to Study -->
+                                            <input type="search" name="search_course" id="glodex-course-search"
                                                 class="form-control form-control-sm mb-0"
-                                                value="" placeholder="What to Study?">
+                                                value="{{ request('search_course') }}" placeholder="What to Study?">
                                         </div>
+
                                         <div class="glodex-search-field glodex-search-field-right d-flex align-items-center">
+                                            <!-- Where to Study -->
                                             <input type="search" name="search_country" id="glodex-country-search"
                                                 class="form-control form-control-sm mb-0"
                                                 value="{{ request('search_country') }}" placeholder="Where to Study?">
@@ -199,65 +203,69 @@
 </div>
 <div class="offcanvas offcanvas-end" tabindex="-1" id="course_filterBtn" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasRightLabel">Course Filter</h5>
+    <h4 class="offcanvas-title" id="offcanvasRightLabel">Course Filter</h4>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <form>
-        <div class="mb-3">
-            <label for="university_name" class="form-label">University Name:</label>
-            <input type="text" class="form-control" id="university_name" placeholder="University Name">
-        </div>
-        <div class="mb-3">
-            <label for="country_name" class="form-label">Country Name:</label>
-            <input type="text" class="form-control" id="country_name" placeholder="Country Name:">
-        </div>
+    <form action="{{ route('filter_course') }}" method="GET">
         <div class="mb-3">
             <label for="course_name" class="form-label">Course Name:</label>
-            <input type="text" class="form-control" id="course_name" placeholder="Course Name">
+            <input type="text" class="form-control" name="course_name" id="course_name"
+                value="{{ request('course_name') }}" placeholder="Course Name">
         </div>
+
         <div class="mb-3">
-            <label for="tuition_fees:" class="form-label">Tuition Fees:</label>
-            <input type="text" class="form-control" id="tuition_fees" placeholder="Tuition Fees">
+            <label for="university_name" class="form-label">University Name:</label>
+            <input type="text" class="form-control" name="university_name" id="university_name"
+                value="{{ request('university_name') }}" placeholder="University Name">
         </div>
+
         <div class="mb-3">
-            <label for="program_level" class="form-label">Program Level:</label>
-            <input type="text" class="form-control" id="program_level" placeholder="Program Level">
+            <label for="country_id" class="form-label">Country Name:</label>
+            <select class="form-control" name="country_id" id="country_id" data-choices>
+                <option value="">--Select Country--</option>
+                @foreach ($countries as $country)
+                    <option value="{{ $country->id }}" {{ request('country_id') == $country->id ? 'selected' : '' }}>
+                        {{ $country->country_name }}
+                    </option>
+                @endforeach
+            </select>
         </div>
+
+
+        <div class="mb-3">
+            <label for="tuition_fees" class="form-label">Tuition Fees:</label>
+            <input type="text" class="form-control" name="tuition_fees" id="tuition_fees"
+                value="{{ request('tuition_fees') }}" placeholder="Tuition Fees">
+        </div>
+
         <div class="mb-3">
             <label for="application_fees" class="form-label">Application Fees</label>
-            <input type="text" class="form-control" id="application_fees" placeholder="Application Fees">
+            <input type="text" class="form-control" name="application_fees" id="application_fees"
+                value="{{ request('application_fees') }}" placeholder="Application Fees">
         </div>
+
+        <div class="mb-3">
+            <label for="program_level" class="form-label">Program Level:</label>
+            <select name="program_level" id="program_level" class="form-control">
+                <option value="">-- Select Program Level --</option>
+                @foreach ($coursePrograms as $program)
+                    <option value="{{ $program->id }}" {{ request('program_level') == $program->id ? 'selected' : '' }}>
+                        {{ $program->course_program }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="mb-3">
             <label for="program_length" class="form-label">Program Length:</label>
-            <input type="text" class="form-control" id="program_length" placeholder="Program Length">
-        </div>
-        <div class="mb-3">
-            <label for="moi_program" class="form-label">MOI </label>
-            <select class="form-select" id="moi_program" name="program_level">
-                <option value="">Select MOI</option>
-                    <option value="Value">Value</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="ielts_program" class="form-label">IELTS Proficiency:</label>
-            <select class="form-select" id="ielts_program" name="country">
-                <option value="">Select IELTS</option>
-                    <option value="Value">Value</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="toefl_program" class="form-label">TOEFL Proficiency:</label>
-            <select class="form-select" id="toefl_program" name="country">
-                <option value="">Select IELTS</option>
-                    <option value="Value">Value</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="pte_program" class="form-label">PTE Proficiency:</label>
-            <select class="form-select" id="pte_program" name="country">
-                <option value="">Select IELTS</option>
-                    <option value="Value">Value</option>
+            <select class="form-control" id="program_length" name="program_length">
+                <option value="">--Select Program Length--</option>
+                <option value="1" {{ request('program_length') == 1 ? 'selected' : '' }}>1 Year</option>
+                <option value="2" {{ request('program_length') == 2 ? 'selected' : '' }}>2 Years</option>
+                <option value="3" {{ request('program_length') == 3 ? 'selected' : '' }}>3 Years</option>
+                <option value="4" {{ request('program_length') == 4 ? 'selected' : '' }}>4 Years</option>
+                <option value="5" {{ request('program_length') == 5 ? 'selected' : '' }}>5 Years</option>
             </select>
         </div>
         <button type="submit" class="btn btn-sm glodex-blue-btn">Apply Filter</button>

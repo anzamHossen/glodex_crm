@@ -160,10 +160,10 @@
                                                 <div class="glodex-details-carousel-item">
                                                     <div class="glodex-details-carousel-image position-relative rounded-4 overflow-hidden">
                                                         <img 
-                                                            src="{{ $universityDetails->logo && file_exists(public_path($universityDetails->logo)) 
-                                                                    ? asset($universityDetails->logo) 
-                                                                    : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
-                                                            alt="{{ $universityDetails->university_name }}"
+                                                            src="{{ $course->course_photo && file_exists(public_path($course->course_photo)) 
+                                                            ? asset($course->course_photo) 
+                                                            : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
+                                                            alt="{{ $course->course_name }}"
                                                             class="w-100 object-fit-cover img-fluid">
 
                                                         <!-- Overlay -->
@@ -171,7 +171,7 @@
                                                             <h4 class="text-white fw-bold mb-2">
                                                                 {{ $course->course_name }}
                                                             </h4>
-                                                            <a href="#" class="btn btn-sm btn-gradient">View Details</a>
+                                                            <a href="{{ route('course_details', $course->id) }}" class="btn btn-sm btn-gradient">View Details</a>
                                                         </div>
                                                     </div>
                                                 </div>

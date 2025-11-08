@@ -65,6 +65,8 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
     Route::controller(CourseController::class)->group(function () {
         Route::get('/course-list', 'courseList')->name('course_list');
         Route::get('/course-details/{id}', 'courseDetails')->name('course_details');
+        Route::get('/search-course', 'searchCourse')->name('search_course');
+        Route::get('/filter-course', 'filterCourse')->name('filter_course');
         Route::get('/add-new-course', 'addCourse')->name('add_new_course');
         Route::post('/save-new-course', 'saveCourse')->name('save_new_course');
         Route::get('/edit-course/{id}', 'editCourse')->name('edit_course');

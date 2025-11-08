@@ -16,7 +16,7 @@
                                     <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Add New
                                 </a>
-                                <a href="#" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
+                                <a href="{{ route('university_list') }}" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
                                     <i class="ti ti-rotate me-2"></i>
                                     Refresh
                                 </a>

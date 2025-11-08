@@ -66,8 +66,14 @@
                                                     <i class="ti ti-dots-vertical"></i>
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#"><i class="ti ti-school me-2"></i> Universities</a></li>
-                                                    <li><a class="dropdown-item" href="#"><i class="ti ti-book-2 me-2"></i> Courses</a></li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ url('/admin/search-university-name') }}?country_id={{ $country->id }}&university_name=" target="_blank"><i class="ti ti-school me-2"></i>Universities</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('filter_course', ['country_id' => $country->id]) }}" target="_blank">
+                                                            <i class="ti ti-book-2 me-2"></i> Courses
+                                                        </a>
+                                                    </li>
                                                     <li><a class="dropdown-item" href="{{ route('country_details', $country->id) }}"><i class="ti ti-map-pin me-2"></i> Country Details</a></li>
                                                     <li><a class="dropdown-item" href="{{ route('edit_country', $country->id) }}"><i class="ti ti-edit me-2"></i> Edit</a></li>
                                                     <li>
