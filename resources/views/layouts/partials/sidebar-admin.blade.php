@@ -137,9 +137,23 @@
             </div>
         </li>
         <li class="side-nav-item">
-            <a href="index.html" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
-                <span class="menu-text">Appplication</span>
+            <a href="{{ route('my_application_list') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-brand-sentry"></i></span>
+                <span class="menu-text">My Appplication</span>
+                <span class="badge bg-success rounded-pill">5</span>
+            </a>
+        </li>
+        <li class="side-nav-item">
+            <a href="#" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-brand-appstore"></i></span>
+                <span class="menu-text">Agent Appplication</span>
+                <span class="badge bg-success rounded-pill">5</span>
+            </a>
+        </li>
+        <li class="side-nav-item">
+            <a href="#" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-brand-drupal"></i></span>
+                <span class="menu-text">All Appplication</span>
                 <span class="badge bg-success rounded-pill">5</span>
             </a>
         </li>

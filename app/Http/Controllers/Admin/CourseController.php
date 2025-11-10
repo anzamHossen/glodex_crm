@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Handler\ImageHandlerController;
+use App\Http\Middleware\Student;
 use App\Models\Admin\Country;
 use App\Models\Admin\Course;
 use App\Models\Admin\CourseProgram;
 use App\Models\Admin\IntakeMonth;
+use App\Models\Admin\StudentInfo;
 use App\Models\Admin\University;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +33,8 @@ class CourseController extends Controller
             ->paginate(8);
         $coursePrograms = CourseProgram::all();
         $countries      = Country::all();
-       return view('admin.course.course-list', compact('courses','coursePrograms','countries'));
+        $students = StudentInfo::orderBy('id', 'desc')->get();
+       return view('admin.course.course-list', compact('courses','coursePrograms','countries','students'));
     }
 
     // function to show course details

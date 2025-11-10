@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('application_code');
             $table->tinyInteger('status')->default(1);
             $table->integer('created_by')->nullable()->comment("the id of the person who is creating this application/ auth id");
+            $table->text('intake_year')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

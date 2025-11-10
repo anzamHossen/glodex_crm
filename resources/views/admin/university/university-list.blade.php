@@ -78,7 +78,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row g-2">
                                 @foreach($universities as  $university)
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
@@ -89,7 +88,7 @@
                                                     <i class="ti ti-dots-vertical"></i>
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Courses</a></li>
+                                                    <li><a class="dropdown-item" href="{{ url('/admin/filter-course') }}?university_name={{ urlencode($university->university_name) }}">Courses</a></li>
                                                     <li><a class="dropdown-item" href="{{ route('university_details', $university->id) }}">University Details</a></li>
                                                     <li><a class="dropdown-item" href="{{ route('edit_university', $university->id) }}">Edit</a></li>
                                                     <li>
@@ -142,12 +141,11 @@
                                                     <span class="badge-commission">Commission {{ $university->commission_for_us ?? 'Not added'}}</span>
                                                 </div>
                                                 <div class="d-flex justify-content-center">
-                                                    <button class="btn btn-sm py-2 btn-gradient mt-3">
+                                                    <a href="{{ url('/admin/filter-course') }}?university_name={{ urlencode($university->university_name) }}" class="btn btn-sm py-2 btn-gradient mt-3 d-inline-flex align-items-center">
                                                         <i class="ti ti-graduation-cap-filled me-2"></i>
                                                         View Courses
-                                                    </button>
+                                                    </a>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\UniversityController;
@@ -74,13 +75,24 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::delete('/delete-course/{id}',  'deleteCourse')->name('delete_course');           
     });
 
-    // Route for course
+    // Route for student info
     Route::controller(StudentInfoController::class)->group(function () {
         Route::get('/my-student-list', 'myStudentList')->name('my_student_list');
         Route::get('/add-new-student', 'addNewStudent')->name('add_new_student');
         Route::post('/save-new-student', 'saveNewStudent')->name('save_new_student');
         Route::get('/edit-student/{id}', 'editStudent')->name('edit_student');
         Route::post('/update-student/{id}', 'updateStudent')->name('update_student');
+    });
+
+    // Route for applications
+    Route::controller(ApplicationController::class)->group(function () {
+        Route::get('/my-application-list', 'myApplicationList')->name('my_application_list');
+        Route::get('/add-application-new-student/{course_id}', 'addApplicationNewStudent')->name('add_application_new_student');
+        Route::post('/save-application-new-student', 'saveApplicationNewStudent')->name('save_application_new_student');
+        Route::get('/add-application-existing-student/{course_id}/{student_id}', 'addApplicationEixStudent')->name('add_application_eix_student');
+        Route::get('/add-application-existing-student/{course_id}/{student_id}', 'addApplicationEixStudent')->name('add_application_eix_student');
+       Route::post('/save-application-exit-student', 'saveApplicationEixStudent')->name('save_application_eix_student');
+
     });
 });
 

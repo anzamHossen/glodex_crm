@@ -173,7 +173,60 @@
                                             </div>
 
                                             <div class="pt-2 d-flex justify-content-center">
-                                                <a href="#" class="btn btn-sm btn-gradient">Apply Now</a>
+                                                <a href="#" class="btn btn-sm btn-gradient" target="_blank" data-bs-toggle="modal"
+                                                data-bs-target="#modalCenter{{ $course->id }}">Apply Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="modalCenter{{ $course->id }}" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalCenterTitle">Start Application For
+                                                    {{ $course->course_name }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-6 text-center">
+                                                        <a href="javascript:void(0);" 
+                                                            class="btn btn-dark w-100 d-flex align-items-center justify-content-center" 
+                                                            style="height: 60px;  font-size: 18px;"
+                                                            onclick="toggleSelect('existingStudentSelect{{ $course->id }}')">
+                                                                <i class="ti ti-search me-1"></i> Existing Student
+                                                        </a>
+
+                                                    </div>
+                                                    <div class="col-md-6 text-center">
+                                                        <a href="{{ route('add_application_new_student', ['course_id' => $course->id]) }}" class="btn btn-success w-100 d-flex align-items-center justify-content-center"
+                                                            style="height: 60px; font-size: 18px;">
+                                                            <i class="ti ti-pencil me-1"></i> New Student
+                                                        </a>
+                                                    </div>
+                                                    <div id="existingStudentSelect{{ $course->id }}" style="display: none; margin-top: 10px;">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                <select id="studentSelect{{ $course->id }}" data-choices id="choices-single-default"
+                                                                        class="form-control"
+                                                                        onchange="updateStartButton({{ $course->id }})">
+                                                                    <option value="">-- Select Student --</option>
+                                                                    @foreach($students as $student)
+                                                                        <option value="{{ $student->id }}">{{ $student->name }} ({{ $student->email }})</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-3 d-flex align-items-end">
+                                                                <a href="#" id="startApplicationBtn{{ $course->id }}" 
+                                                                class="btn btn-success w-100"
+                                                                onclick="startApplication({{ $course->id }})">
+                                                                    Start
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -275,32 +328,79 @@
 <!-- END wrapper -->
 @endsection
 @push('page-js')
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const canvas = new bootstrap.Offcanvas('#course-rbnss-canvaas');
+        document.querySelector('#course-customFilterBtn').addEventListener('click', function() {
+            canvas.show();
+        });
+      });
+    </script>
+    <script>
+        function toggleSelect(selectId) {
+            const selectDiv = document.getElementById(selectId);
+            selectDiv.style.display = (selectDiv.style.display === "none" || selectDiv.style.display === "") 
+                ? "block" 
+                : "none";
+        }
+
+        function updateStartButton(courseId) {
+            const select = document.getElementById('studentSelect' + courseId);
+            const startButton = document.getElementById('startApplicationBtn' + courseId);
+            const selectedStudentId = select.value;
+
+            // Store selected student in a data attribute
+            startButton.setAttribute('data-student-id', selectedStudentId);
+        }
+
+        function startApplication(courseId) {
+            const startButton = document.getElementById('startApplicationBtn' + courseId);
+            const selectedStudentId = startButton.getAttribute('data-student-id');
+
+            if (!selectedStudentId) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Please select a student first!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                return;
+            }
+
+            const url = "{{ route('add_application_eix_student', ['course_id' => '__course_id__', 'student_id' => '__student_id__']) }}"
+                .replace('__course_id__', courseId)
+                .replace('__student_id__', selectedStudentId);
+
+            // Redirect to that page
+            window.location.href = url;
+        }
+    </script>
     <script>
         $(document).ready(function() {
             $('#dataTable').DataTable();
         });
     </script>
-        <script>
-            function confirmDelete(id) {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Yes, delete it!',
-                    cancelButtonText: 'No, cancel!',
-                    customClass: {
-                        confirmButton: 'btn btn-primary',
-                        cancelButton: 'btn btn-danger'
-                    },
-                    buttonsStyling: false
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        const form = document.getElementById(`delete-course-form-${id}`);
-                        form.action = "{{ route('delete_course', '') }}/" + id;
-                        form.submit();
-                    }
-                });
-            }
-        </script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                customClass: {
+                    confirmButton: 'btn btn-primary',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.getElementById(`delete-course-form-${id}`);
+                    form.action = "{{ route('delete_course', '') }}/" + id;
+                    form.submit();
+                }
+            });
+        }
+    </script>
 @endpush
