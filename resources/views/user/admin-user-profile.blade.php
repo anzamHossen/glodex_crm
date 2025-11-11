@@ -87,7 +87,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-4 mt-2">
-                                        <label for="profile_photo" class="form-label">Profile Picture <span class="text-danger">*</span>:</label>
+                                        <label for="profile_photo" class="form-label">Profile Picture</label>
                                         <!-- Preview Box -->
                                         <div class="col-md-3">
                                             <div class="photo-preview overflow-hidden shadow"
@@ -117,8 +117,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-4 mt-2">
-                                        <label for="cover_photo" class="form-label">Company Logo<span
-                                                class="text-danger">*</span>:</label>
+                                        <label for="cover_photo" class="form-label">Company Logo</label>
 
                                         <!-- Preview Box -->
                                         <div class="col-md-3">
@@ -148,8 +147,7 @@
 
                                     </div>
                                     <div class="col-md-4 mt-2">
-                                        <label for="cover_photo" class="form-label">Favicon<span
-                                                class="text-danger">*</span>:</label>
+                                        <label for="cover_photo" class="form-label">Favicon</label>
 
                                         <!-- Preview Box -->
                                         <div class="col-md-3">
