@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('page-css')
+    <link rel="stylesheet" href="{{ asset('css/custom-status.css') }}">
+@endpush
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">
@@ -36,60 +39,101 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="dropdown position-relative">
-                                                    <button
-                                                        type="button"
-                                                        class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill"
-                                                        data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="ti ti-dots-vertical ti-md"></i>
-                                                    </button>
+                                        @foreach($applications as $application)
+                                            <tr>
+                                                <td>
+                                                    <div class="dropdown position-relative">
+                                                        <button
+                                                            type="button"
+                                                            class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                            <i class="ti ti-dots-vertical ti-md"></i>
+                                                        </button>
 
-                                                    <div class="dropdown-menu">
-                                                        <a href="#" class="dropdown-item d-flex align-items-center gap-1" title="Login As">
-                                                            <i class="ti ti-login-2 ti-md"></i> <span>Login</span>
-                                                        </a>
+                                                        <div class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center gap-1" href="{{ $application->student
+                                                                    ? route('edit_application', [
+                                                                        'student_id' => $application->student->id,
+                                                                        'course_id' => $application->course->id,
+                                                                        'id' => $application->id,
+                                                                    ])
+                                                                    : '#' }}">
+                                                                    <i class="ti ti-edit me-2"></i> Edit
+                                                                </a>
+                                                            </li>
 
-                                                        <a href="javascript:void(0);" 
-                                                            onclick="confirmDelete()" 
-                                                            class="dropdown-item d-flex align-items-center gap-1" 
-                                                            title="Delete">
-                                                                <i class="ti ti-trash ti-md"></i> <span>Delete</span>
-                                                        </a>
+                                                            <a href="javascript:void(0);" 
+                                                                onclick="confirmDelete()" 
+                                                                class="dropdown-item d-flex align-items-center gap-1" 
+                                                                title="Delete">
+                                                                    <i class="ti ti-trash ti-md"></i> <span>Delete</span>
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <form id="delete-user-form" method="POST" style="display: none;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                            </td>
-                                            <td>
-                                                ...
-                                            </td>
-                                            <td>
-                                                ...
-                                            </td>
-                                            <td>
-                                                ...
-                                            </td>
-                                            <td>
-                                                ...
-                                            </td>
-                                            <td>
-                                                ...
-                                            </td>
-                                            <td>
-                                                ....
-                                            </td>
-                                            <td>
-                                               ....
-                                            </td>
-                                            <td>
-                                               ....
-                                            </td>
-                                        </tr>
+                                                    <form id="delete-user-form" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    @php
+                                                        $statusColors = [
+                                                            'In Progress' => 'badge-in-progress',
+                                                            'On Hold' => 'badge-on-hold',
+                                                            'Applied' => 'badge-applied',
+                                                            'Unconditional Offer Letter' => 'badge-unconditional',
+                                                            'Conditional Offer Letter' => 'badge-conditional',
+                                                            'Payment' => 'badge-payment',
+                                                            'CAS/I20/LOA/COE Confirmation' => 'badge-confirmation',
+                                                            'Visa Documentation' => 'badge-documentation',
+                                                            'Visa Applied' => 'badge-visa-applied',
+                                                            'Visa Granted' => 'badge-visa-granted',
+                                                            'Enrolled' => 'badge-enrolled',
+                                                            'Visa Rejected' => 'badge-rejected',
+                                                            'Canceled' => 'badge-canceled',
+                                                        ];
+
+                                                        $statusName = $application->applicationStatus->status_name ?? 'N/A';
+                                                        $badgeClass = $statusColors[$statusName] ?? 'badge-canceled';
+                                                    @endphp
+
+                                                    <span class="badge {{ $badgeClass }}">{{ $statusName }}</span>
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <span class="badge bg-primary">
+                                                        {{ $application->application_code ?? 'Not Added' }}
+                                                    </span>
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <span class="badge bg-dark">
+                                                        {{ $application->student->student_code ?? 'Not Added' }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{ $application->student->name ?? 'Not Added' }}
+                                                </td>
+                                                <td>
+                                                    {{ $application->course->course_name ?? 'Not Added' }}
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <span class="badge bg-success">
+                                                        @if ($application->intake_year && \Carbon\Carbon::hasFormat($application->intake_year, 'Y-m'))
+                                                            {{ \Carbon\Carbon::createFromFormat('Y-m', $application->intake_year)->format('F Y') }}
+                                                        @else
+                                                            Not Added
+                                                        @endif
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{ $application->course->university->university_name ?? '--' }}
+                                                </td>
+                                                <td>
+                                                    {{ $application->created_at->format('Y-m-d') }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div> <!-- end table-responsive-->

@@ -20,7 +20,11 @@ class ApplicationController extends Controller
 {
     public function myApplicationList()
     {
-        return view('admin.application.my-application-list  ');
+       $applications = Application::with(['student', 'course.country', 'course.university', 'applicationStatus'])
+        ->whereHas('createdBy', function ($query) {
+            $query->where('user_type', 1);
+        })->orderBy('id', 'desc')->get();
+        return view('admin.application.my-application-list', compact('applications'));         
     }
     
     // function to add application for new student
@@ -293,6 +297,146 @@ class ApplicationController extends Controller
             DB::rollBack();
             // dd($e->getMessage());
             Alert::error('Error', 'Failed to add application, Try Again.');
+            return redirect()->back()->withInput();
+        }
+    }
+
+    // function to edit application
+    public function editApplication($id, $course_id, $student_id)
+    {
+        $application = Application::find($id);
+
+        if (!$application) {
+        Alert::error('Error', 'Application not found.');
+        return redirect()->back();
+        }
+
+        $course = Course::find($course_id);
+
+        if (!$course) {
+        Alert::error('Error', 'Course not found..');
+        return redirect()->back();
+        }
+
+        if (!$student_id || !StudentInfo::find($student_id)) {
+        Alert::error('Error', 'Student record has been deleted or is invalid.');
+        return redirect()->back();
+        }
+
+        $student = StudentInfo::find($student_id);
+        $applicationStatus = ApplicationStatus::all();
+        $englishTests = json_decode($student->english_proficiency, true) ?? [];
+        $academicQualifications = json_decode($student->academic_qualifications, true) ?? [];
+        return view('admin.application.edit-application', compact('application', 'course', 'student', 'applicationStatus', 'englishTests', 'academicQualifications'));
+    }
+
+    // function to update application
+    public function updateApplication(Request $request, $id)
+    {
+        $request->validate([
+            'student_id'        => 'required|exists:student_infos,id',
+            'course_id'         => 'required|exists:courses,id',
+            'name'              => 'required|string|max:50',
+            'phone'             => 'required',
+            'email'             => 'required|email',
+            'dob'               => 'required|date',
+            'passport_no'       => 'required|string',
+            'permanent_address' => 'required|string',
+            'gender'            => 'required',
+            'intake_year'       => 'required',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            // Find existing student
+            $studentInfo = StudentInfo::find($request->student_id);
+
+            if (!$studentInfo) {
+                Alert::error('Error', 'Student not found.');
+                return redirect()->back();
+            }
+
+            //Update Student Info
+            $studentInfo->update([
+                'name'              => $request->name,
+                'phone'             => $request->phone,
+                'email'             => $request->email,
+                'dob'               => $request->dob,
+                'passport_no'       => $request->passport_no,
+                'permanent_address' => $request->permanent_address,
+                'gender'            => $request->gender,
+                'fathers_name'      => $request->fathers_name,
+                'mothers_name'      => $request->mothers_name,
+                'moi'               => $request->moi,
+                'notes'             => $request->notes,
+            ]);
+
+            // 🔹 Update English Proficiency
+            if ($request->has('english_tests')) {
+                $englishTests = [];
+                foreach ($request->english_tests as $test) {
+                    $englishTests[] = [
+                        'type'      => $test['type'] ?? null,
+                        'listening' => $test['listening'] ?? null,
+                        'reading'   => $test['reading'] ?? null,
+                        'writing'   => $test['writing'] ?? null,
+                        'speaking'  => $test['speaking'] ?? null,
+                        'overall'   => $test['overall'] ?? null,
+                    ];
+                }
+                $studentInfo->english_proficiency = json_encode($englishTests);
+                $studentInfo->save();
+            }
+
+            //Update Academic Qualifications
+            if ($request->has('academic_qualifications')) {
+                $academicQualifications = [];
+                foreach ($request->academic_qualifications as $qualification) {
+                    $academicQualifications[] = [
+                        'group_name'     => $qualification['group_name'] ?? null,
+                        'institute_name' => $qualification['institute_name'] ?? null,
+                        'gpa'            => $qualification['gpa'] ?? null,
+                        'passing_year'   => $qualification['passing_year'] ?? null,
+                    ];
+                }
+                $studentInfo->academic_qualifications = json_encode($academicQualifications);
+                $studentInfo->save();
+            }
+
+            //Upload Student Files (if any new files)
+            if ($request->hasFile('studentfiles')) {
+                $studentFiles = $request->file('studentfiles');
+                $filenames = $request->input('filename');
+
+                foreach ($studentFiles as $key => $single) {
+                    $originalFileName = $single->getClientOriginalName();
+                    $newFileName = Carbon::now()->timestamp . '_' . $studentInfo->name . '_' . $originalFileName;
+                    $filePath = $single->storeAs($filenames[$key], $newFileName, 'public');
+
+                    StudentFile::create([
+                        'student_id' => $studentInfo->id,
+                        'filename'   => $filenames[$key],
+                        'filepath'   => $filePath,
+                    ]);
+                }
+            }
+
+            $updateApplication = Application::findOrFail($id);
+            $updateApplication->student_id  = $studentInfo->id;
+            $updateApplication->course_id   = $request->input('course_id');
+            $updateApplication->status      = $request->input('status') ?? 'In Progress';
+            $updateApplication->intake_year = $request->input('intake_year');
+
+            $updateApplication->save();
+            DB::commit();
+            Alert::success('Success', 'Application update successfully for existing student.');
+            return redirect()->back();
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            // dd($e->getMessage());
+            Alert::error('Error', 'Failed to update application, Try Again.');
             return redirect()->back()->withInput();
         }
     }

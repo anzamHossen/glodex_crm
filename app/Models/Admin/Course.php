@@ -43,5 +43,9 @@ class Course extends Model
         return implode(', ', $months);
     }
 
+    public function applications()
+    {
+        return $this->hasMany(Application::class, 'course_id');
+    }
 
 }

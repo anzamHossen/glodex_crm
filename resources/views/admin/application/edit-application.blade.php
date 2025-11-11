@@ -8,9 +8,9 @@
                     <div class="card">
                         <div
                             class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
-                            <h4 class="header-title mb-0">Application For Existing Student</h4>
+                            <h4 class="header-title mb-0">Edit Application</h4>
                             <div class="d-flex">
-                                <a href="#" class="btn btn-sm btn-secondary me-2">
+                                <a href="{{ route('my_application_list') }}" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up"
                                         style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Go Back
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form  action="{{ route('save_application_eix_student') }}" method="post" enctype="multipart/form-data">
+                            <form  action="{{ route('update_application', $application->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <h6 class="badge bg-primary">General Information</h6>
                                 <div class="row">
@@ -300,7 +300,7 @@
                                             <label for="defaultSelect" class="form-label">Application Satus</label>
                                             <select id="defaultSelect" name="status" class="form-select">
                                                 @foreach($applicationStatus as $status)
-                                                    <option value="{{ $status->status_order }}" {{ old('status') == $status->status_order ? 'selected' : '' }}>
+                                                    <option value="{{ $status->status_order }}" {{ $application->status == $status->status_order ? 'selected' : '' }}>
                                                         {{ $status->status_name }}
                                                     </option>
                                                 @endforeach
@@ -315,7 +315,7 @@
                                             <label for="intakeYear" class="form-label">Intake Year<span
                                                 class="text-danger">*</span>:</label>
                                             <input type="month" name="intake_year" class="form-control" placeholder="YYYY"
-                                                id="intakeYear" value="{{ old('intake_year') }}" required/>
+                                                id="intakeYear" value="{{ old('intake_year', $application->intake_year) }}" required/>
                                         </div>
                                         @error('intake_year')
                                             <div class="text-danger">{{ $message }}</div>
@@ -375,7 +375,7 @@
                                     @enderror
                                 </div>
                                 <div class="d-flex justify-content-end mt-3">
-                                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
                                 </div>
                             </form>
                         </div>

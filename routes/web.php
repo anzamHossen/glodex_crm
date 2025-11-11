@@ -91,7 +91,9 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::post('/save-application-new-student', 'saveApplicationNewStudent')->name('save_application_new_student');
         Route::get('/add-application-existing-student/{course_id}/{student_id}', 'addApplicationEixStudent')->name('add_application_eix_student');
         Route::get('/add-application-existing-student/{course_id}/{student_id}', 'addApplicationEixStudent')->name('add_application_eix_student');
-       Route::post('/save-application-exit-student', 'saveApplicationEixStudent')->name('save_application_eix_student');
+        Route::post('/save-application-exit-student', 'saveApplicationEixStudent')->name('save_application_eix_student');
+        Route::get('/edit-application/{id}/{course_id}/{student_id}', 'editApplication')->name('edit_application');
+        Route::post('/update-application/{id}', 'updateApplication')->name('update_application');
 
     });
 });
