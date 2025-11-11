@@ -36,6 +36,8 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
     // route for user 
     Route::controller(UserController::class)->group(function () {
         Route::get('/user-profile/{id}', 'userProfile')->name('user_profile');
+        Route::get('/admin-change-password', 'adminChangePassword')->name('admin_change_password');
+        Route::post('/update-admin-password', 'updateAdminPassword')->name('update_admin_password');
     });
 
     // Route for country
