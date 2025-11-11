@@ -91,6 +91,54 @@ class ImageHandlerController extends Controller
         return 'storage/' . $path . '/' . $fileName;
     }
 
+    // Function to upload profile photo
+    public function profilePhoto($file, $path = 'profile-photo', $previousImagePath = null)
+    {
+        if ($previousImagePath) {
+        $this->deleteImage($previousImagePath);
+        }
+    
+        // Use a shorter random string
+        $fileName = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+
+        // Save to storage/app/public/file-opening-image
+        $file->storeAs($path, $fileName, 'public');
+
+        return 'storage/' . $path . '/' . $fileName;
+    }
+
+    // Function to upload company logo
+    public function companyLogo($file, $path = 'company-logo', $previousImagePath = null)
+    {
+        if ($previousImagePath) {
+        $this->deleteImage($previousImagePath);
+        }
+    
+        // Use a shorter random string
+        $fileName = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+
+        // Save to storage/app/public/file-opening-image
+        $file->storeAs($path, $fileName, 'public');
+
+        return 'storage/' . $path . '/' . $fileName;
+    }
+
+    // Function to upload favicon photo
+    public function faviconPhoto($file, $path = 'favicon-photo', $previousImagePath = null)
+    {
+        if ($previousImagePath) {
+        $this->deleteImage($previousImagePath);
+        }
+    
+        // Use a shorter random string
+        $fileName = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+
+        // Save to storage/app/public/file-opening-image
+        $file->storeAs($path, $fileName, 'public');
+
+        return 'storage/' . $path . '/' . $fileName;
+    }
+
     // Delete Image Method
     public function deleteImage($filePath)
     {

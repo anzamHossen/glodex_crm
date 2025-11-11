@@ -3,13 +3,15 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Glodex</title>
+    <title>Glodex @yield('title', '')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ Auth::user() && Auth::user()->favicon && file_exists(public_path(Auth::user()->favicon)) 
+                ? asset(Auth::user()->favicon) 
+                : asset('back-end/assets/images/favicon.ico') }}">
 
     <!-- Theme Config Js -->
     <script src="{{asset('back-end/assets/js/config.js') }}"></script>

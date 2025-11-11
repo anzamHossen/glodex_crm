@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '| Add New Country')
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">

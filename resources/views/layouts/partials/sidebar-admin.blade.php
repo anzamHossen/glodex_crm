@@ -2,15 +2,28 @@
 <!-- Brand Logo -->
 <a href="{{ route('admin_dashboard') }}" class="logo">
     <span class="logo-light">
-        <span class="logo-lg"><img src="{{asset('back-end/assets/images/logo-main.png')}}" style="height: 2rem" alt="logo"></span>
-        <span class="logo-sm"><img src="{{asset('back-end/assets/images/icon-sm.png')}}" style="height: 2rem" alt="small logo"></span>
+        <span class="logo-lg">
+            <img src="{{ Auth::user()->company_logo && file_exists(public_path(Auth::user()->company_logo)) 
+                            ? asset(Auth::user()->company_logo) 
+                            : asset('back-end/assets/images/logo-main.png') }}" style="height: 2rem"
+                alt="logo">
+        </span>
+
+        <span class="logo-sm">
+            <img src="{{ Auth::user()->favicon && file_exists(public_path(Auth::user()->favicon)) 
+                            ? asset(Auth::user()->favicon) 
+                            : asset('back-end/assets/images/icon-sm.png') }}" style="height: 2rem"
+                alt="small logo">
+        </span>
     </span>
+
 
     <span class="logo-dark">
         <span class="logo-lg"><img src="{{ asset('back-end/assets/images/logo-main.png') }}" alt="dark logo"></span>
         <span class="logo-sm"><img src="{{ asset('back-end/assets/images/icon-sm.png') }}" alt="small logo"></span>
     </span>
 </a>
+
 
 <!-- Sidebar Hover Menu Toggle Button -->
 <button class="button-sm-hover">
