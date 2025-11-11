@@ -9,9 +9,7 @@
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ Auth::user() && Auth::user()->favicon && file_exists(public_path(Auth::user()->favicon)) 
-                ? asset(Auth::user()->favicon) 
-                : asset('back-end/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{asset('back-end/assets/images/glodex-favicon.png')}}">
 
     <!-- Theme Config Js -->
     <script src="{{asset('back-end/assets/js/config.js') }}"></script>
