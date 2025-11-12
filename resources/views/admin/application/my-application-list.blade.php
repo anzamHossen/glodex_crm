@@ -60,7 +60,7 @@
                                                                         'id' => $application->id,
                                                                     ])
                                                                     : '#' }}">
-                                                                    <i class="ti ti-edit me-2"></i> Edit
+                                                                    <i class="ti ti-edit"></i> Edit
                                                                 </a>
                                                             </li>
 

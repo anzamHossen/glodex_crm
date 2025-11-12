@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '|My Student List')
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">

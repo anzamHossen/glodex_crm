@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '|University Details')
 @push('page-css')
     <link rel="stylesheet" href="{{ asset('css/country/country-details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/university/university-details.css') }}">

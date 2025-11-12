@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '|Course Details')
 @push('page-css')
     <link rel="stylesheet" href="{{ asset('css/country/country-details.css') }}">
     <link rel="stylesheet" href="{{ asset('css/university/university-details.css') }}">
@@ -206,14 +207,13 @@
                                                 <h2 class="h3 fw-bold text-white mb-3">
                                                     Ready to Start Your Journey?
                                                 </h2>
-                                                <a href="#"
+                                                <a href="{{ route('course_list') }}"
                                                     class="btn btn-gradient btn-lg text-white border-0 d-inline-flex align-items-center gap-2">
                                                     <i class="ti ti-arrow-right"></i>
                                                     Apply Now
                                                 </a>
                                             </div>
                                         </div>
-
                                     </div>
                                 </section>
                             </div>
