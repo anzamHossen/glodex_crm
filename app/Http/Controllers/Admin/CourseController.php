@@ -12,6 +12,7 @@ use App\Models\Admin\IntakeMonth;
 use App\Models\Admin\StudentInfo;
 use App\Models\Admin\University;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -70,50 +71,50 @@ class CourseController extends Controller
     }
 
     // function to filter course
-   public function filterCourse(Request $request)
-{
-    $query = Course::with(['university', 'country', 'courseProgram']);
+    public function filterCourse(Request $request)
+    {
+        $query = Course::with(['university', 'country', 'courseProgram']);
 
-    // Filters
-    if ($request->filled('course_name')) {
-        $query->where('course_name', 'like', '%' . $request->course_name . '%');
+        // Filters
+        if ($request->filled('course_name')) {
+            $query->where('course_name', 'like', '%' . $request->course_name . '%');
+        }
+
+        if ($request->filled('university_name')) {
+            $query->whereHas('university', function ($q) use ($request) {
+                $q->where('university_name', 'like', '%' . $request->university_name . '%');
+            });
+        }
+
+        if ($request->filled('country_id')) {
+            $query->where('country_id', $request->country_id);
+        }
+
+        if ($request->filled('tuition_fees')) {
+            $query->where('tuition_fee_per_year', '<=', $request->tuition_fees);
+        }
+
+        if ($request->filled('application_fees')) {
+            $query->where('application_fee', '<=', $request->application_fees);
+        }
+
+        if ($request->filled('program_level')) {
+            $query->where('course_program_id', $request->program_level);
+        }
+
+        if ($request->filled('program_length')) {
+            $query->where('program_length', $request->program_length);
+        }
+
+        $courses = $query->orderByDesc('id')
+            ->paginate(8)
+            ->appends($request->all());
+
+        $countries = Country::all();
+        $coursePrograms = CourseProgram::all();
+        $students       = StudentInfo::where('created_by', Auth::id())->orderBy('id', 'desc')->get();
+        return view('admin.course.course-list', compact('courses', 'countries', 'coursePrograms','students'));
     }
-
-    if ($request->filled('university_name')) {
-        $query->whereHas('university', function ($q) use ($request) {
-            $q->where('university_name', 'like', '%' . $request->university_name . '%');
-        });
-    }
-
-    if ($request->filled('country_id')) {
-        $query->where('country_id', $request->country_id);
-    }
-
-    if ($request->filled('tuition_fees')) {
-        $query->where('tuition_fee_per_year', '<=', $request->tuition_fees);
-    }
-
-    if ($request->filled('application_fees')) {
-        $query->where('application_fee', '<=', $request->application_fees);
-    }
-
-    if ($request->filled('program_level')) {
-        $query->where('course_program_id', $request->program_level);
-    }
-
-    if ($request->filled('program_length')) {
-        $query->where('program_length', $request->program_length);
-    }
-
-    $courses = $query->orderByDesc('id')
-        ->paginate(8)
-        ->appends($request->all());
-
-    $countries = Country::all();
-    $coursePrograms = CourseProgram::all();
-
-    return view('admin.course.course-list', compact('courses', 'countries', 'coursePrograms'));
-}
 
 
 

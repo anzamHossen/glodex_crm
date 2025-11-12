@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','|Country Details')
+@section('title','| Country Details')
 @push('page-css')
     <link rel="stylesheet" href="{{ asset('css/country/country-details.css') }}">
 @endpush
@@ -14,7 +14,7 @@
                             class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">Country Details</h4>
                             <div class="d-flex">
-                                <a href="{{ route('country_list') }}" class="btn btn-sm btn-secondary me-2">
+                                <a href="{{ route('agent_country_list') }}" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up"
                                         style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Go Back
@@ -185,10 +185,12 @@
                                         </div>
                                     </div>
                                 </section>
+
+
                                 <!-- Back Button -->
                                 <section class="pb-4 text-center">
                                     <div class="container">
-                                        <a href="{{ route('country_list') }}"
+                                        <a href="{{ route('agent_country_list') }}"
                                             class="btn btn-gradient btn-lg text-white border-0 d-inline-flex align-items-center gap-2">
                                             <i class="ti ti-arrow-left"></i>
                                             Back to All Countries

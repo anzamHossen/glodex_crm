@@ -6,7 +6,11 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserActiveController;
+use App\Http\Controllers\Agent\AgentCountryController;
+use App\Http\Controllers\Agent\AgentCourseController;
 use App\Http\Controllers\Agent\AgentDashboardController;
+use App\Http\Controllers\Agent\AgentStudentController;
+use App\Http\Controllers\Agent\AgentUniversityController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Student\StudentDashboardController;
 use App\Http\Controllers\StudentInfoController;
@@ -42,7 +46,7 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::post('/update-admin-profile', 'updateAdminProfile')->name('update_admin_profile');
     });
 
-    // Route for country
+     // Route for country
      Route::controller(CountryController::class)->group(function () {
         Route::get('/country-list', 'countryList')->name('country_list');
         Route::get('/add-new-country', 'addCountry')->name('add_new_country');
@@ -104,6 +108,38 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
 
 Route::prefix('agent')->middleware(['agent'])->group(function () {
     Route::get('/agent-dashboard', [AgentDashboardController::class, 'agentDashboard'])->name('agent_dashboard');
+
+    // Route for agent country
+    Route::controller(AgentCountryController::class)->group(function () {
+        Route::get('/agent-country-list', 'agentCountryList')->name('agent_country_list');
+        Route::get('/agent-country-details/{id}', 'agentCountryDetails')->name('agent_country_details');
+        Route::get('/search-agent-countries', 'searchAgentCountries')->name('search_agent_countries');
+    });
+
+    // Route for agent university
+    Route::controller(AgentUniversityController::class)->group(function () {
+        Route::get('/agent-university-list', 'agentUniversityList')->name('agent_university_list');
+        Route::get('/search-agent-university', 'searchAgentUniversity')->name('search_agent_university');
+        Route::get('/agent-university-details/{id}', 'agentUniversityDetails')->name('agent_university_details');
+    });
+
+     // Route for agent course
+    Route::controller(AgentCourseController::class)->group(function () {
+        Route::get('/agent-course-list', 'agentCourseList')->name('agent_course_list');
+        Route::get('/agent-course-details/{id}', 'agentCourseDetails')->name('agent_course_details');
+        Route::get('/agent-search-course', 'agentSearchCourse')->name('agent_search_course');
+        Route::get('/agent-filter-course', 'agentFilterCourse')->name('agent_filter_course');           
+    });
+
+     // Route for agent students
+    Route::controller(AgentStudentController::class)->group(function () {
+        Route::get('/agent-student-list', 'agentStudentList')->name('agent_student_list');
+        Route::get('/agent-add-new-student', 'agentAddNewStudent')->name('agent_add_new_student');
+        Route::post('/agent-save-new-student', 'agentSaveNewStudent')->name('agent_save_new_student');
+        Route::get('/agent-edit-student/{id}', 'agentEditStudent')->name('agent_edit_student');
+        Route::post('/agent-update-student/{id}', 'agentUpdateStudent')->name('agent_update_student');
+    });
+
 });
 
 Route::prefix('student')->middleware(['student'])->group(function () {

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '| Add New Student')
+@section('title', '|Add New Student')
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">
@@ -11,7 +11,7 @@
                             class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">Add Student</h4>
                             <div class="d-flex">
-                                <a href="{{ route('student_list') }}" class="btn btn-sm btn-secondary me-2">
+                                <a href="{{ route('agent_student_list') }}" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up"
                                         style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Go Back
@@ -19,7 +19,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form  action="{{ route('save_new_student') }}" method="post" enctype="multipart/form-data">
+                            <form  action="{{ route('agent_save_new_student') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <h6 class="badge bg-primary">General Information</h6>
                                 <div class="row">
