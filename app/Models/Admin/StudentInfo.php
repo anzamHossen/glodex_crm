@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,5 +15,10 @@ class StudentInfo extends Model
     public function studentfiles()
     {
       return $this->hasMany(StudentFile::class, 'student_id');
+    }
+
+    public function createdBy()
+    {
+      return $this->belongsTo(User::class, 'created_by');
     }
 }

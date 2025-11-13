@@ -26,6 +26,24 @@ class ApplicationController extends Controller
         })->orderBy('id', 'desc')->get();
         return view('admin.application.my-application-list', compact('applications'));         
     }
+
+    // function to show application list for agent
+    public function applicationListAgent()
+    {
+        $applications = Application::with(['student', 'course.country', 'course.university', 'applicationStatus'])
+            ->whereHas('createdBy', function ($query) {
+                $query->where('user_type', 2);
+            })->orderBy('id', 'desc')->get();
+        return view('admin.application.application-list-agent', compact('applications'));
+    }
+
+    // function to show all application list
+    public function allApplication()
+    {
+        $applications = Application::with(['student', 'course.country', 'course.university', 'applicationStatus'])
+            ->orderBy('id', 'desc')->get();
+        return view('admin.application.all-application', compact('applications'));
+    }
     
     // function to add application for new student
     public function addApplicationNewStudent($course_id)

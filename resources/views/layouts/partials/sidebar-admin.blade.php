@@ -146,6 +146,11 @@
                             <span class="menu-text">My Student</span>
                         </a>
                     </li>
+                    <li class="side-nav-item">
+                        <a href="{{ route('student_list_agent') }}" class="side-nav-link">
+                            <span class="menu-text">Agent Student</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -153,21 +158,18 @@
             <a href="{{ route('my_application_list') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-brand-sentry"></i></span>
                 <span class="menu-text">My Appplication</span>
-                <span class="badge bg-success rounded-pill">5</span>
             </a>
         </li>
         <li class="side-nav-item">
-            <a href="#" class="side-nav-link">
+            <a href="{{ route('application_list_agent') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-brand-appstore"></i></span>
                 <span class="menu-text">Agent Appplication</span>
-                <span class="badge bg-success rounded-pill">5</span>
             </a>
         </li>
         <li class="side-nav-item">
-            <a href="#" class="side-nav-link">
+            <a href="{{ route('all_application') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-brand-drupal"></i></span>
                 <span class="menu-text">All Appplication</span>
-                <span class="badge bg-success rounded-pill">5</span>
             </a>
         </li>
     </ul>

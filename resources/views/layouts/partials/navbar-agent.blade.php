@@ -42,7 +42,7 @@
                     <span class="noti-icon-badge"></span>
                 </button>
 
-                <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg" style="min-height: 300px;">
+                {{-- <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg" style="min-height: 300px;">
                     <div class="p-3 border-bottom border-dashed">
                         <div class="row align-items-center">
                             <div class="col">
@@ -194,7 +194,7 @@
                     <a href="javascript:void(0);" class="dropdown-item notification-item position-fixed z-2 bottom-0 text-center text-reset text-decoration-underline link-offset-2 fw-bold notify-item border-top border-light py-2">
                         View All
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
 

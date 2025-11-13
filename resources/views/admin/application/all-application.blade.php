@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '| My Application List')
+@section('title', '| All Application List')
 @push('page-css')
     <link rel="stylesheet" href="{{ asset('css/custom-status.css') }}">
 @endpush
@@ -11,7 +11,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
-                            <h4 class="header-title mb-0">My Applications</h4>
+                            <h4 class="header-title mb-0">All Application</h4>
                             <div class="d-flex">
                                 <a href="{{ route('admin_dashboard') }}" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
@@ -37,6 +37,7 @@
                                             <th>Intake</th>
                                             <th>University</th>
                                             <th>Application Date</th>
+                                            <th>Sent By</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -132,6 +133,9 @@
                                                 </td>
                                                 <td>
                                                     {{ $application->created_at->format('Y-m-d') }}
+                                                </td>
+                                                <td>
+                                                    {{ $application->sent_by ?? 'Not Added' }}
                                                 </td>
                                             </tr>
                                         @endforeach

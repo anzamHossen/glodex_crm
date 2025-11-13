@@ -18,8 +18,20 @@ class StudentInfoController extends Controller
     // function to show my student list
     public function myStudentList()
     {
-        $students = StudentInfo::where('created_by', Auth::id())->get();
+        $students = StudentInfo::whereHas('createdBy', function ($query) {
+            $query->where('user_type', 1);
+        })->get();
         return view('admin.student.my-student-list', compact('students'));
+    }
+
+    // function to show student list for agent
+    public function studentListAgent()
+    {
+        $students = StudentInfo::whereHas('createdBy', function ($query) {
+            $query->where('user_type', 2);
+        })->get();
+
+        return view('admin.student.student-list-agent', compact('students'));
     }
     
     // function to show add new student page
