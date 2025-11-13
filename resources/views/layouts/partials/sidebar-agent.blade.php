@@ -71,10 +71,9 @@
             </div>
         </li>
         <li class="side-nav-item">
-            <a href="index.html" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
+            <a href="{{ route('agent_application_list') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-brand-appstore"></i></span>
                 <span class="menu-text">Appplication</span>
-                <span class="badge bg-success rounded-pill">5</span>
             </a>
         </li>
     </ul>

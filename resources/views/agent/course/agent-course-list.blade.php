@@ -189,7 +189,7 @@
 
                                                     </div>
                                                     <div class="col-md-6 text-center">
-                                                        <a href="{{ route('add_application_new_student', ['course_id' => $course->id]) }}" class="btn btn-success w-100 d-flex align-items-center justify-content-center"
+                                                        <a href="{{ route('agent_application_new_student', ['course_id' => $course->id]) }}" class="btn btn-success w-100 d-flex align-items-center justify-content-center"
                                                             style="height: 60px; font-size: 18px;">
                                                             <i class="ti ti-pencil me-1"></i> New Student
                                                         </a>
@@ -208,7 +208,7 @@
                                                             </div>
                                                             <div class="col-md-3 d-flex align-items-end">
                                                                 <a href="#" id="startApplicationBtn{{ $course->id }}" 
-                                                                class="btn btn-success w-100"
+                                                                class="btn btn-primary w-100"
                                                                 onclick="startApplication({{ $course->id }})">
                                                                     Start
                                                                 </a>
@@ -356,7 +356,7 @@
                 return;
             }
 
-            const url = "{{ route('add_application_eix_student', ['course_id' => '__course_id__', 'student_id' => '__student_id__']) }}"
+            const url = "{{ route('agent_application_existing_student', ['course_id' => '__course_id__', 'student_id' => '__student_id__']) }}"
                 .replace('__course_id__', courseId)
                 .replace('__student_id__', selectedStudentId);
 

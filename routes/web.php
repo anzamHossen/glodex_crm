@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserActiveController;
+use App\Http\Controllers\Agent\AgentApplicationController;
 use App\Http\Controllers\Agent\AgentCountryController;
 use App\Http\Controllers\Agent\AgentCourseController;
 use App\Http\Controllers\Agent\AgentDashboardController;
@@ -138,6 +139,18 @@ Route::prefix('agent')->middleware(['agent'])->group(function () {
         Route::post('/agent-save-new-student', 'agentSaveNewStudent')->name('agent_save_new_student');
         Route::get('/agent-edit-student/{id}', 'agentEditStudent')->name('agent_edit_student');
         Route::post('/agent-update-student/{id}', 'agentUpdateStudent')->name('agent_update_student');
+    });
+
+    // Route for agent applications
+    Route::controller(AgentApplicationController::class)->group(function () {
+        Route::get('/agent-application-list', 'agentApplicationList')->name('agent_application_list');
+        Route::get('/agent-application-new-student/{course_id}', 'agentApplicationNewStudent')->name('agent_application_new_student');
+        Route::post('/save-agent-application-new-student', 'saveAgentApplicationNewStudent')->name('save_agent_application_new_student');
+        Route::get('/agent-application-existing-student/{course_id}/{student_id}', 'agentApplicationEixStudent')->name('agent_application_existing_student');
+        Route::get('/add-application-existing-student/{course_id}/{student_id}', 'addApplicationEixStudent')->name('add_application_eix_student');
+        Route::post('/save-agent-application-exit-student', 'saveAgentApplicationEixStudent')->name('save_agent_application_eix_student');
+        Route::get('/agent-edit-application/{id}/{course_id}/{student_id}', 'agentEditApplication')->name('agent_edit_application');
+        Route::post('/agent-update-application/{id}', 'agentUpdateApplication')->name('agent_update_application');
     });
 
 });

@@ -67,7 +67,7 @@ class AgentStudentController extends Controller
 
         $studentInfo                              = new StudentInfo();
         $studentInfo->user_id                     = $user->id;
-        $studentInfo->sent_by                     = Auth::user()->organization_name ?? 'N/A';;
+        $studentInfo->sent_by                     = Auth::user()->organization_name ?? 'N/A';
         $studentInfo->name                        = $request->name;
         $studentInfo->student_code                =  'GLD' . rand(1000000, 9999999);
         $studentInfo->phone                       = $request->phone;
