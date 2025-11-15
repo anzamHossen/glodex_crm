@@ -216,9 +216,11 @@
         <div class="topbar-item nav-user">
             <div class="dropdown">
                 <a class="topbar-link dropdown-toggle drop-arrow-none px-2" data-bs-toggle="dropdown" data-bs-offset="0,19" type="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{asset('back-end/assets/images/users/avatar-1.jpg')}}" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image">
+                    <img src="{{ Auth::user()->profile_photo && file_exists(public_path(Auth::user()->profile_photo)) 
+                    ? asset(Auth::user()->profile_photo) 
+                    : asset('back-end/assets/images/users/avatar-1.jpg') }}" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image">
                     <span class="d-lg-flex flex-column gap-1 d-none">
-                        <h5 class="my-0">Dhanoo K.</h5>
+                        {{ Auth::user()->name ?? 'Guest' }}
                     </span>
                     <i class="ti ti-chevron-down d-none d-lg-block align-middle ms-2"></i>
                 </a>

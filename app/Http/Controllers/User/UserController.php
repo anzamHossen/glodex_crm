@@ -200,7 +200,6 @@ class UserController extends Controller
             'gender'              => 'required',
             'organization_name'   => 'required',
             'address'             => 'required',
-            'company_description' => 'required',
         ]);
 
         DB::beginTransaction();
@@ -215,7 +214,6 @@ class UserController extends Controller
             $user->gender              = $request->gender;
             $user->organization_name   = $request->organization_name;
             $user->address             = $request->address;
-            $user->company_description = $request->company_description;
             if ($request->hasFile('profile_photo')) {
                 if ($user->profile_photo) {
                     $this->imageHandler->deleteImage($user->profile_photo);
@@ -242,8 +240,6 @@ class UserController extends Controller
                 $filePath = $this->imageHandler->faviconPhoto($file, 'favicon');
                 $user->favicon = $filePath;
             }
-
-            // Save all updates
             $user->save();
 
 

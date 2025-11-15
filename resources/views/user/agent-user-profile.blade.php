@@ -94,7 +94,7 @@
                                             <div class="photo-preview overflow-hidden shadow"
                                                 style="width: 160px; height: 160px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
                                                 <img id="profile_preview"
-                                                    src="{{ isset($user) && $agentUser->profile_photo && file_exists(public_path($agentUser->profile_photo)) 
+                                                    src="{{ isset($agentUser) && $agentUser->profile_photo && file_exists(public_path($agentUser->profile_photo)) 
                                                         ? asset($agentUser->profile_photo) 
                                                         : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                     class="w-100 img-fluid"
@@ -125,7 +125,7 @@
                                             <div class="photo-preview overflow-hidden shadow"
                                                 style="width: 160px; height: 160px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
                                                 <img id="company_logo_preview"
-                                                    src="{{ isset($user) && $agentUser->company_logo && file_exists(public_path($agentUser->company_logo)) 
+                                                    src="{{ isset($agentUser) && $agentUser->company_logo && file_exists(public_path($agentUser->company_logo)) 
                                                         ? asset($agentUser->company_logo) 
                                                         : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                     class="w-100 img-fluid"
@@ -195,7 +195,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="userName" class="form-label">Website URL<span class="text-danger">*</span>:</label>
+                                        <label for="userName" class="form-label">Social Media URL<span class="text-danger">*</span>:</label>
                                         <input type="text" name="social_url" class="form-control" id="userPoc" placeholder="Enter social media url" value="{{ old('website_url', $agentUserProfile->social_url ?? '') }}" />
                                         @error('social_url')
                                             <div class="text-danger">{{ $message }}</div>
@@ -216,31 +216,36 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">Trade License Copy <span class="text-danger">*</span>:</label>
+                                        <label class="form-label">Trade License Copy (PDF) <span class="text-danger">*</span>:</label>
                                         <input type="file" name="trade_license_copy" class="form-control" />
                                         @error('trade_license_copy')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
 
-                                        {{-- @if(!empty($agentUserProfile->trade_license_copy))
-                                            <a href="{{ asset('storage/'.$agentUserProfile->trade_license_copy ?? '') }}" target="_blank" class="text-primary mt-1 d-block">
-                                                View Uploaded PDF
+                                        @if(!empty($agentUserProfile->trade_license_copy))
+                                            <a href="{{ asset('storage/'.$agentUserProfile->trade_license_copy ?? '') }}" target="_blank" 
+                                                class="mt-1 d-block text-center p-1 rounded"  
+                                                style="background-color: #232E51; color: #ffffff; text-decoration: none;">
+                                                Download PDF
                                             </a>
-                                        @endif --}}
+                                        @endif
                                     </div>
 
                                     <div class="col-md-3 mt-3">
-                                        <label class="form-label">NID / Passport Copy <span class="text-danger">*</span>:</label>
+                                        <label class="form-label">NID / Passport Copy(PDF)<span class="text-danger">*</span>:</label>
                                         <input type="file" name="passport_nid_copy" class="form-control" />
                                         @error('passport_nid_copy')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
 
-                                        {{-- @if(!empty($agentUserProfile->passport_nid_copy))
-                                            <a href="{{ asset('storage/'.$agentUserProfile->passport_nid_copy) }}" target="_blank" class="text-primary mt-1 d-block">
-                                                View Uploaded PDF
+                                        @if(!empty($agentUserProfile->passport_nid_copy))
+                                            <a href="{{ asset('storage/'.$agentUserProfile->passport_nid_copy) }}" 
+                                                target="_blank" 
+                                                class="mt-1 d-block text-center p-1 rounded"  
+                                                style="background-color: #232E51; color: #ffffff; text-decoration: none;">
+                                                Download PDF
                                             </a>
-                                        @endif --}}
+                                        @endif
                                     </div>
 
                                 </div>
