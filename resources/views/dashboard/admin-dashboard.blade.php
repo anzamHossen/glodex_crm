@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','| Admin Dashboard')
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">

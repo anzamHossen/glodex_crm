@@ -11,7 +11,7 @@
                     <div class="card">
                         <div
                             class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
-                            <h4 class="header-title mb-0">Pending Student User</h4>
+                            <h4 class="header-title mb-0">Agent Profile</h4>
                             <a href="{{ route('admin_dashboard') }}" class="btn btn-sm btn-secondary">
                                 <i class="ti ti-arrow-back-up"
                                     style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>Go Back

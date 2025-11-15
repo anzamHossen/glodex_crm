@@ -229,7 +229,7 @@
                     </div>
 
                     <!-- item-->
-                    <a href="#" class="dropdown-item">
+                    <a href="{{ route('agent_user_profile') }}" class="dropdown-item">
                         <i class="ti ti-user-hexagon me-1 fs-17 align-middle"></i>
                         <span class="align-middle">My Account</span>
                     </a>

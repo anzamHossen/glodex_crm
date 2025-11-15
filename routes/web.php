@@ -119,6 +119,8 @@ Route::prefix('agent')->middleware(['agent'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/agent-change-password', 'agentChangePassword')->name('agent_change_password');
         Route::post('/update-agent-password', 'updateAgentPassword')->name('update_agent_password');
+        Route::get('/agent-user-profile', 'agentUserProfile')->name('agent_user_profile');
+        Route::post('/update-agent-profile', 'updateAgentProfile')->name('update_agent_profile');
     });
 
     // Route for agent country

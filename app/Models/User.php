@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Admin\UserInfo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,8 +27,6 @@ class User extends Authenticatable
         'phone',
         'user_type',
         'organization_name',
-        'company_description',
-        'created_by',
     ];
 
     /**
@@ -57,4 +57,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function userInfo()
+    {
+        return $this->hasOne(UserInfo::class);
+    }
+
 }
