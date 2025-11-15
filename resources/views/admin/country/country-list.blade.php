@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','|Country List')
+@section('title','| Country List')
 @push('page-css')
     <link rel="stylesheet" href="{{ asset('css/country/country-list.css') }}">
 @endpush

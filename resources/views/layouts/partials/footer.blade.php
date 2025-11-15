@@ -7,9 +7,7 @@
             </div>
             <div class="col-md-6">
                 <div class="text-md-end footer-links d-none d-md-block">
-                    <a href="javascript: void(0);">About</a>
-                    <a href="javascript: void(0);">Support</a>
-                    <a href="javascript: void(0);">Contact Us</a>
+                    <h4 class="text-item-center">Glodex</h4>
                 </div>
             </div>
         </div>

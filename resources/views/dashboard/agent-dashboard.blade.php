@@ -135,7 +135,7 @@
                                     <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
                                         <div class="user-img fs-42 flex-shrink-0">
                                             <span class="avatar-title text-bg-primary rounded-circle fs-22">
-                                                <i class="ti ti-circle-check"></i>
+                                                <i class="ti ti-pentagon-x"></i>
                                             </span>
                                         </div>
                                         <h3 class="mb-0 fw-bold">{{ $agentTotalVisaRejected ?? 0}}</h3>

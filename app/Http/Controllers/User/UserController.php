@@ -139,4 +139,41 @@ class UserController extends Controller
             return redirect()->back()->withInput();
         }
     }
+
+    // Agent change password view
+    public function agentChangePassword()
+    {
+        $agentUser  = auth()->user();
+        return view('user.agent-change-password', compact('agentUser'));
+    }
+    
+    // Update agent password
+    public function updateAgentPassword(Request $request)
+    {
+         $request->validate([
+            'current_password'      => 'required|string',
+            'new_password'          => 'required|string|min:8|confirmed',
+        ]);
+
+        if (!Hash::check($request->current_password, auth()->user()->password)) {
+            Alert::error('Error', 'The current password does not match our records.');
+            return redirect()->back();
+        }
+
+        DB::beginTransaction();
+        try {
+            $user = auth()->user();
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+
+            DB::commit();
+
+            Alert::success('Success', 'Password updated successfully!');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Alert::error('Error', 'An error occurred while updating the password. Please try again.');
+            return redirect()->back();
+        }
+    }
 }

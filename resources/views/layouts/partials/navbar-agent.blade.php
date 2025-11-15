@@ -35,14 +35,14 @@
         </div>
 
         <!-- Notification Dropdown -->
-        <div class="topbar-item">
+        {{-- <div class="topbar-item">
             <div class="dropdown">
                 <button class="topbar-link dropdown-toggle drop-arrow-none" data-bs-toggle="dropdown" data-bs-offset="0,25" type="button" data-bs-auto-close="outside" aria-haspopup="false" aria-expanded="false">
                     <i class="ti ti-bell animate-ring fs-22"></i>
                     <span class="noti-icon-badge"></span>
                 </button>
 
-                {{-- <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg" style="min-height: 300px;">
+                <div class="dropdown-menu p-0 dropdown-menu-end dropdown-menu-lg" style="min-height: 300px;">
                     <div class="p-3 border-bottom border-dashed">
                         <div class="row align-items-center">
                             <div class="col">
@@ -194,9 +194,9 @@
                     <a href="javascript:void(0);" class="dropdown-item notification-item position-fixed z-2 bottom-0 text-center text-reset text-decoration-underline link-offset-2 fw-bold notify-item border-top border-light py-2">
                         View All
                     </a>
-                </div> --}}
+                </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Button Trigger Customizer Offcanvas -->
         <div class="topbar-item d-none d-sm-flex">
@@ -219,7 +219,6 @@
                     <img src="{{asset('back-end/assets/images/users/avatar-1.jpg')}}" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image">
                     <span class="d-lg-flex flex-column gap-1 d-none">
                         <h5 class="my-0">Dhanoo K.</h5>
-                        <h6 class="my-0 fw-normal">Premium</h6>
                     </span>
                     <i class="ti ti-chevron-down d-none d-lg-block align-middle ms-2"></i>
                 </a>
@@ -230,13 +229,15 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
+                    <a href="#" class="dropdown-item">
                         <i class="ti ti-user-hexagon me-1 fs-17 align-middle"></i>
                         <span class="align-middle">My Account</span>
                     </a>
-
                     <div class="dropdown-divider"></div>
-
+                    <a href="{{ route('agent_change_password') }}" class="dropdown-item">
+                        <i class="ti ti-key me-1 fs-17 align-middle"></i>
+                        <span class="align-middle">Change Password</span>
+                    </a>
                     <!-- item-->
                     {{-- <a href="javascript:void(0);" class="dropdown-item active fw-semibold text-danger">
                         <i class="ti ti-logout me-1 fs-17 align-middle"></i>

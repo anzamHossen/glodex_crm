@@ -45,6 +45,8 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::post('/update-admin-password', 'updateAdminPassword')->name('update_admin_password');
         Route::get('/admin-user-profile', 'adminUserProfile')->name('admin_user_profile');
         Route::post('/update-admin-profile', 'updateAdminProfile')->name('update_admin_profile');
+        Route::get('/agent-change-password', 'agentChangePassword')->name('agent_change_password');
+        Route::post('/update-agent-password', 'updateAgentPassword')->name('update_agent_password');
     });
 
      // Route for country
@@ -112,6 +114,12 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
 
 Route::prefix('agent')->middleware(['agent'])->group(function () {
     Route::get('/agent-dashboard', [AgentDashboardController::class, 'agentDashboard'])->name('agent_dashboard');
+
+    // route for agent user 
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/agent-change-password', 'agentChangePassword')->name('agent_change_password');
+        Route::post('/update-agent-password', 'updateAgentPassword')->name('update_agent_password');
+    });
 
     // Route for agent country
     Route::controller(AgentCountryController::class)->group(function () {

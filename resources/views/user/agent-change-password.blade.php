@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','| Admin Change Password')
+@section('title','| Agent Change Password')
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">
@@ -9,7 +9,7 @@
                     <div class="card">
                         <div
                             class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
-                            <h4 class="header-title mb-0">Admin Change Password</h4>
+                            <h4 class="header-title mb-0">Agent Change Password</h4>
                             <div class="d-flex">
                                 <a href="{{ route('admin_dashboard') }}" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up"
@@ -19,12 +19,12 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('update_admin_password') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('update_agent_password') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <label for="user_email" class="form-label">Email <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" placeholder="Enter email address" required>
+                                        <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $agentUser->email) }}" placeholder="Enter email address" required>
                                         @error('email')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
