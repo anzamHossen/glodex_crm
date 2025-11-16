@@ -97,7 +97,7 @@
                                                         ? asset($user->profile_photo) 
                                                         : asset('back-end/assets/images/dr-profile/image-upload.jpg') }}"
                                                     class="w-100 img-fluid"
-                                                    style="object-fit: cover; width: 100%; height: 100%; border-radius: 10px; {{ isset($user) && $user->profile_photo ? '' : 'display: none;' }}"
+                                                    style="object-fit: cover; width: 100%; height: 100%; border-radius: 10px;"
                                                     alt="Image Preview">
                                             </div>
                                         </div>
@@ -214,8 +214,8 @@
                 }
                 reader.readAsDataURL(file);
             } else {
-                preview.src = '{{ isset($user) && $user->company_logo ? asset($user->company_logo) : "" }}';
-                preview.style.display = '{{ isset($user) && $user->company_logo ? "block" : "none" }}';
+                preview.src = '{{ isset($user) && $user->profile_photo ? asset($user->profile_photo) : "" }}';
+                preview.style.display = '{{ isset($user) && $user->profile_photo ? "block" : "none" }}';
             }
         }
     </script>
@@ -236,8 +236,8 @@
                 }
                 reader.readAsDataURL(file);
             } else {
-                preview.src = '{{ isset($user) && $user->profile_photo ? asset($user->profile_photo) : "" }}';
-                preview.style.display = '{{ isset($user) && $user->profile_photo ? "block" : "none" }}';
+                preview.src = '{{ isset($user) && $user->company_logo ? asset($user->company_logo) : "" }}';
+                preview.style.display = '{{ isset($user) && $user->company_logo ? "block" : "none" }}';
             }
         }
     </script>
