@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function userProfile($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with('userInfo')->findOrFail($id);
         return view('user.user-profile', compact('user'));
     }
 

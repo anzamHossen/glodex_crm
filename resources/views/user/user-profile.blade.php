@@ -21,7 +21,6 @@
                             <section>
                                 <div class="profile-header">
                                     <div class="profile-cover"></div>
-
                                     <div class="profile-info-top">
                                         <div class="profile-avatar-section">
                                             <div class="profile-avatar">
@@ -29,35 +28,15 @@
                                             </div>
                                             <div class="profile-meta">
                                                 <div class="agency-type">Premium Agency</div>
-                                                <h1 class="agency-name">Global Recruitment Agency</h1>
-                                                <p class="agency-description">Connecting talented professionals with top
-                                                    companies worldwide. Specialized in IT, Finance, and Healthcare sectors.
+                                                <h1 class="agency-name">{{ $user->organization_name ?? 'Not Added' }}</h1>
+                                                <p class="agency-description">Connecting students to a wide range of trusted study abroad solutions designed to guide 
+                                                    them toward the best international opportunities.
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="status-badge">
                                             <i class="ti ti-check-circle-fill"></i>
                                             Active & Verified
-                                        </div>
-                                    </div>
-
-                                    <!-- Quick Stats -->
-                                    <div class="quick-stats">
-                                        <div class="stat-card">
-                                            <div class="stat-number">2,450</div>
-                                            <div class="stat-label">Placements</div>
-                                        </div>
-                                        <div class="stat-card">
-                                            <div class="stat-number">850+</div>
-                                            <div class="stat-label">Clients</div>
-                                        </div>
-                                        <div class="stat-card">
-                                            <div class="stat-number">15+</div>
-                                            <div class="stat-label">Countries</div>
-                                        </div>
-                                        <div class="stat-card">
-                                            <div class="stat-number">12 yrs</div>
-                                            <div class="stat-label">Experience</div>
                                         </div>
                                     </div>
                                 </div>
@@ -73,23 +52,23 @@
                                         </div>
                                         <div class="info-item">
                                             <span class="info-label">Owner Name</span>
-                                            <span class="info-value">Mr. Abdullah Khan</span>
+                                            <span class="info-value">{{ $user->name ?? 'Not Added' }}</span>
                                         </div>
                                         <div class="info-item">
                                             <span class="info-label">Phone Number</span>
-                                            <span class="info-value">+880 1800 123456</span>
+                                            <span class="info-value">{{ $user->phone ?? 'Not Added' }}</span>
                                         </div>
                                         <div class="info-item">
                                             <span class="info-label">Email</span>
-                                            <span class="info-value">info@global-rec.com</span>
+                                            <span class="info-value">{{ $user->email ?? 'Not Added' }}</span>
                                         </div>
                                         <div class="info-item">
-                                            <span class="info-label">Location</span>
-                                            <span class="info-value">Dhaka, Bangladesh</span>
+                                            <span class="info-label">Address</span>
+                                            <span class="info-value">{{ $user->address ?? 'Not Added' }}</span>
                                         </div>
                                         <div class="info-item">
-                                            <span class="info-label">Member Since</span>
-                                            <span class="info-value">March 15, 2012</span>
+                                            <span class="info-label">On Board</span>
+                                            <span class="info-value">{{ $user->created_at->format('F d, Y') }}</span>
                                         </div>
                                     </div>
 
@@ -101,60 +80,24 @@
                                         </div>
                                         <div class="info-item">
                                             <span class="info-label">WhatsApp</span>
-                                            <span class="info-value">+880 1820 829119</span>
+                                            <span class="info-value">{{ $user->userInfo->whatsapp_no ?? 'Not Added' }}</span>
                                         </div>
                                         <div class="info-item">
                                             <span class="info-label">Website</span>
-                                            <span class="info-value">www.globalrec.com</span>
+                                            <span class="info-value">{{ $user->userInfo->website_url ?? 'Not Added' }}</span>
                                         </div>
                                         <div class="info-item">
                                             <span class="info-label">Social Media</span>
-                                            <span class="info-value">
-                                                <i class="ti ti-brand-facebook"></i>
-                                                <i class="ti ti-brand-linkedin"></i>
-                                                <i class="ti ti-brand-twitter"></i>
-                                            </span>
+                                            <span class="info-value">{{ $user->userInfo->social_url ?? 'Not Added' }}</span>
                                         </div>
                                         <div class="info-item">
                                             <span class="info-label">Point of Contact</span>
-                                            <span class="info-value">Ms. Fatima Rahman</span>
+                                            <span class="info-value">{{ $user->userInfo->poc ?? 'Not Added' }}</span>
                                         </div>
                                         <div class="info-item">
-                                            <span class="info-label">Response Time</span>
-                                            <span class="info-value">2-4 hours</span>
+                                            <span class="info-label">Date of Birth</span>
+                                            <span class="info-value">{{ $user->dob ?? 'Not Added' }}</span>
                                         </div>
-                                    </div>
-
-                                    <!-- Services & Specialization -->
-                                    <div class="info-card">
-                                        <div class="info-card-title">
-                                            <i class="ti ti-briefcase"></i>
-                                            Services
-                                        </div>
-                                        <div class="tags-container">
-                                            <span class="tag">Executive Search</span>
-                                            <span class="tag">IT Recruitment</span>
-                                            <span class="tag">Healthcare</span>
-                                            <span class="tag">Finance</span>
-                                            <span class="tag">Contract Staff</span>
-                                            <span class="tag">Overseas Jobs</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Coverage Areas -->
-                                    <div class="info-card">
-                                        <div class="info-card-title">
-                                            <i class="ti ti-map-pin-search"></i>
-                                            Coverage Areas
-                                        </div>
-                                        <ul class="list-items">
-                                            <li><i class="ti ti-check"></i> Bangladesh</li>
-                                            <li><i class="ti ti-check"></i> India</li>
-                                            <li><i class="ti ti-check"></i> UAE</li>
-                                            <li><i class="ti ti-check"></i> Saudi Arabia</li>
-                                            <li><i class="ti ti-check"></i> Malaysia</li>
-                                            <li><i class="ti ti-check"></i> Singapore</li>
-                                        </ul>
                                     </div>
                                 </div>
                             </section>
@@ -170,26 +113,73 @@
                                         <div class="info-item"
                                             style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
                                             <span class="info-label">Account Name</span>
-                                            <span class="info-value" style="text-align: left; margin-top: 5px;">Global
-                                                Recruitment Ltd.</span>
+                                            <span class="info-value" style="text-align: left; margin-top: 5px;">
+                                              {{ $user->userInfo->bank_account_name ?? 'Not Added' }}
+                                            </span>
                                         </div>
                                         <div class="info-item"
                                             style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
                                             <span class="info-label">Bank Name</span>
-                                            <span class="info-value" style="text-align: left; margin-top: 5px;">Dhaka Bank
-                                                Limited</span>
+                                            <span class="info-value" style="text-align: left; margin-top: 5px;">
+                                                 {{ $user->userInfo->bank_name ?? 'Not Added' }}
+                                            </span>
                                         </div>
                                         <div class="info-item"
                                             style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
                                             <span class="info-label">Account Number</span>
                                             <span class="info-value"
-                                                style="text-align: left; margin-top: 5px;">1234567890123456</span>
+                                                style="text-align: left; margin-top: 5px;">
+                                                {{ $user->userInfo->bank_account_number ?? 'Not Added' }}
+                                            </span>
                                         </div>
                                         <div class="info-item"
                                             style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
                                             <span class="info-label">Swift Code</span>
-                                            <span class="info-value"
-                                                style="text-align: left; margin-top: 5px;">DBBLBDBD</span>
+                                            <span class="info-value" style="text-align: left; margin-top: 5px;">
+                                                {{ $user->userInfo->swift_code ?? 'Not Added' }}
+                                            </span>
+                                        </div>
+                                        <div class="info-item"
+                                            style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
+                                            <span class="info-label">Branch Name</span>
+                                            <span class="info-value" style="text-align: left; margin-top: 5px;">
+                                                {{ $user->userInfo->branch_name ?? 'Not Added' }}
+                                            </span>
+                                        </div>
+                                        <div class="info-item"
+                                            style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
+                                            <span class="info-label">Bank Address</span>
+                                            <span class="info-value" style="text-align: left; margin-top: 5px;">
+                                                {{ $user->userInfo->bank_address ?? 'Not Added' }}
+                                            </span>
+                                        </div>
+                                        <div class="info-item"
+                                            style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
+                                            <span class="info-label">IFSC Code</span>
+                                            <span class="info-value" style="text-align: left; margin-top: 5px;">
+                                                {{ $user->userInfo->ifsc_code ?? 'Not Added' }}
+                                            </span>
+                                        </div>
+                                        <div class="info-item"
+                                            style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
+                                            <span class="info-label">Benificiary Number</span>
+                                            <span class="info-value" style="text-align: left; margin-top: 5px;">
+                                                {{ $user->userInfo->benificiary_number ?? 'Not Added' }}
+                                            </span>
+                                        </div>
+                                        <div class="info-item"
+                                            style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
+                                            <span class="info-label">Benificiary Address</span>
+                                            <span class="info-value" style="text-align: left; margin-top: 5px;">
+                                                {{ $user->userInfo->benificiary_address ?? 'Not Added' }}
+                                            </span>
+                                        </div>
+                                        <div class="info-item"
+                                            style="border: none; display: flex; flex-direction: column; align-items: flex-start;">
+                                            <span class="info-label">Trade License Number</span>
+                                            <span class="info-value" style="text-align: left; margin-top: 5px;">
+                                                {{ $user->userInfo->trade_license_number ?? 'Not Added' }}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -204,52 +194,52 @@
                                     <div class="document-grid">
                                         <div class="document-item">
                                             <div class="doc-icon"><i class="ti ti-pdf"></i></div>
-                                            <div class="doc-name">Government License</div>
-                                            <div class="doc-status"><i class="ti ti-check"></i> Verified</div>
+                                            <div class="doc-name">Government License / NID, Passport</div>
                                         </div>
                                         <div class="document-item">
                                             <div class="doc-icon"><i class="ti ti-file"></i></div>
                                             <div class="doc-name">Trade License</div>
-                                            <div class="doc-status"><i class="ti ti-check"></i> Verified</div>
-                                        </div>
-                                        <div class="document-item">
-                                            <div class="doc-icon"><i class="ti ti-file-certificate"></i></div>
-                                            <div class="doc-name">Tax Certificate</div>
-                                            <div class="doc-status"><i class="ti ti-check"></i> Verified</div>
-                                        </div>
-                                        <div class="document-item">
-                                            <div class="doc-icon"><i class="ti ti-certificate"></i></div>
-                                            <div class="doc-name">ISO Certification</div>
-                                            <div class="doc-status"><i class="ti ti-check"></i> Valid</div>
                                         </div>
                                         <div class="document-item">
                                             <div class="doc-icon"><i class="ti ti-report"></i></div>
-                                            <div class="doc-name">Company Profile</div>
-                                            <div class="doc-status"><i class="ti ti-check"></i> Uploaded</div>
-                                        </div>
-                                        <div class="document-item">
-                                            <div class="doc-icon"><i class="ti ti-briefcase"></i></div>
-                                            <div class="doc-name">Work Permit</div>
-                                            <div class="doc-status"><i class="ti ti-check"></i> Verified</div>
+                                            <div class="doc-name">Company Details</div>
                                         </div>
                                     </div>
                                 </div>
                             </section>
                             <section>
                                 <div class="full-card">
-                                    <div class="action-buttons">
-                                        <button class="btn-custom btn-primary-custom">
-                                            <i class="ti ti-pencil"></i> Edit Profile
-                                        </button>
-                                        <button class="btn-custom btn-primary-custom">
-                                            <i class="ti ti-message"></i> Message
-                                        </button>
-                                        <button class="btn-custom btn-secondary-custom">
-                                            <i class="ti ti-download"></i> Download Report
-                                        </button>
-                                        <button class="btn-custom btn-secondary-custom">
-                                            <i class="ti ti-share"></i> Share Profile
-                                        </button>
+                                    <div class="action-buttons d-flex gap-4">
+                                        <!-- NID / Passport Copy -->
+                                        <div class="text-center">
+                                            <label class="form-label fw-bold d-block mb-1">NID / Passport Copy</label>
+
+                                            @if(!empty($user->userInfo->passport_nid_copy))
+                                                <a href="{{ asset('storage/'.$user->userInfo->passport_nid_copy) }}" 
+                                                    target="_blank"
+                                                    class="btn-custom btn-primary-custom d-inline-block text-white"
+                                                    style="background-color: #232E51; text-decoration: none;">
+                                                    <i class="ti ti-download"></i> Download PDF
+                                                </a>
+                                            @else
+                                                <span class="text-muted">No File Uploaded</span>
+                                            @endif
+                                        </div>
+
+                                        <!-- Trade License Copy -->
+                                        <div class="text-center">
+                                            <label class="form-label fw-bold d-block mb-1">Trade License Copy</label>
+                                            @if(!empty($user->userInfo->trade_license_copy))
+                                                <a href="{{ asset('storage/'.$user->userInfo->trade_license_copy) }}" 
+                                                    target="_blank"
+                                                    class="btn-custom btn-primary-custom d-inline-block text-white"
+                                                    style="background-color: #232E51; text-decoration: none;">
+                                                    <i class="ti ti-download"></i> Download PDF
+                                                </a>
+                                            @else
+                                                <span class="text-muted">No File Uploaded</span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </section>
