@@ -104,7 +104,6 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::get('/add-application-new-student/{course_id}', 'addApplicationNewStudent')->name('add_application_new_student');
         Route::post('/save-application-new-student', 'saveApplicationNewStudent')->name('save_application_new_student');
         Route::get('/add-application-existing-student/{course_id}/{student_id}', 'addApplicationEixStudent')->name('add_application_eix_student');
-        Route::get('/add-application-existing-student/{course_id}/{student_id}', 'addApplicationEixStudent')->name('add_application_eix_student');
         Route::post('/save-application-exit-student', 'saveApplicationEixStudent')->name('save_application_eix_student');
         Route::get('/edit-application/{id}/{course_id}/{student_id}', 'editApplication')->name('edit_application');
         Route::post('/update-application/{id}', 'updateApplication')->name('update_application');
@@ -160,7 +159,6 @@ Route::prefix('agent')->middleware(['agent'])->group(function () {
         Route::get('/agent-application-new-student/{course_id}', 'agentApplicationNewStudent')->name('agent_application_new_student');
         Route::post('/save-agent-application-new-student', 'saveAgentApplicationNewStudent')->name('save_agent_application_new_student');
         Route::get('/agent-application-existing-student/{course_id}/{student_id}', 'agentApplicationEixStudent')->name('agent_application_existing_student');
-        Route::get('/add-application-existing-student/{course_id}/{student_id}', 'addApplicationEixStudent')->name('add_application_eix_student');
         Route::post('/save-agent-application-exit-student', 'saveAgentApplicationEixStudent')->name('save_agent_application_eix_student');
         Route::get('/agent-edit-application/{id}/{course_id}/{student_id}', 'agentEditApplication')->name('agent_edit_application');
         Route::post('/agent-update-application/{id}', 'agentUpdateApplication')->name('agent_update_application');
