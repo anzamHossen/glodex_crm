@@ -1,5 +1,25 @@
 @extends('layouts.app')
 @section('title','| Admin Home Page')
+<style>
+    .admin-country-flag-img img {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        object-position: center;
+        border: 1px solid #fff;
+        padding: 2px;
+        box-shadow: rgba(255, 255, 255, 0.56) 0px 3px 6px, rgba(255, 255, 255, 0.50) 0px 3px 6px;
+    }
+    .card-body {
+        padding: 10px 15px !important;
+        background: #0e3175;
+        border-radius: 10px
+    }
+    .admin-country-flag-img {
+        padding-bottom: 10px;
+    }
+</style>
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">
@@ -25,15 +45,16 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="text-muted fs-13 text-uppercase" title="Number of Orders">Total Country</h5>
-                                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
-                                        <div class="user-img fs-42 flex-shrink-0">
-                                            <span class="avatar-title text-bg-primary rounded-circle fs-22">
-                                                <i class="ti ti-flag-heart"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="mb-0 fw-bold">0</h3>
+                                    <div class="d-flex admin-country-flag-img align-items-center justify-content-center ">
+                                        <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Country" class="img-fluid">
                                     </div>
+                                    <h5 class="text-white fs-13 text-uppercase mb-2" title="Number of Orders">United Kingdom</h5>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="http://127.0.0.1:8000/admin/add-new-country" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
+                                            View Details
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div><!-- end col -->
@@ -41,15 +62,16 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="text-muted fs-13 text-uppercase" title="Number of Orders">Total University</h5>
-                                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
-                                        <div class="user-img fs-42 flex-shrink-0">
-                                            <span class="avatar-title text-bg-primary rounded-circle fs-22">
-                                                <i class="ti ti-universe"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="mb-0 fw-bold">0</h3>
+                                    <div class="d-flex admin-country-flag-img align-items-center justify-content-center ">
+                                        <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Country" class="img-fluid">
                                     </div>
+                                    <h5 class="text-white fs-13 text-uppercase mb-2" title="Number of Orders">United Kingdom</h5>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="http://127.0.0.1:8000/admin/add-new-country" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
+                                            View Details
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div><!-- end col -->
@@ -57,90 +79,96 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="text-muted fs-13 text-uppercase" title="Number of Orders">Total Course</h5>
-                                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
-                                        <div class="user-img fs-42 flex-shrink-0">
-                                            <span class="avatar-title text-bg-primary rounded-circle fs-22">
-                                                <i class="ti ti-book"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="mb-0 fw-bold">0</h3>
+                                    <div class="d-flex admin-country-flag-img align-items-center justify-content-center ">
+                                        <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Country" class="img-fluid">
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="text-muted fs-13 text-uppercase" title="Number of Orders">Total Student</h5>
-                                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
-                                        <div class="user-img fs-42 flex-shrink-0">
-                                            <span class="avatar-title text-bg-primary rounded-circle fs-22">
-                                                <i class="ti ti-user-check"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="mb-0 fw-bold">0</h3>
+                                    <h5 class="text-white fs-13 text-uppercase mb-2" title="Number of Orders">United Kingdom</h5>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="http://127.0.0.1:8000/admin/add-new-country" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
+                                            View Details
+                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="text-muted fs-13 text-uppercase" title="Number of Orders">Active Agent</h5>
-                                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
-                                        <div class="user-img fs-42 flex-shrink-0">
-                                            <span class="avatar-title text-bg-primary rounded-circle fs-22">
-                                                <i class="ti ti-users-group"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="mb-0 fw-bold">0</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="text-muted fs-13 text-uppercase" title="Number of Orders">Total Application</h5>
-                                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
-                                        <div class="user-img fs-42 flex-shrink-0">
-                                            <span class="avatar-title text-bg-primary rounded-circle fs-22">
-                                                <i class="ti ti-brand-redux"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="mb-0 fw-bold">0</h3>
-                                    </div>
+
                                 </div>
                             </div>
                         </div><!-- end col -->
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="text-muted fs-13 text-uppercase" title="Number of Orders">Visa Granted</h5>
-                                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
-                                        <div class="user-img fs-42 flex-shrink-0">
-                                            <span class="avatar-title text-bg-primary rounded-circle fs-22">
-                                                <i class="ti ti-circle-check"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="mb-0 fw-bold">0</h3>
+                                    <div class="d-flex admin-country-flag-img align-items-center justify-content-center ">
+                                        <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Country" class="img-fluid">
                                     </div>
+                                    <h5 class="text-white fs-13 text-uppercase mb-2" title="Number of Orders">United Kingdom</h5>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="http://127.0.0.1:8000/admin/add-new-country" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
+                                            View Details
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div><!-- end col -->
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="text-muted fs-13 text-uppercase" title="Number of Orders">Visa Rejected</h5>
-                                    <div class="d-flex align-items-center justify-content-center gap-2 my-2 py-1">
-                                        <div class="user-img fs-42 flex-shrink-0">
-                                            <span class="avatar-title text-bg-primary rounded-circle fs-22">
-                                                <i class="ti ti-pentagon-x"></i>
-                                            </span>
-                                        </div>
-                                        <h3 class="mb-0 fw-bold">0</h3>
+                                    <div class="d-flex admin-country-flag-img align-items-center justify-content-center ">
+                                        <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Country" class="img-fluid">
                                     </div>
+                                    <h5 class="text-white fs-13 text-uppercase mb-2" title="Number of Orders">United Kingdom</h5>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="http://127.0.0.1:8000/admin/add-new-country" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
+                                            View Details
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!-- end col -->
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex admin-country-flag-img align-items-center justify-content-center ">
+                                        <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Country" class="img-fluid">
+                                    </div>
+                                    <h5 class="text-white fs-13 text-uppercase mb-2" title="Number of Orders">United Kingdom</h5>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="http://127.0.0.1:8000/admin/add-new-country" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
+                                            View Details
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!-- end col -->
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex admin-country-flag-img align-items-center justify-content-center ">
+                                        <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Country" class="img-fluid">
+                                    </div>
+                                    <h5 class="text-white fs-13 text-uppercase mb-2" title="Number of Orders">United Kingdom</h5>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="http://127.0.0.1:8000/admin/add-new-country" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
+                                            View Details
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!-- end col -->
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex admin-country-flag-img align-items-center justify-content-center ">
+                                        <img src="{{ asset('back-end/assets/images/flags/us.svg') }}" alt="Country" class="img-fluid">
+                                    </div>
+                                    <h5 class="text-white fs-13 text-uppercase mb-2" title="Number of Orders">United Kingdom</h5>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="http://127.0.0.1:8000/admin/add-new-country" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
+                                            View Details
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div><!-- end col -->
@@ -270,7 +298,7 @@
                 </div> <!-- end col-->
             </div> <!-- end row-->
 
-        </div> <!-- container -->          
+        </div> <!-- container -->
         <!-- ============================================================== -->
         <!-- End Page content -->
         <!-- ============================================================== -->
