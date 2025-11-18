@@ -39,6 +39,12 @@
     <!--- Sidenav Menu -->
     <ul class="side-nav">
         <li class="side-nav-item">
+            <a href="{{ route('admin_home_page') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-home"></i></span>
+                <span class="menu-text">Home</span>
+            </a>
+        </li>
+        <li class="side-nav-item">
             <a href="{{ route('admin_dashboard') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
                 <span class="menu-text">Dashboard</span>

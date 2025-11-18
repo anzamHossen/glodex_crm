@@ -25,7 +25,7 @@ class AuthController extends Controller
         switch ($userType) {
             case 1: // Admin
                 Alert::success('Success', 'Admin login successful');
-                return redirect()->route('admin_dashboard');
+                return redirect()->route('admin_home_page');
 
             case 2: // Agent
                 Alert::success('Success', 'Agent login successful');

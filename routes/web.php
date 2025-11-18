@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
@@ -28,6 +29,7 @@ Route::delete('/delete-user/{id}', [AuthController::class, 'deleteUser'])->name(
 
 Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('admin_dashboard');
+    Route::get('/admin-home-page', [AdminHomeController::class, 'adminHomePage'])->name('admin_home_page');
 
     // Route for active agent user
     Route::controller(UserActiveController::class)->group(function () {
