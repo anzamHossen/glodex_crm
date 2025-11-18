@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','| Admin Home Page')
+@section('title','| Agent Home Page')
 <style>
     .admin-country-flag-img img {
         border-radius: 50%;
@@ -51,7 +51,7 @@
                                         </div>
                                         <h5 class="text-white fs-13 text-uppercase mb-2" title="Number of Orders">{{ $country->country_name ?? 'Not Added' }}</h5>
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <a href="{{ route('country_details', $country->id) }}" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
+                                            <a href="{{ route('agent_country_details', $country->id) }}" class="btn btn-sm glodex-blue-btn" style="background: #5bc0de">
                                                 View Details
                                             </a>
                                         </div>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Agent\AgentApplicationController;
 use App\Http\Controllers\Agent\AgentCountryController;
 use App\Http\Controllers\Agent\AgentCourseController;
 use App\Http\Controllers\Agent\AgentDashboardController;
+use App\Http\Controllers\Agent\AgentHomeController;
 use App\Http\Controllers\Agent\AgentStudentController;
 use App\Http\Controllers\Agent\AgentUniversityController;
 use App\Http\Controllers\Auth\AuthController;
@@ -115,7 +116,9 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
 
 Route::prefix('agent')->middleware(['agent'])->group(function () {
     Route::get('/agent-dashboard', [AgentDashboardController::class, 'agentDashboard'])->name('agent_dashboard');
-
+    Route::get('/agent-home-page', [AgentHomeController::class, 'agentHomePage'])->name('agent_home_page');          
+        
+    
     // route for agent user 
     Route::controller(UserController::class)->group(function () {
         Route::get('/agent-change-password', 'agentChangePassword')->name('agent_change_password');

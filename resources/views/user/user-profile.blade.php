@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="info-item">
                                             <span class="info-label">On Board</span>
-                                            <span class="info-value">{{ $user->created_at->format('F d, Y') }}</span>
+                                            <span class="info-value">{{ $user->created_at ? $user->created_at->format('F d, Y') : 'Not Added' }}</span>
                                         </div>
                                     </div>
 

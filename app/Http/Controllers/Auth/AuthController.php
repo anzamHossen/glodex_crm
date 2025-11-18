@@ -29,7 +29,7 @@ class AuthController extends Controller
 
             case 2: // Agent
                 Alert::success('Success', 'Agent login successful');
-                return redirect()->route('agent_dashboard');
+                return redirect()->route('agent_home_page');
 
             case 3: // Student
                 Alert::success('Success', 'Student login successful');
