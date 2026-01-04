@@ -25,42 +25,29 @@
 <div data-simplebar>
     <!--- Sidenav Menu -->
     <ul class="side-nav">
-        <li class="side-nav-title">Dash</li>
+        
         <li class="side-nav-item">
-            <a href="index.html" class="side-nav-link">
+            <a href="{{ route('student_dashboard') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
-                <span class="menu-text">Country</span>
-                <span class="badge bg-success rounded-pill">5</span>
+                <span class="menu-text">Dashboard</span>
             </a>
         </li>
         <li class="side-nav-item">
-            <a data-bs-toggle="collapse" href="#sidebarHospital" aria-expanded="false" aria-controls="sidebarHospital" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-medical-cross"></i></span>
-                <span class="menu-text"> Country</span>
-                <span class="menu-arrow"></span>
+            <a href="{{ route('student_country_list') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-flag-heart"></i></span>
+                <span class="menu-text">Countries</span>
             </a>
-            <div class="collapse" id="sidebarHospital">
-                <ul class="sub-menu">
-                    <li class="side-nav-item">
-                        <a href="apps-hospital-staffs.html" class="side-nav-link">
-                            <span class="menu-text">Add Country</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </li>
-        <li class="side-nav-item">
-            <a href="index.html" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
+       <li class="side-nav-item">
+            <a href="{{ route('student_university_list') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-map-heart"></i></span>
                 <span class="menu-text">University</span>
-                <span class="badge bg-success rounded-pill">5</span>
             </a>
         </li>
         <li class="side-nav-item">
-            <a href="index.html" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
+            <a href="{{ route('student_course_list') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-notebook"></i></span>
                 <span class="menu-text">Course</span>
-                <span class="badge bg-success rounded-pill">5</span>
             </a>
         </li>
         <li class="side-nav-item">

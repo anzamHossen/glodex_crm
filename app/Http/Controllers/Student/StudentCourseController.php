@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Agent;
+namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Country;
@@ -10,10 +10,10 @@ use App\Models\Admin\StudentInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AgentCourseController extends Controller
+class StudentCourseController extends Controller
 {
-    // function to show agent course list page
-    public function agentCourseList()
+     // function to show agent course list page
+    public function studentCourseList()
     {
         $courses = Course::with('university','country','courseProgram')
             ->orderBy('id', 'desc')
@@ -21,18 +21,17 @@ class AgentCourseController extends Controller
         $coursePrograms = CourseProgram::all();
         $countries      = Country::all();
         $students       = StudentInfo::where('created_by', Auth::id())->orderBy('id', 'desc')->get();
-       return view('agent.course.agent-course-list', compact('courses','coursePrograms','countries','students'));
+       return view('student.course.student-course-list', compact('courses','coursePrograms','countries','students'));
     }
 
-    // function to show agent course details
-    public function agentCourseDetails($id)
+    public function studentCourseDetails($id)
     {
         $courseDetails = Course::with('country', 'university','courseProgram')->findOrFail($id);
-        return view('agent.course.agent-course-details', compact('courseDetails'));
+        return view('student.course.student-course-details', compact('courseDetails'));
     }
 
-    // function to search agent course
-    public function agentSearchCourse(Request $request)
+     // function to search student course
+    public function studentSearchCourse(Request $request)
     {
         $query = Course::with(['country']);
         $searchCourse = $request->input('search_course');
@@ -49,15 +48,16 @@ class AgentCourseController extends Controller
             });
         }
 
-        $courses        = $query->paginate($perPage)->appends($request->all());
-        $countries      = Country::all();
+        $courses = $query->paginate($perPage)->appends($request->all());
+        $countries = Country::all();
         $coursePrograms = CourseProgram::all();
         $students       = StudentInfo::where('created_by', Auth::id())->orderBy('id', 'desc')->get();
-        return view('agent.course.agent-course-list', compact('courses','countries','coursePrograms'));
+
+        return view('student.course.student-course-list', compact('courses','countries','coursePrograms','students'));
     }
 
-    // function to filter agent course by country or course program
-    public function agentFilterCourse(Request $request)
+
+    public function studentFilterCourse(Request $request)
     {
         $query = Course::with(['university', 'country', 'courseProgram']);
 
@@ -99,6 +99,6 @@ class AgentCourseController extends Controller
         $countries = Country::all();
         $coursePrograms = CourseProgram::all();
         $students       = StudentInfo::where('created_by', Auth::id())->orderBy('id', 'desc')->get();
-        return view('agent.course.agent-course-list', compact('courses', 'countries', 'coursePrograms','students'));
+        return view('student.course.student-course-list', compact('courses', 'countries', 'coursePrograms','students'));
     }
 }

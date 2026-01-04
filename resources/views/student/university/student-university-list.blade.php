@@ -13,7 +13,7 @@
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">University List</h4>
                             <div class="d-flex items-center gap-2">
-                                <a href="{{ route('agent_university_list') }}" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
+                                <a href="{{ route('student_university_list') }}" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
                                     <i class="ti ti-rotate me-2"></i>
                                     Refresh
                                 </a>
@@ -26,7 +26,7 @@
                                     <div class="glodex-show-entries">
                                         <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                                             <!-- Show entries form -->
-                                            <form method="GET" action="{{ route('search_agent_university') }}" class="d-flex align-items-center gap-2">
+                                            <form method="GET" action="{{ route('search_student_university') }}" class="d-flex align-items-center gap-2">
                                                 <label for="show-entries" class="form-label mb-0">Show</label>
                                                 <select name="per_page" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
                                                     <option value="8"  {{ request('per_page') == 8  ? 'selected' : '' }}>8</option>
@@ -46,7 +46,7 @@
                                             </form>
 
                                             <!-- Search + Filter form -->
-                                            <form action="{{ route('search_agent_university') }}" method="GET" class="d-flex align-items-center university-filter-form">
+                                            <form action="{{ route('search_student_university') }}" method="GET" class="d-flex align-items-center university-filter-form">
                                                 <div class="glodex-show-entries-select">
                                                     <select class="form-control form-select-sm" id="university_id" name="university_id" data-choices>
                                                         <option value="">Select Country</option>
@@ -86,7 +86,7 @@
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item" href="{{ url('/agent/agent-filter-course') }}?university_name={{ urlencode($university->university_name) }}">Courses</a></li>
-                                                    <li><a class="dropdown-item" href="{{ route('agent_university_details', $university->id) }}">University Details</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('student_university_details', $university->id) }}">University Details</a></li>
                                                 </ul>
                                             </div>
                                             <div class="university-card-header d-flex align-items-center gap-2 pb-3">
@@ -122,12 +122,6 @@
                                                         <i class="ti ti-map-pin-filled"></i>
                                                     </div>
                                                     <p class="contact-text mb-0">{{ $university->address ?? 'Not added'}}</p>
-                                                </div>
-                                                <div class="contact-item py-1 d-flex align-items-center">
-                                                    <div class="contact-icon me-2">
-                                                        <i class="ti ti-currency-dollar"></i>
-                                                    </div>
-                                                    <span class="badge-commission">Commission: {{ $university->commission_for_agent ?? 'Not added'}}</span>
                                                 </div>
                                                 <div class="d-flex justify-content-center">
                                                     <a href="{{ url('/agent/agent-filter-course') }}?university_name={{ urlencode($university->university_name) }}" class="btn btn-sm py-2 btn-gradient mt-3 d-inline-flex align-items-center">

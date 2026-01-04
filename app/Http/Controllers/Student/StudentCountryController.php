@@ -1,25 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Agent;
+namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Country;
 use App\Models\Admin\University;
 use Illuminate\Http\Request;
 
-class AgentCountryController extends Controller
+class StudentCountryController extends Controller
 {
-    public function agentCountryList()
+    public function studentCountryList()
     {
         $countries = Country::with('countryContinent')
         ->where('status', 1)
         ->withCount(['universities', 'courses'])
         ->orderBy('country_name', 'asc')
         ->paginate(8);
-        return view('agent.country.agent-country-list', compact('countries'));
+
+        return view('student.country.student-country-list', compact('countries'));
     }
 
-    public function searchAgentCountries(Request $request)
+    public function searchStudentCountries(Request $request)
     {
         $query = Country::with('countryContinent')
             ->withCount(['universities', 'courses'])
@@ -34,11 +35,11 @@ class AgentCountryController extends Controller
         $perPage = $request->get('per_page', 10);
         $countries = $query->orderBy('id', 'desc')->paginate($perPage)->appends($request->all());
 
-        return view('agent.country.agent-country-list', compact('countries'));
+        return view('student.country.student-country-list', compact('countries'));
     }
 
     // function to country details
-    public function agentCountryDetails($id)
+    public function studentCountryDetails($id)
     {
         $country = Country::findOrFail($id);
         $totalUniversities = $country->universities()->count();
@@ -48,7 +49,7 @@ class AgentCountryController extends Controller
                                         ->take(10)
                                         ->get();
 
-        return view('agent.country.agent-country-details', compact(
+        return view('student.country.student-country-details', compact(
             'country',
             'totalUniversities',
             'totalCourses',

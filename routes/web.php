@@ -15,7 +15,10 @@ use App\Http\Controllers\Agent\AgentHomeController;
 use App\Http\Controllers\Agent\AgentStudentController;
 use App\Http\Controllers\Agent\AgentUniversityController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Student\StudentCountryController;
+use App\Http\Controllers\Student\StudentCourseController;
 use App\Http\Controllers\Student\StudentDashboardController;
+use App\Http\Controllers\Student\StudentUniversityController;
 use App\Http\Controllers\StudentInfoController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -141,7 +144,7 @@ Route::prefix('agent')->middleware(['agent'])->group(function () {
         Route::get('/agent-university-details/{id}', 'agentUniversityDetails')->name('agent_university_details');
     });
 
-     // Route for agent course
+    // Route for agent course
     Route::controller(AgentCourseController::class)->group(function () {
         Route::get('/agent-course-list', 'agentCourseList')->name('agent_course_list');
         Route::get('/agent-course-details/{id}', 'agentCourseDetails')->name('agent_course_details');
@@ -173,6 +176,28 @@ Route::prefix('agent')->middleware(['agent'])->group(function () {
 
 Route::prefix('student')->middleware(['student'])->group(function () {
     Route::get('/student-dashboard', [StudentDashboardController::class, 'studentDashboard'])->name('student_dashboard');
+
+    Route::controller(StudentCountryController::class)->group(function () {
+        Route::get('/student-country-list', 'studentCountryList')->name('student_country_list');
+        Route::get('/student-country-details/{id}', 'studentCountryDetails')->name('student_country_details');
+        Route::get('/search-student-countries', 'searchStudentCountries')->name('search_student_countries');
+    });
+
+    // Route for agent university
+    Route::controller(StudentUniversityController::class)->group(function () {
+        Route::get('/student-university-list', 'studentUniversityList')->name('student_university_list');
+        Route::get('/search-student-university', 'searchStudentUniversity')->name('search_student_university');
+        Route::get('/student-university-details/{id}', 'studentUniversityDetails')->name('student_university_details');
+    });
+
+    // Route for student course
+    Route::controller(StudentCourseController::class)->group(function () {
+        Route::get('/student-course-list', 'studentCourseList')->name('student_course_list');
+        Route::get('/student-course-details/{id}', 'studentCourseDetails')->name('student_course_details');
+        Route::get('/student-search-course', 'studentSearchCourse')->name('student_search_course');
+        Route::get('/student-filter-course', 'studentFilterCourse')->name('student_filter_course');           
+    });
+
 });
 
 
