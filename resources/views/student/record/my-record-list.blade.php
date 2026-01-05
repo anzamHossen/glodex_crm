@@ -27,6 +27,7 @@
                                             <th>Phone</th>
                                             <th>Email</th>
                                             <th>Gender</th>
+                                            <th>Created By</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,6 +61,13 @@
                                                         <span class="badge bg-primary">Male</span>
                                                     @else
                                                         <span class="badge bg-secondary">Female</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if($student->createdBy && $student->createdBy->organization_name)
+                                                        {{ $student->createdBy->organization_name }}
+                                                    @else
+                                                        Self Registered
                                                     @endif
                                                 </td>
                                             </tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\StudentFile;
 use App\Models\Admin\StudentInfo;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,9 +17,18 @@ class StudentRecordController extends Controller
     // function to show my record list
     public function myRecordList()
     {
-        $students = StudentInfo::where('created_by', Auth::id())->get();
+        $userId = Auth::id();
+
+        $students = StudentInfo::whereHas('createdBy', function($query) use ($userId) {
+            $query->whereIn('user_type', [1, 2]);
+        })
+        ->orWhere('created_by', $userId) // Include self-created records
+        ->get();
+
         return view('student.record.my-record-list', compact('students'));
     }
+
+
 
     public function editMyRecord()
     {
