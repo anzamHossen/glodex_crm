@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Student\StudentCountryController;
 use App\Http\Controllers\Student\StudentCourseController;
 use App\Http\Controllers\Student\StudentDashboardController;
+use App\Http\Controllers\Student\StudentRecordController;
 use App\Http\Controllers\Student\StudentUniversityController;
 use App\Http\Controllers\StudentInfoController;
 use App\Http\Controllers\User\UserController;
@@ -196,6 +197,16 @@ Route::prefix('student')->middleware(['student'])->group(function () {
         Route::get('/student-course-details/{id}', 'studentCourseDetails')->name('student_course_details');
         Route::get('/student-search-course', 'studentSearchCourse')->name('student_search_course');
         Route::get('/student-filter-course', 'studentFilterCourse')->name('student_filter_course');           
+    });
+
+     // Route for student recrord info
+    Route::controller(StudentRecordController::class)->group(function () {
+        Route::get('/my-record-list', 'myRecordList')->name('my_record_list');
+        Route::get('/edit-my-record', 'editMyRecord')->name('edit_my_record');
+        // Route::post('/update-my-record/{id}', 'updateMyRecord')->name('update_my_record');
+        Route::post('/update-my-record/{id?}', 'updateMyRecord')
+    ->name('update_my_record');
+
     });
 
 });

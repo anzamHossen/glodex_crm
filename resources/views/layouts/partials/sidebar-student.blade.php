@@ -51,6 +51,27 @@
             </a>
         </li>
         <li class="side-nav-item">
+           <a data-bs-toggle="collapse" href="#sidebarMyRecord" aria-expanded="false" aria-controls="sidebarMyRecord" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-school"></i></span>
+                <span class="menu-text">My Record</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarMyRecord">
+                <ul class="sub-menu">
+                    <li class="side-nav-item">
+                        <a href="{{ route('edit_my_record', auth()->id()) }}" class="side-nav-link">
+                            <span class="menu-text">Add Profile</span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="#" class="side-nav-link">
+                            <span class="menu-text">Record List</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="side-nav-item">
             <a href="index.html" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-dashboard"></i></span>
                 <span class="menu-text">Appplication</span>
