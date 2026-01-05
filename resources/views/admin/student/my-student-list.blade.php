@@ -31,6 +31,7 @@
                                             <th>Phone</th>
                                             <th>Email</th>
                                             <th>Gender</th>
+                                            <th>Created By</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -76,6 +77,7 @@
                                                         <span class="badge bg-secondary">Female</span>
                                                     @endif
                                                 </td>
+                                                <td>{{ $student->createdBy->name ?? 'Not Added' }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

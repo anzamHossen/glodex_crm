@@ -14,7 +14,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class StudentRecordController extends Controller
 {
     // function to show my record list
-    public function agentStudentList()
+    public function myRecordList()
     {
         $students = StudentInfo::where('created_by', Auth::id())->get();
         return view('student.record.my-record-list', compact('students'));

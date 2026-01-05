@@ -203,9 +203,7 @@ Route::prefix('student')->middleware(['student'])->group(function () {
     Route::controller(StudentRecordController::class)->group(function () {
         Route::get('/my-record-list', 'myRecordList')->name('my_record_list');
         Route::get('/edit-my-record', 'editMyRecord')->name('edit_my_record');
-        // Route::post('/update-my-record/{id}', 'updateMyRecord')->name('update_my_record');
-        Route::post('/update-my-record/{id?}', 'updateMyRecord')
-    ->name('update_my_record');
+        Route::post('/update-my-record/{id?}', 'updateMyRecord')->name('update_my_record');
 
     });
 

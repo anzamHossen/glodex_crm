@@ -19,10 +19,12 @@ class StudentInfoController extends Controller
     public function myStudentList()
     {
         $students = StudentInfo::whereHas('createdBy', function ($query) {
-            $query->where('user_type', 1);
+            $query->whereIn('user_type', [1, 3]);
         })->get();
+
         return view('admin.student.my-student-list', compact('students'));
     }
+
 
     // function to show student list for agent
     public function studentListAgent()

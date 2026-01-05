@@ -11,7 +11,7 @@
                             class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">Edit My Record</h4>
                             <div class="d-flex">
-                                <a href="#" class="btn btn-sm btn-secondary me-2">
+                                <a href="{{ route('my_record_list') }}" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up"
                                         style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Go Back
