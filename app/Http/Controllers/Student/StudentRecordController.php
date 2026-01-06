@@ -17,16 +17,30 @@ class StudentRecordController extends Controller
     // function to show my record list
     public function myRecordList()
     {
-        $userId = Auth::id();
+        $user = Auth::user();
 
-        $students = StudentInfo::whereHas('createdBy', function($query) use ($userId) {
-            $query->whereIn('user_type', [1, 2]);
-        })
-        ->orWhere('created_by', $userId) // Include self-created records
-        ->get();
+        if ($user->user_type == 3) {
+            // Student: show only records linked to them
+            $students = StudentInfo::where('user_id', $user->id) // self-created
+                ->orWhere(function($query) use ($user) {
+                    // OR created by Admin/Agent for this student (match by email)
+                    $query->where('email', $user->email)
+                        ->whereHas('createdBy', function($q) {
+                            $q->whereIn('user_type', [1, 2]);
+                        });
+                })
+                ->get();
+        } else {
+            // Admin/Agent: show all students created by Admin/Agent
+            $students = StudentInfo::whereHas('createdBy', function($q) {
+                $q->whereIn('user_type', [1, 2]);
+            })->get();
+        }
 
         return view('student.record.my-record-list', compact('students'));
     }
+
+
 
 
 

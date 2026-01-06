@@ -184,14 +184,7 @@
                                                             class="btn btn-dark w-100 d-flex align-items-center justify-content-center" 
                                                             style="height: 60px;  font-size: 18px;"
                                                             onclick="toggleSelect('existingStudentSelect{{ $course->id }}')">
-                                                                <i class="ti ti-search me-1"></i> Existing Student
-                                                        </a>
-
-                                                    </div>
-                                                    <div class="col-md-6 text-center">
-                                                        <a href="{{ route('agent_application_new_student', ['course_id' => $course->id]) }}" class="btn btn-success w-100 d-flex align-items-center justify-content-center"
-                                                            style="height: 60px; font-size: 18px;">
-                                                            <i class="ti ti-pencil me-1"></i> New Student
+                                                                <i class="ti ti-search me-1"></i> Existing Record
                                                         </a>
                                                     </div>
                                                     <div id="existingStudentSelect{{ $course->id }}" style="display: none; margin-top: 10px;">
@@ -349,14 +342,14 @@
             if (!selectedStudentId) {
                 Swal.fire({
                     icon: 'warning',
-                    title: 'Please select a student first!',
+                    title: 'Please create your record first!!',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 return;
             }
 
-            const url = "{{ route('agent_application_existing_student', ['course_id' => '__course_id__', 'student_id' => '__student_id__']) }}"
+            const url = "{{ route('student_application_existing_record', ['course_id' => '__course_id__', 'student_id' => '__student_id__']) }}"
                 .replace('__course_id__', courseId)
                 .replace('__student_id__', selectedStudentId);
 

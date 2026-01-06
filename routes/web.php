@@ -15,6 +15,7 @@ use App\Http\Controllers\Agent\AgentHomeController;
 use App\Http\Controllers\Agent\AgentStudentController;
 use App\Http\Controllers\Agent\AgentUniversityController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Student\StudentApplicationController;
 use App\Http\Controllers\Student\StudentCountryController;
 use App\Http\Controllers\Student\StudentCourseController;
 use App\Http\Controllers\Student\StudentDashboardController;
@@ -205,6 +206,13 @@ Route::prefix('student')->middleware(['student'])->group(function () {
         Route::get('/edit-my-record', 'editMyRecord')->name('edit_my_record');
         Route::post('/update-my-record/{id?}', 'updateMyRecord')->name('update_my_record');
 
+    });
+
+
+     Route::controller(StudentApplicationController::class)->group(function () {
+         Route::get('/student-application-list', 'studentApplicationList')->name('student_application_list');
+        Route::get('/student-application-existing-record/{course_id}/{student_id}', 'studentApplicationEixRecord')->name('student_application_existing_record');
+        Route::post('/save-student-application-exit-record', 'saveStudentApplicationEixRecord')->name('save_student_application_exit_record');
     });
 
 });

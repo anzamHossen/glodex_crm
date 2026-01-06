@@ -20,12 +20,21 @@ class ApplicationController extends Controller
 {
     public function myApplicationList()
     {
-       $applications = Application::with(['student', 'course.country', 'course.university', 'applicationStatus'])
-        ->whereHas('createdBy', function ($query) {
-            $query->where('user_type', 1);
-        })->orderBy('id', 'desc')->get();
-        return view('admin.application.my-application-list', compact('applications'));         
+        $applications = Application::with([
+                'student',
+                'course.country',
+                'course.university',
+                'applicationStatus'
+            ])
+            ->whereHas('createdBy', function ($query) {
+                $query->whereIn('user_type', [1, 3]);
+            })
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('admin.application.my-application-list', compact('applications'));
     }
+
 
     // function to show application list for agent
     public function applicationListAgent()
