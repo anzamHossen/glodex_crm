@@ -35,7 +35,7 @@
         </div>
 
         <!-- Notification Dropdown -->
-        <div class="topbar-item">
+        {{-- <div class="topbar-item">
             <div class="dropdown">
                 <button class="topbar-link dropdown-toggle drop-arrow-none" data-bs-toggle="dropdown" data-bs-offset="0,25" type="button" data-bs-auto-close="outside" aria-haspopup="false" aria-expanded="false">
                     <i class="ti ti-bell animate-ring fs-22"></i>
@@ -196,7 +196,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Button Trigger Customizer Offcanvas -->
         <div class="topbar-item d-none d-sm-flex">
@@ -216,10 +216,11 @@
         <div class="topbar-item nav-user">
             <div class="dropdown">
                 <a class="topbar-link dropdown-toggle drop-arrow-none px-2" data-bs-toggle="dropdown" data-bs-offset="0,19" type="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{asset('back-end/assets/images/users/avatar-1.jpg')}}" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image">
+                    <img src="{{ Auth::user()->profile_photo && file_exists(public_path(Auth::user()->profile_photo)) 
+                    ? asset(Auth::user()->profile_photo) 
+                    : asset('back-end/assets/images/users/avatar-1.jpg') }}" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image">
                     <span class="d-lg-flex flex-column gap-1 d-none">
-                        <h5 class="my-0">Dhanoo K.</h5>
-                        <h6 class="my-0 fw-normal">Premium</h6>
+                        {{ Auth::user()->name ?? 'Guest' }}
                     </span>
                     <i class="ti ti-chevron-down d-none d-lg-block align-middle ms-2"></i>
                 </a>
@@ -230,7 +231,7 @@
                     </div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
+                    <a href="{{ route('student_user_profile') }}" class="dropdown-item">
                         <i class="ti ti-user-hexagon me-1 fs-17 align-middle"></i>
                         <span class="align-middle">My Account</span>
                     </a>

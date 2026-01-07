@@ -2,7 +2,12 @@
 <!-- Brand Logo -->
 <a href="#" class="logo">
     <span class="logo-light">
-        <span class="logo-lg"><img src="{{asset('back-end/assets/images/logo-main.png')}}" style="height: 2rem" alt="logo"></span>
+        <span class="logo-lg">
+            <img src="{{ Auth::user()->profile_photo && file_exists(public_path(Auth::user()->profile_photo)) 
+                            ? asset(Auth::user()->profile_photo) 
+                            : asset('back-end/assets/images/logo-main.png') }}" style="height: 2rem"
+                alt="logo">
+        </span>
         <span class="logo-sm"><img src="{{asset('back-end/assets/images/icon-sm.png')}}" style="height: 2rem" alt="small logo"></span>
     </span>
 

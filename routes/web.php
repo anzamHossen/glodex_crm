@@ -179,6 +179,14 @@ Route::prefix('agent')->middleware(['agent'])->group(function () {
 Route::prefix('student')->middleware(['student'])->group(function () {
     Route::get('/student-dashboard', [StudentDashboardController::class, 'studentDashboard'])->name('student_dashboard');
 
+    // route for agent user 
+    Route::controller(UserController::class)->group(function () {
+        // Route::get('/agent-change-password', 'agentChangePassword')->name('agent_change_password');
+        // Route::post('/update-agent-password', 'updateAgentPassword')->name('update_agent_password');
+        Route::get('/student-user-profile', 'studentUserProfile')->name('student_user_profile');
+        Route::post('/update-student-profile', 'updateStudentProfile')->name('update_student_profile');
+    });
+
     Route::controller(StudentCountryController::class)->group(function () {
         Route::get('/student-country-list', 'studentCountryList')->name('student_country_list');
         Route::get('/student-country-details/{id}', 'studentCountryDetails')->name('student_country_details');

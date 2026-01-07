@@ -301,4 +301,60 @@ class UserController extends Controller
             return redirect()->back()->withInput();
         }
     }
+    
+    // student user profile view
+    public function studentUserProfile()
+    {
+        $studentUser  = auth()->user();
+        return view('user.student-user-profile', compact('studentUser')); 
+    }
+    
+    public function updateStudentProfile(Request $request)
+    {
+        $request->validate([
+            'name'                => 'required|string|max:255',
+            'phone'               => 'required|string|max:20',
+            'email'               => 'required|email|max:255',
+            'dob'                 => 'required|date',
+            'marital_status'      => 'required',
+            'gender'              => 'required',
+            'address'             => 'required',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $user = auth()->user();
+            $user->name                = $request->name;
+            $user->phone               = $request->phone;
+            $user->email               = $request->email;
+            $user->dob                 = $request->dob;
+            $user->marital_status      = $request->marital_status;
+            $user->gender              = $request->gender;
+            $user->organization_name   = $request->organization_name;
+            $user->address             = $request->address;
+            $user->company_description = $request->company_description;
+            if ($request->hasFile('profile_photo')) {
+                if ($user->profile_photo) {
+                    $this->imageHandler->deleteImage($user->profile_photo);
+                }
+                $file = $request->file('profile_photo');
+                $filePath = $this->imageHandler->profilePhoto($file, 'profile_photo');
+                $user->profile_photo = $filePath;
+            }
+
+
+            // Save all updates
+            $user->save();
+
+            DB::commit();
+            alert()->success('Success', 'Profile updated successfully!');
+            return redirect()->back();
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            alert()->error('Error', 'Something went wrong: ' . $e->getMessage());
+            return redirect()->back()->withInput();
+        }
+    }
 }
