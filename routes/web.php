@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\UniversityController;
 use App\Http\Controllers\Admin\UserActiveController;
 use App\Http\Controllers\Agent\AgentApplicationController;
@@ -36,6 +38,7 @@ Route::delete('/delete-user/{id}', [AuthController::class, 'deleteUser'])->name(
 Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
     Route::get('/admin-dashboard', [AdminDashboardController::class, 'index'])->name('admin_dashboard');
     Route::get('/admin-home-page', [AdminHomeController::class, 'adminHomePage'])->name('admin_home_page');
+    Route::delete('/delete-admin-user/{id}', [AdminUserController::class, 'deleteAdminUser'])->name('delete_admin_user');
 
     // Route for active agent user
     Route::controller(UserActiveController::class)->group(function () {
@@ -44,6 +47,18 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::get('/update-user-status/{id}', 'updateUserStatus')->name('update_user_status');
         Route::get('/active-agent-user',  'activeAgentUser')->name('active_agent_user');
         Route::post('/save-agent', 'saveAgent')->name('save_agent');
+    });
+
+    // route for admin user list and create admin user
+    Route::controller(AdminUserController::class)->group(function () {
+        Route::get('/admin-user-list', 'adminUserList')->name('admin_user_list');
+        Route::post('/save-admin-user', 'saveAdminUser')->name('save_admin_user');
+    });
+
+    // route for role permission management
+     Route::controller(RolePermissionController::class)->group(function () {
+        Route::get('/role-list', 'roleList')->name('role_list');
+        Route::get('/permission-list', 'permissionList')->name('permission_list');
     });
 
     // route for user 
@@ -115,7 +130,6 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
         Route::post('/save-application-exit-student', 'saveApplicationEixStudent')->name('save_application_eix_student');
         Route::get('/edit-application/{id}/{course_id}/{student_id}', 'editApplication')->name('edit_application');
         Route::post('/update-application/{id}', 'updateApplication')->name('update_application');
-
     });
 });
 
@@ -181,10 +195,10 @@ Route::prefix('student')->middleware(['student'])->group(function () {
 
     // route for agent user 
     Route::controller(UserController::class)->group(function () {
-        // Route::get('/agent-change-password', 'agentChangePassword')->name('agent_change_password');
-        // Route::post('/update-agent-password', 'updateAgentPassword')->name('update_agent_password');
         Route::get('/student-user-profile', 'studentUserProfile')->name('student_user_profile');
         Route::post('/update-student-profile', 'updateStudentProfile')->name('update_student_profile');
+        Route::get('/student-change-password', 'studentChangePassword')->name('student_change_password');
+        Route::post('/update-student-password', 'updateStudentPassword')->name('update_student_password');
     });
 
     Route::controller(StudentCountryController::class)->group(function () {

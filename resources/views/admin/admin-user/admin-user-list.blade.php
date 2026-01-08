@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '| Active Agent List')
+@section('title', '| User List')
 @section('content')
     <!-- Begin page -->
     <div class="wrapper">
@@ -8,13 +8,13 @@
                 <div class="col-xl-12">
                     <div class="card">
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
-                            <h4 class="header-title mb-0">Active Agent User</h4>
+                            <h4 class="header-title mb-0">User List</h4>
                             <div class="d-flex">
                                 <a href="{{ route('admin_dashboard') }}" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Go Back 
                                 </a>
-                                <a href="{{ route('admin_dashboard') }}" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#centermodal">
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#centermodal">
                                     <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Add New
                                 </a>
@@ -26,17 +26,14 @@
                                     <thead>
                                         <tr>
                                             <th>Action</th>
-                                            <th>Status</th>
                                             <th>Name</th>
                                             <th>Contact</th>
                                             <th>Email</th>
-                                            <th>Organization</th>
-                                            <th>Created By</th>
-                                            <th>Created At</th>
+                                            <th>Role</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($activeAgentUsers as  $user)
+                                        @foreach($users as  $user)
                                             <tr>
                                                 <td>
                                                     <div class="dropdown position-relative">
@@ -53,29 +50,18 @@
                                                                 <i class="ti ti-login-2 ti-md"></i> <span>Login</span>
                                                             </a> --}}
 
-                                                            <a href="{{ route('user_profile', $user->id) }}" class="dropdown-item d-flex align-items-center gap-1" title="Profile">
-                                                                <i class="ti ti-users ti-md"></i> <span>Profile</span>
-                                                            </a>
-
                                                             <a href="javascript:void(0);" 
                                                             onclick="confirmDelete({{ $user->id }})" 
                                                             class="dropdown-item d-flex align-items-center gap-1" 
                                                             title="Delete">
                                                                 <i class="ti ti-trash ti-md"></i> <span>Delete</span>
                                                             </a>
+                                                            <form id="delete-user-form" method="POST" style="display:none;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                            </form>
                                                         </div>
                                                     </div>
-                                                    <form id="delete-user-form" method="POST" style="display: none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    @if($user->user_status == 2)
-                                                        <span class="badge bg-primary badge bg-primary px-2 py-1 fs-11 me-2">Active</span>
-                                                    @else
-                                                        <span class="badge bg-success badge bg-primary px-2 py-1 fs-11 me-2">Inactive</span>
-                                                    @endif
                                                 </td>
                                                 <td>
                                                     <img src="{{asset('back-end/assets/images/users/dummy-user.jpg')}}" alt="table-user" class="avatar-sm me-2 rounded-circle" />
@@ -83,13 +69,7 @@
                                                 </td>
                                                 <td>{{ $user->phone ?? 'Not Added' }}</td>
                                                 <td>{{ $user->email ?? 'Not Added' }}</td>
-                                                <td>{{ $user->organization_name ?? 'Not Added' }}</td>
-                                                <td>
-                                                   {{ $user->created_by ?? 'Not Added' }}
-                                                </td>
-                                                <td>
-                                                    {{ $user->created_at ? $user->created_at->format('F j, Y') : 'Not Added' }}
-                                                </td>
+                                                <td>....</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -107,11 +87,11 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myCenterModalLabel">Create New Agent</h4>
+                    <h4 class="modal-title" id="myCenterModalLabel">Create New User</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 
-                <form action="{{ route('save_agent') }}" method="POST">
+                <form action="{{ route('save_admin_user') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
@@ -188,10 +168,11 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     const form = document.getElementById('delete-user-form');
-                    form.action = `/delete-user/${id}`;
+                    form.action = `{{ url('admin/delete-admin-user') }}/${id}`;
                     form.submit();
                 }
             });
         }
     </script>
+
 @endpush

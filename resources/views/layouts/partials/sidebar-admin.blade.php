@@ -178,6 +178,34 @@
                 <span class="menu-text">All Appplication</span>
             </a>
         </li>
+        <li class="side-nav-item">
+            <a href="{{ route('admin_user_list') }}" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-users-group"></i></span>
+                <span class="menu-text">User</span>
+            </a>
+        </li>
+
+        <li class="side-nav-item">
+           <a data-bs-toggle="collapse" href="#sidebarRolePermission" aria-expanded="false" aria-controls="sidebarRolePermission" class="side-nav-link">
+                <span class="menu-icon"><i class="ti ti-school"></i></span>
+                <span class="menu-text">Role & Permissions</span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarRolePermission">
+                <ul class="sub-menu">
+                    <li class="side-nav-item">
+                        <a href="{{ route('role_list') }}" class="side-nav-link">
+                            <span class="menu-text">Roles</span>
+                        </a>
+                    </li>
+                    <li class="side-nav-item">
+                        <a href="{{ route('permission_list') }}" class="side-nav-link">
+                            <span class="menu-text">Permission</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
     </ul>
 
     <div class="clearfix"></div>
