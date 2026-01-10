@@ -11,8 +11,8 @@
                         {{-- HEADER --}}
                         <div class="card-header border-bottom d-flex justify-content-between align-items-center">
                             <h4 class="mb-0">Roles</h4>
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#assignRoleModal">
-                                Assign Role
+                            <button class="btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#assignRoleModal">
+                                <i class="ti ti-plus me-1"></i> Assign Role
                             </button>
                         </div>
 
@@ -33,9 +33,9 @@
                                 {{-- ROLE CARDS --}}
                                 @foreach ($roles as $role)
                                     <div class="col-lg-4 col-md-6">
-                                        <div class="card h-100 shadow-sm border-start border-primary">
-                                            <div class="card-body">
-                                                <h5 class="fw-semibold mb-3">{{ $role }}</h5>
+                                        <div class="card h-100 shadow-sm border-start border-primary mb-0">
+                                            <div class="card-body p-x-4 py-3">
+                                                <h5 class="fw-semibold mb-1">{{ $role }}</h5>
 
                                                 {{-- EDIT ROLE --}}
                                                 <div class="d-flex align-items-center justify-content-between ">
@@ -54,11 +54,14 @@
 
                                 {{-- ADD NEW ROLE CARD --}}
                                 <div class="col-lg-4 col-md-6">
-                                    <div class="card h-100 d-flex align-items-center justify-content-center shadow-sm border-start border-primary text-center"
+                                    <div class="card h-100 d-flex align-items-center justify-content-center shadow-sm border-start border-primary mb-0"
                                         style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#rolePermissionModal">
-                                        <div class="card-body d-flex w-100 align-items-center justify-content-between">
-                                            <div style="font-size:42px">👩‍💼</div>
-                                            <button class="btn btn-primary">Add New Role</button>
+                                        <div class="card-body w-100 p-x-4 py-3 ">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div style="font-size:32px">👩‍💼</div>
+                                                <button class="btn btn-primary">Add New Role</button>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
