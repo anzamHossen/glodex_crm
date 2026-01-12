@@ -8,7 +8,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
-                            <h4 class="header-title mb-0">Roles</h4>
+                            <h4 class="header-title mb-0">Permissions</h4>
                             <div class="d-flex">
                                 <a href="#" class="btn btn-sm btn-secondary me-2">
                                     <i class="ti ti-arrow-back-up" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
@@ -21,7 +21,24 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            Add Your Content Here
+                            <div class="table-responsive-sm">
+                                <table id="dataTable" class="table table-bordered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Permission Name</th>
+                                            <th>Created Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($permissions as  $permission)
+                                            <tr>
+                                                <td>{{ $permission->name ?? 'Not Added' }}</td>
+                                                <td>{{ $permission->created_at ? $permission->created_at->format('D M d Y') : 'Not Added' }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div> <!-- end table-responsive-->
                         </div>
                     </div>
                 </div>
@@ -34,16 +51,17 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myCenterModalLabel">Create New User</h4>
+                    <h4 class="modal-title" id="myCenterModalLabel">Add New Permission</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 
-                <form action="#" method="POST">
+                <form action="{{ route('save_permission') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Full Name <span class="text-danger">*</span>:</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter full name" required>
+                            <label class="form-label">Permission Name <span class="text-danger">*</span>:</label>
+                            <input type="text" class="form-control" name="name" placeholder="Enter permission name" required>
+
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -55,6 +73,7 @@
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

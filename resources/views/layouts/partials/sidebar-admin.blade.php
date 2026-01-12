@@ -79,16 +79,20 @@
             </a>
             <div class="collapse" id="sidebarHospital">
                 <ul class="sub-menu">
+                    @can('Create Country')
                     <li class="side-nav-item">
                         <a href="{{ route('add_new_country') }}" class="side-nav-link">
                             <span class="menu-text">Add Country</span>
                         </a>
                     </li>
+                    @endcan
+                    @can('View Country')
                     <li class="side-nav-item">
                         <a href="{{ route('country_list') }}" class="side-nav-link">
                             <span class="menu-text">Country List</span>
                         </a>
                     </li>
+                    @endcan
                 </ul>
             </div>
         </li>
@@ -187,7 +191,7 @@
 
         <li class="side-nav-item">
            <a data-bs-toggle="collapse" href="#sidebarRolePermission" aria-expanded="false" aria-controls="sidebarRolePermission" class="side-nav-link">
-                <span class="menu-icon"><i class="ti ti-school"></i></span>
+                <span class="menu-icon"><i class="ti ti-lock-off"></i></span>
                 <span class="menu-text">Role & Permissions</span>
                 <span class="menu-arrow"></span>
             </a>

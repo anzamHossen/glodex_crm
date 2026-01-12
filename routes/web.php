@@ -56,9 +56,13 @@ Route::prefix('admin')->middleware(['admin', 'auth'])->group(function () {
     });
 
     // route for role permission management
-     Route::controller(RolePermissionController::class)->group(function () {
+    Route::controller(RolePermissionController::class)->group(function () {
         Route::get('/role-list', 'roleList')->name('role_list');
         Route::get('/permission-list', 'permissionList')->name('permission_list');
+        Route::post('/save-permission', 'savePermission')->name('save_permission');
+        Route::post('/save-role', 'saveRole')->name('save_role');
+        Route::post('/assign-role', 'assignRole')->name('assign_role');
+        Route::post('/update-role', 'updateRole')->name('update_role');
     });
 
     // route for user 
