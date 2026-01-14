@@ -16,8 +16,7 @@
                         <input type="text" name="role_name" class="form-control" id="editRoleName" readonly>
                     </div>
 
-                    <h6 class="fw-semibold mb-2">Permissions</h6>
-
+                    <h5 class="fw-semibold mb-2">Country Management</h5>
                     <div class="d-flex justify-content-start flex-wrap">
                         <div class="form-check me-4">
                             <input class="form-check-input permission-checkbox" type="checkbox" name="permissions[]" value="View Country" id="editViewCountry">
