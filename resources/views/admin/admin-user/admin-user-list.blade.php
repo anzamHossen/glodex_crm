@@ -14,10 +14,12 @@
                                     <i class="ti ti-arrow-back-up" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Go Back 
                                 </a>
+                                @can('Create User')
                                 <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#centermodal">
                                     <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Add New
                                 </a>
+                                @endcan
                             </div>
                         </div>
                         <div class="card-body">
@@ -49,17 +51,18 @@
                                                             {{-- <a href="#" class="dropdown-item d-flex align-items-center gap-1" title="Login As">
                                                                 <i class="ti ti-login-2 ti-md"></i> <span>Login</span>
                                                             </a> --}}
-
+                                                            @can('Delete User')
                                                             <a href="javascript:void(0);" 
-                                                            onclick="confirmDelete({{ $user->id }})" 
-                                                            class="dropdown-item d-flex align-items-center gap-1" 
-                                                            title="Delete">
+                                                                onclick="confirmDelete({{ $user->id }})" 
+                                                                class="dropdown-item d-flex align-items-center gap-1" 
+                                                                title="Delete">
                                                                 <i class="ti ti-trash ti-md"></i> <span>Delete</span>
                                                             </a>
                                                             <form id="delete-user-form" method="POST" style="display:none;">
                                                                 @csrf
                                                                 @method('DELETE')
                                                             </form>
+                                                            @endcan
                                                         </div>
                                                     </div>
                                                 </td>

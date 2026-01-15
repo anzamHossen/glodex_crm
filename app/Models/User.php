@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Admin\StudentInfo;
 use App\Models\Admin\UserInfo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -64,4 +65,8 @@ class User extends Authenticatable
         return $this->hasOne(UserInfo::class);
     }
 
+    public function studentInfo()
+    {
+        return $this->hasOne(StudentInfo::class, 'user_id');
+    }
 }

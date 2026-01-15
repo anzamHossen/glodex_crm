@@ -17,10 +17,12 @@
                                     <i class="ti ti-arrow-back-up" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Go Back 
                                 </a>
+                                @can('Create Application')
                                 <a href="{{ route('course_list') }}" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#centermodal">
                                     <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Add New
                                 </a>
+                                @endcan
                             </div>
                         </div>
                         <div class="card-body">
@@ -54,6 +56,7 @@
                                                         </button>
 
                                                         <div class="dropdown-menu">
+                                                            @can('Edit Partner Application')
                                                             <li>
                                                                 <a class="dropdown-item d-flex align-items-center gap-1" href="{{ $application->student
                                                                     ? route('edit_application', [
@@ -65,19 +68,20 @@
                                                                     <i class="ti ti-edit"></i> Edit
                                                                 </a>
                                                             </li>
+                                                            @endcan
 
-                                                            <a href="javascript:void(0);" 
+                                                            {{-- <a href="javascript:void(0);" 
                                                                 onclick="confirmDelete()" 
                                                                 class="dropdown-item d-flex align-items-center gap-1" 
                                                                 title="Delete">
                                                                     <i class="ti ti-trash ti-md"></i> <span>Delete</span>
-                                                            </a>
+                                                            </a> --}}
                                                         </div>
                                                     </div>
-                                                    <form id="delete-user-form" method="POST" style="display: none;">
+                                                    {{-- <form id="delete-user-form" method="POST" style="display: none;">
                                                         @csrf
                                                         @method('DELETE')
-                                                    </form>
+                                                    </form> --}}
                                                 </td>
                                                 <td>
                                                     @php

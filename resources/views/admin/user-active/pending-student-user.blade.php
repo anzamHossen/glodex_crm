@@ -54,8 +54,9 @@
                                                 <td>{{ $user->phone ?? 'Not Added' }}</td>
                                                 <td>{{ $user->email ?? 'Not Added' }}</td>
                                                 <td>
-                                                   {{ $user->created_by ?? 'Not Added' }}
+                                                    {{ $user->created_by_name ?? 'Not Added' }}
                                                 </td>
+
                                             </tr>
                                         @endforeach
                                     </tbody>

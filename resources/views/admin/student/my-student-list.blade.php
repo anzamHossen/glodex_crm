@@ -10,10 +10,12 @@
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">My Students</h4>
                             <div class="d-flex items-center gap-2">
+                                @can('Create Student')
                                 <a href="{{ route('add_new_student') }}" class="btn btn-sm glodex-blue-btn">
                                     <i class="ti ti-plus me-2"></i>
                                     Add New
                                 </a>
+                                @endcan
                                 <a href="#" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
                                     <i class="ti ti-rotate me-2"></i>
                                     Refresh
@@ -48,19 +50,23 @@
                                                         </button>
 
                                                         <div class="dropdown-menu">
+                                                            @can('Edit Student')
                                                             <a href="{{ route('edit_student', $student->id) }}" class="dropdown-item d-flex align-items-center gap-1" title="Login As">
                                                                 <i class="ti ti-edit ti-md"></i> <span>Edit</span>
                                                             </a>
+                                                            @endcan
+                                                            @can('Delete Student')
                                                             <a href="javascript:void(0);"
-                                                            onclick="confirmDelete"
-                                                            class="dropdown-item d-flex align-items-center gap-1"
-                                                            title="Delete">
+                                                                onclick="confirmDelete"
+                                                                class="dropdown-item d-flex align-items-center gap-1"
+                                                                title="Delete">
                                                                 <i class="ti ti-trash ti-md"></i> <span>Delete</span>
                                                             </a>
                                                             <form id="delete-course-form-" method="POST" style="display: none;">
                                                                 @csrf
                                                                 @method('DELETE')
                                                             </form>
+                                                            @endcan
                                                         </div>
                                                     </div>
                                                 </td>

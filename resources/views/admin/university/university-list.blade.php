@@ -13,10 +13,12 @@
                        <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                             <h4 class="header-title mb-0">University List</h4>
                             <div class="d-flex items-center gap-2">
+                                @can('Create University')
                                 <a href="{{ route('add_new_university') }}" class="btn btn-sm glodex-blue-btn">
                                     <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                     Add New
                                 </a>
+                                @endcan
                                 <a href="{{ route('university_list') }}" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
                                     <i class="ti ti-rotate me-2"></i>
                                     Refresh
@@ -89,9 +91,16 @@
                                                     <i class="ti ti-dots-vertical"></i>
                                                 </button>
                                                 <ul class="dropdown-menu">
+                                                    @can('View Course')
                                                     <li><a class="dropdown-item" href="{{ url('/admin/filter-course') }}?university_name={{ urlencode($university->university_name) }}">Courses</a></li>
+                                                    @endcan
+                                                    @can('View University')
                                                     <li><a class="dropdown-item" href="{{ route('university_details', $university->id) }}">University Details</a></li>
+                                                    @endcan
+                                                    @can('Edit University')
                                                     <li><a class="dropdown-item" href="{{ route('edit_university', $university->id) }}">Edit</a></li>
+                                                    @endcan 
+                                                    @can('Delete University')
                                                     <li>
                                                         <a class="dropdown-item"  href="#" onclick="confirmDelete({{ $university->id }})">Delete</a>
                                                         <form id="delete-university-form-{{ $university->id }}" method="POST" style="display: none;">
@@ -99,6 +108,7 @@
                                                             @method('DELETE')
                                                         </form>
                                                     </li>
+                                                    @endcan
                                                 </ul>
                                             </div>
                                             <div class="university-card-header d-flex align-items-center gap-2 pb-3">

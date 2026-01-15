@@ -12,10 +12,12 @@
                     <div class="card-header border-bottom border-dashed d-flex align-items-center justify-content-between">
                         <h4 class="header-title mb-0">Courses</h4>
                         <div class="d-flex items-center gap-1">
+                            @can('Create Course')
                             <a href="{{ route('add_new_course') }}" class="btn btn-sm glodex-blue-btn">
                                 <i class="ti ti-plus" style="margin-right:3px; font-size: 1.3rem; margin-bottom: 1px"></i>
                                 Add New
                             </a>
+                            @endcan
                             <a href="{{ route('course_list') }}" class="btn btn-sm glodex-blue-btn" id="addNewCountryBtn">
                                 <i class="ti ti-rotate me-2"></i>
                                 Refresh
@@ -80,8 +82,13 @@
                                                 <i class="ti ti-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">
+                                                @can('View Course')
                                                 <li><a class="dropdown-item" href="{{ route('course_details', $course->id) }}"><i class="ti ti-map-pin me-2"></i> CourseDetails</a></li>
+                                                @endcan
+                                                @can('Edit Course')
                                                 <li><a class="dropdown-item" href="{{ route('edit_course', $course->id) }}"><i class="ti ti-edit me-2"></i> Edit</a></li>
+                                                @endcan
+                                                @can('Delete Course')
                                                 <li>
                                                     <a class="dropdown-item" href="#"  onclick="confirmDelete({{ $course->id }})"><i class="ti ti-trash me-2"></i> Delete</a>
                                                     <form id="delete-course-form-{{ $course->id }}" method="POST" style="display: none;">
@@ -89,6 +96,7 @@
                                                         @method('DELETE')
                                                     </form>
                                                 </li>
+                                                @endcan
                                             </ul>
                                         </div>
 
@@ -172,11 +180,12 @@
                                                     <div class="info-value">Full-Time</div>
                                                 </div>
                                             </div>
-
+                                            @can('Create Application')
                                             <div class="pt-2 d-flex justify-content-center">
                                                 <a href="#" class="btn btn-sm btn-gradient" target="_blank" data-bs-toggle="modal"
                                                 data-bs-target="#modalCenter{{ $course->id }}">Apply Now</a>
                                             </div>
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>

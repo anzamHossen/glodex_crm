@@ -32,19 +32,35 @@ class UserActiveController extends Controller
     // Function to show pending student users
     public function pendingStudentUser()
     {
-       $pendingStudentUsers = User::where('user_type', 3)
-            ->where('user_status', 1)              
+        $pendingStudentUsers = User::with(['creator', 'studentInfo.createdBy'])
+            ->where('user_type', 3) // student
+            ->where('user_status', 1)
             ->orderBy('id', 'desc')
             ->get()
             ->map(function ($user) {
-            $user->user_type = $user->user_type == 3 ? 'Student' : 'Agent';
-             $user->created_by = ($user->creator && in_array($user->creator->user_type, [1, 2]))
-                                    ? $user->creator->name
-                                    : 'Self Registered';
-            return $user;
-        });
+
+                $user->user_type = 'Student';
+
+                // If admin or agent created
+                if (
+                    $user->studentInfo &&
+                    $user->studentInfo->createdBy &&
+                    in_array($user->studentInfo->createdBy->user_type, [1, 2])
+                ) {
+                    // Show company name (or admin name fallback)
+                    $user->created_by_name =
+                        $user->studentInfo->company_name
+                        ?? $user->studentInfo->createdBy->name;
+                } else {
+                    $user->created_by_name = 'Self Registered';
+                }
+
+                return $user;
+            });
+
         return view('admin.user-active.pending-student-user', compact('pendingStudentUsers'));
     }
+
     
     // Function to show active agent users
     public function activeAgentUser()

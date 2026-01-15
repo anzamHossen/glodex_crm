@@ -28,12 +28,13 @@
 
                                                 {{-- EDIT ROLE --}}
                                                 <div class="d-flex align-items-center justify-content-between ">
+                                                   {{-- @can('Edit Roles') --}}
                                                    <a href="javascript:void(0)" class="text-primary edit-role-btn"
                                                         data-bs-toggle="modal" data-bs-target="#editRoleModal"
                                                         data-role="{{ $role->load('permissions')->toJson() }}">
                                                         Edit Role
                                                     </a>
-
+                                                    {{-- @endcan --}}
                                                     <i class="ti ti-copy ti-md text-heading"></i>
                                                 </div>
 
@@ -43,6 +44,7 @@
                                 @endforeach
 
                                 {{-- ADD NEW ROLE CARD --}}
+                                @can('Create Roles')
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card h-100 d-flex align-items-center justify-content-center shadow-sm border-start border-primary mb-0"
                                         style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#rolePermissionModal">
@@ -54,6 +56,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endcan
                             </div>
                         </div>
                     </div>

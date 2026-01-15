@@ -50,6 +50,7 @@
                 <span class="menu-text">Dashboard</span>
             </a>
         </li>
+        @can('View Partner')
         <li class="side-nav-item">
             <a href="{{ route('pending_agent_user') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-user-pause"></i></span>
@@ -57,6 +58,8 @@
                 <span class="badge bg-success rounded-pill">{{ $pendingAgentUser ?? 0}}</span>
             </a>
         </li>
+        @endcan
+        @can('View Partner')
         <li class="side-nav-item">
             <a href="{{ route('active_agent_user') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-user-check"></i></span>
@@ -64,6 +67,8 @@
                 <span class="badge bg-success rounded-pill">{{ $activeAgentUser ?? 0}}</span>
             </a>
         </li>
+        @endcan
+        @can('View Pending Student')
         <li class="side-nav-item">
             <a href="{{ route('pending_student_user') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-user-pause"></i></span>
@@ -71,6 +76,7 @@
                 <span class="badge bg-success rounded-pill">{{ $pendingStudenttUser ?? 0}}</span>
             </a>
         </li>
+        @endcan
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarHospital" aria-expanded="false" aria-controls="sidebarHospital" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-flag-heart"></i></span>
@@ -104,16 +110,20 @@
             </a>
             <div class="collapse" id="sidebarUniversity">
                 <ul class="sub-menu">
+                    @can('Create University')
                     <li class="side-nav-item">
                         <a href="{{ route('add_new_university') }}" class="side-nav-link">
                             <span class="menu-text">Add University</span>
                         </a>
                     </li>
+                    @endcan
+                    @can('View University')
                     <li class="side-nav-item">
                         <a href="{{ route('university_list') }}" class="side-nav-link">
                             <span class="menu-text">University List</span>
                         </a>
                     </li>
+                    @endcan
                 </ul>
             </div>
         </li>
@@ -125,16 +135,20 @@
             </a>
             <div class="collapse" id="sidebarCourse">
                 <ul class="sub-menu">
+                    @can('Create Course')
                     <li class="side-nav-item">
                         <a href="{{ route('add_new_course') }}" class="side-nav-link">
                             <span class="menu-text">Add Course</span>
                         </a>
                     </li>
+                    @endcan
+                    @can('View Course')
                     <li class="side-nav-item">
                         <a href="{{ route('course_list') }}" class="side-nav-link">
                             <span class="menu-text">Course List</span>
                         </a>
                     </li>
+                    @endcan
                 </ul>
             </div>
         </li>
@@ -146,49 +160,62 @@
             </a>
             <div class="collapse" id="sidebarStudent">
                 <ul class="sub-menu">
+                    @can('Create Student')
                     <li class="side-nav-item">
                         <a href="{{ route('add_new_student') }}" class="side-nav-link">
                             <span class="menu-text">Add Student</span>
                         </a>
                     </li>
+                    @endcan
+                    @can('View Student')
                     <li class="side-nav-item">
                         <a href="{{ route('my_student_list') }}" class="side-nav-link">
                             <span class="menu-text">My Student</span>
                         </a>
                     </li>
+                    @endcan
+                    @can('View Partner Student')
                     <li class="side-nav-item">
                         <a href="{{ route('student_list_agent') }}" class="side-nav-link">
                             <span class="menu-text">Agent Student</span>
                         </a>
                     </li>
+                    @endcan
                 </ul>
             </div>
         </li>
+        @can('View Application')
         <li class="side-nav-item">
             <a href="{{ route('my_application_list') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-brand-sentry"></i></span>
                 <span class="menu-text">My Appplication</span>
             </a>
         </li>
+        @endcan
+        @can('View Partner Application')
         <li class="side-nav-item">
             <a href="{{ route('application_list_agent') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-brand-appstore"></i></span>
                 <span class="menu-text">Agent Appplication</span>
             </a>
         </li>
+        @endcan
+        @can('View All Application')
         <li class="side-nav-item">
             <a href="{{ route('all_application') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-brand-drupal"></i></span>
                 <span class="menu-text">All Appplication</span>
             </a>
         </li>
+        @endcan
+        @can('View User')
         <li class="side-nav-item">
             <a href="{{ route('admin_user_list') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-users-group"></i></span>
                 <span class="menu-text">User</span>
             </a>
         </li>
-
+        @endcan
         <li class="side-nav-item">
            <a data-bs-toggle="collapse" href="#sidebarRolePermission" aria-expanded="false" aria-controls="sidebarRolePermission" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-lock-off"></i></span>
@@ -197,21 +224,24 @@
             </a>
             <div class="collapse" id="sidebarRolePermission">
                 <ul class="sub-menu">
+                    @can('View Roles')
                     <li class="side-nav-item">
                         <a href="{{ route('role_list') }}" class="side-nav-link">
                             <span class="menu-text">Roles</span>
                         </a>
                     </li>
+                    @endcan
+                    @can('View Permission')
                     <li class="side-nav-item">
                         <a href="{{ route('permission_list') }}" class="side-nav-link">
                             <span class="menu-text">Permission</span>
                         </a>
                     </li>
+                    @endcan
                 </ul>
             </div>
         </li>
     </ul>
-
     <div class="clearfix"></div>
 </div>
 
