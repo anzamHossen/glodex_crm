@@ -204,7 +204,7 @@
         <li class="side-nav-item">
             <a href="{{ route('all_application') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-brand-drupal"></i></span>
-                <span class="menu-text">All Appplication</span>
+                <span class="menu-text">Assign Appplication</span>
             </a>
         </li>
         @endcan
