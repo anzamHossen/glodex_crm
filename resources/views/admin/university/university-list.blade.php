@@ -152,10 +152,12 @@
                                                     <span class="badge-commission">Commission {{ $university->commission_for_us ?? 'Not added'}}</span>
                                                 </div>
                                                 <div class="d-flex justify-content-center">
+                                                    @can('View Course')
                                                     <a href="{{ url('/admin/filter-course') }}?university_name={{ urlencode($university->university_name) }}" class="btn btn-sm py-2 btn-gradient mt-3 d-inline-flex align-items-center">
                                                         <i class="ti ti-graduation-cap-filled me-2"></i>
                                                         View Courses
                                                     </a>
+                                                    @endcan
                                                 </div>
                                             </div>
                                         </div>

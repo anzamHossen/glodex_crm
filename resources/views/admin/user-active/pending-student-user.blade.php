@@ -47,8 +47,8 @@
                                                     {{$user->name ?? 'Not Added'}}
                                                 </td>
                                                 <td>
-                                                    <span class="badge bg-primary px-2 py-1 fs-11 me-2">
-                                                        {{ $user->user_type ?? 'Unknown' }}
+                                                   <span class="badge bg-primary px-2 py-1 fs-11 me-2">
+                                                        {{ $user->user_type == 3 ? 'Student' : 'Agent' }}
                                                     </span>
                                                 </td>
                                                 <td>{{ $user->phone ?? 'Not Added' }}</td>

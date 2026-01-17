@@ -55,7 +55,7 @@
             <a href="{{ route('pending_agent_user') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-user-pause"></i></span>
                 <span class="menu-text">Pending Agent</span>
-                <span class="badge bg-success rounded-pill">{{ $pendingAgentUser ?? 0}}</span>
+                {{-- <span class="badge bg-success rounded-pill">{{ $pendingAgentUser ?? 0}}</span> --}}
             </a>
         </li>
         @endcan
@@ -64,7 +64,7 @@
             <a href="{{ route('active_agent_user') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-user-check"></i></span>
                 <span class="menu-text">Active Agent</span>
-                <span class="badge bg-success rounded-pill">{{ $activeAgentUser ?? 0}}</span>
+                {{-- <span class="badge bg-success rounded-pill">{{ $activeAgentUser ?? 0}}</span> --}}
             </a>
         </li>
         @endcan
@@ -73,7 +73,7 @@
             <a href="{{ route('pending_student_user') }}" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-user-pause"></i></span>
                 <span class="menu-text">Pending Student</span>
-                <span class="badge bg-success rounded-pill">{{ $pendingStudenttUser ?? 0}}</span>
+                {{-- <span class="badge bg-success rounded-pill">{{ $pendingStudenttUser ?? 0}}</span> --}}
             </a>
         </li>
         @endcan
@@ -216,6 +216,7 @@
             </a>
         </li>
         @endcan
+        @can('View Roles')
         <li class="side-nav-item">
            <a data-bs-toggle="collapse" href="#sidebarRolePermission" aria-expanded="false" aria-controls="sidebarRolePermission" class="side-nav-link">
                 <span class="menu-icon"><i class="ti ti-lock-off"></i></span>
@@ -241,6 +242,7 @@
                 </ul>
             </div>
         </li>
+        @endcan
     </ul>
     <div class="clearfix"></div>
 </div>

@@ -49,10 +49,23 @@ class ApplicationController extends Controller
     // function to show all application list
     public function allApplication()
     {
-        $applications = Application::with(['student', 'course.country', 'course.university', 'applicationStatus'])
-            ->orderBy('id', 'desc')->get();
+        $authUser = auth()->user();
+
+        $applications = Application::with(['student', 'course.country', 'course.university', 'applicationStatus', 'createdBy'
+            ])->when($authUser->hasRole('BDM'), function ($query) use ($authUser) {
+                // BDM only applications submitted by agents created by user
+                $query->whereHas('createdBy', function ($q) use ($authUser) {
+                    $q->where('user_type', 2)  // Only agents
+                    ->where('created_by', $authUser->id); // Agent created by this BDM
+                });
+            })
+            // SuperAdmin no filter (sees all)
+            ->orderBy('id', 'desc')
+            ->get();
+
         return view('admin.application.all-application', compact('applications'));
     }
+
     
     // function to add application for new student
     public function addApplicationNewStudent($course_id)

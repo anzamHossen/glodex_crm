@@ -15,39 +15,60 @@ class UserActiveController extends Controller
     // Function to show pending agent users
     public function pendingAgentUser()
     {
-       $pendingAgentUsers = User::where('user_type', 2)
-            ->where('user_status', 1)              
+        $authUser = auth()->user();
+        $pendingAgentUsers = User::with('creator')
+            ->where('user_type', 2)
+            ->where('user_status', 1)
+            ->when($authUser->hasRole('BDM'), function ($query) use ($authUser) {
+                //BDM → only his created agents
+                $query->where('created_by', $authUser->id);
+            })
+            // 🔹 SuperAdmin → no condition (sees all)
             ->orderBy('id', 'desc')
             ->get()
             ->map(function ($user) {
-            $user->user_type = $user->user_type == 2 ? 'Agent' : 'Student';
-            $user->created_by = ($user->creator && $user->creator->user_type == 1) 
-                                    ? $user->creator->name 
-                                    : 'Self Registered';
-            return $user;
-        });
-        return view('admin.user-active.pending-agent-user', compact('pendingAgentUsers'));
+                $user->user_type_label = 'Agent';
+
+                $user->created_by_name = $user->creator
+                    ? $user->creator->name
+                    : 'Self Registered';
+
+                return $user;
+            });
+
+        return view(
+            'admin.user-active.pending-agent-user',
+            compact('pendingAgentUsers')
+        );
     }
+
 
     // Function to show pending student users
     public function pendingStudentUser()
     {
+        $authUser = auth()->user();
+
         $pendingStudentUsers = User::with(['creator', 'studentInfo.createdBy'])
-            ->where('user_type', 3) // student
+            ->where('user_type', 3) // Student
             ->where('user_status', 1)
+            ->when($authUser->hasRole('BDM'), function ($query) use ($authUser) {
+                // 🔹 BDM → students created by agents under this BDM
+                $query->whereHas('studentInfo.createdBy', function ($q) use ($authUser) {
+                    $q->where('created_by', $authUser->id); // agent.created_by = BDM id
+                });
+            })
+            // 🔹 SuperAdmin → sees all
             ->orderBy('id', 'desc')
             ->get()
             ->map(function ($user) {
 
-                $user->user_type = 'Student';
+                $user->user_type_label = 'Student';
 
-                // If admin or agent created
                 if (
                     $user->studentInfo &&
-                    $user->studentInfo->createdBy &&
-                    in_array($user->studentInfo->createdBy->user_type, [1, 2])
+                    $user->studentInfo->createdBy
                 ) {
-                    // Show company name (or admin name fallback)
+                    // Agent name (or company if exists)
                     $user->created_by_name =
                         $user->studentInfo->company_name
                         ?? $user->studentInfo->createdBy->name;
@@ -58,27 +79,42 @@ class UserActiveController extends Controller
                 return $user;
             });
 
-        return view('admin.user-active.pending-student-user', compact('pendingStudentUsers'));
+        return view('admin.user-active.pending-student-user',compact('pendingStudentUsers'));
     }
+
 
     
     // Function to show active agent users
     public function activeAgentUser()
     {
-      $activeAgentUsers = User::with('creator')
-        ->where('user_type', 2)
-        ->where('user_status', 2)              
-        ->orderBy('id', 'desc')
-        ->get()
-        ->map(function ($user) {
-            $user->user_type = $user->user_type == 2 ? 'Agent' : 'Student';
-            $user->created_by = ($user->creator && $user->creator->user_type == 1) 
-                                    ? $user->creator->name 
-                                    : 'Self Registered';
-            return $user;
-        });
-        return view('admin.user-active.active-agent-user', compact('activeAgentUsers'));
+        $authUser = auth()->user();
+
+        $activeAgentUsers = User::with('creator')
+            ->where('user_type', 2)
+            ->where('user_status', 2)
+            ->when($authUser->hasRole('BDM'), function ($query) use ($authUser) {
+                //BDM → only agents created by him
+                $query->where('created_by', $authUser->id);
+            })
+            //SuperAdmin → sees all
+            ->orderBy('id', 'desc')
+            ->get()
+            ->map(function ($user) {
+                $user->user_type_label = 'Agent';
+
+                $user->created_by_name = $user->creator
+                    ? $user->creator->name
+                    : 'Self Registered';
+
+                return $user;
+            });
+
+        return view(
+            'admin.user-active.active-agent-user',
+            compact('activeAgentUsers')
+        );
     }
+
     
     // Function to update user status
     public function updateUserStatus($id)

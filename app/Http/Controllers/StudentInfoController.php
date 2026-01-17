@@ -29,12 +29,22 @@ class StudentInfoController extends Controller
     // function to show student list for agent
     public function studentListAgent()
     {
-        $students = StudentInfo::whereHas('createdBy', function ($query) {
-            $query->where('user_type', 2);
-        })->get();
+        $authUser = auth()->user();
+
+        $students = StudentInfo::with('createdBy')
+            ->whereHas('createdBy', function ($query) use ($authUser) {
+                $query->where('user_type', 2); // Only agents
+
+                // BDM → filter agents created by him
+                if ($authUser->hasRole('BDM')) {
+                    $query->where('created_by', $authUser->id);
+                }
+            })
+            ->get();
 
         return view('admin.student.student-list-agent', compact('students'));
     }
+
     
     // function to show add new student page
     public function addNewStudent()
