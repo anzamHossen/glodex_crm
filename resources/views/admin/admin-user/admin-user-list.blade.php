@@ -73,7 +73,7 @@
                                                 <td>{{ $user->phone ?? 'Not Added' }}</td>
                                                 <td>{{ $user->email ?? 'Not Added' }}</td>
                                                 <td>
-                                                    <span class="badge bg-primary">{{ $user->roles[0]->name ??  '--'}}</span>
+                                                    <span class="badge bg-primary">{{ $user->roles[0]->name ??  'Not Added'}}</span>
                                                 </td>
                                             </tr>
                                         @endforeach
